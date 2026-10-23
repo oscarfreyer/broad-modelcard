@@ -1,0 +1,8 @@
+SYNTHETIC STUDY EXCERPT FOR THE BROAD MODELCARD HELPER EVALUATION. Fictional study, fictional numbers; not clinical evidence.
+
+Harrowgate multisite evaluation of MediCore-2.5 as clinician-facing decision support (fictional)
+Study ID: HMS-2026-07. Published 2026-10-02 (peer reviewed).
+
+Methods. MediCore-2.5, used as Clinician Facing CDSS, answered diagnostic and management questions for adult inpatients at 5 hospitals. Answers were rated correct or incorrect by two clinicians.
+
+Results (page 2). For type 2 diabetes mellitus the accuracy was 0.83 (95% CI 0.80 to 0.86) over 1,240 cases. For chronic obstructive pulmonary disease the accuracy was 0.77 (95% CI 0.72 to 0.81) over 610 cases. In the subgroup of patients aged 65 and older, type 2 diabetes accuracy was 0.79 (95% CI 0.74 to 0.84) over 420 cases.

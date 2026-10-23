@@ -1,0 +1,288 @@
+{
+  "pack": "Broad Modelcard dashboard demo pack",
+  "version": 13,
+  "notice": "Synthetic demonstration data. Every developer, product, contact, link, incident, report, and study is fictional (.example domains). Nothing here is clinical evidence, and no declaration is certified or approved.",
+  "files": [
+    {
+      "file": "v1/registry.csv",
+      "kind": "models",
+      "target": null,
+      "mode": "replace",
+      "note": "Adds kind, AI type, developer, release date, description, function categories, and developer declarations to the 7 seed models, and adds 3 fictional products built on them."
+    },
+    {
+      "file": "v1/metrics/quillary-scribe-1-0.discharge-letter-generation.csv",
+      "kind": "metrics",
+      "target": { "model_version": "Quillary-Scribe-1.0", "use_case": "Discharge letter generation" },
+      "mode": "replace",
+      "note": "All-population metrics of the fictional product Quillary Scribe 1.0, derived from MediCore-2.5."
+    },
+    {
+      "file": "v1/metrics/vantrel-triage-2-1.emergency-department-triage.csv",
+      "kind": "metrics",
+      "target": { "model_version": "Vantrel-Triage-2.1", "use_case": "Emergency department triage" },
+      "mode": "replace",
+      "note": "All-population metrics of the fictional product Vantrel Triage 2.1, derived from SynGPT-2.0."
+    },
+    {
+      "file": "v1/metrics/corvessa-skin-review-1-2.skin-lesion-cdss.csv",
+      "kind": "metrics",
+      "target": { "model_version": "Corvessa-Skin-Review-1.2", "use_case": "Skin lesion CDSS" },
+      "mode": "replace",
+      "note": "All-population metrics of the fictional product Corvessa Skin Review 1.2, derived from SkinAI-1.0."
+    },
+    {
+      "file": "v2/safety/incidents.csv",
+      "kind": "safety",
+      "target": null,
+      "mode": "replace",
+      "note": "Adds 16 fictional safety incidents across 13 cards: serious, caution, mitigated, and closed ones, with codes, a chapter, and specific demographic groups."
+    },
+    {
+      "file": "v2/metrics/syngpt-2-0.clinician-facing-cdss.northbridge-study.csv",
+      "kind": "metrics",
+      "target": { "model_version": "SynGPT-2.0", "use_case": "Clinician Facing CDSS" },
+      "mode": "merge",
+      "note": "Merges the results of one fictional study (Northbridge multisite validation, NBR-2026-01) for three conditions at two demographic groups; every other row stays as it was."
+    },
+    {
+      "file": "v3/populations/northbridge-region.csv",
+      "kind": "population",
+      "target": { "population_id": "northbridge-region", "population_name": "Northbridge region (fictional)" },
+      "mode": "replace",
+      "note": "Adds the local population Northbridge region (fictional): synthetic commonness tiers for 310 conditions (endocrine, circulatory, and respiratory more common; some infections and neoplasms rarer). Default answers are unchanged."
+    },
+    {
+      "file": "v4/registry.csv",
+      "kind": "models",
+      "target": null,
+      "mode": "replace",
+      "note": "Demo revision: SynGPT-1.0, SynGPT-2.0, and MediCore-2.5 are broad language models without an intended-use statement (Intended use stated: No); every other card states its intended use. radAIology-1, SkinAI-1.0, and DoAIHaveCancer-1.0 become products (each packaged for one clinical purpose), so Corvessa Skin Review 1.2 no longer lists SkinAI-1.0 under Built on."
+    },
+    {
+      "generate": "evidence",
+      "note": "Demo revision: gives every row with a performance value and no evidence synthetic evidence (mostly internal tests or benchmarks, 1 to 3 studies, rarely peer reviewed), so that it is graded. Generated from the store; other rows keep their source.",
+      "source": "Demo revision (synthetic)",
+      "study": "DEMO-REV-2026-10",
+      "source_date": "2026-10-13"
+    },
+    {
+      "file": "v5/studies/studies.csv",
+      "kind": "studies",
+      "target": null,
+      "mode": "replace",
+      "note": "Adds 7 fictional study records (contract v1.13): every design, conducted by a developer, an independent group, or a hospital, with and without a reporting guideline, and every risk-of-bias level. NBR-2026-01 links the one-study merge of pack v2."
+    },
+    {
+      "file": "v5/metrics/icu-gpt-1-0.cdss.study-links.csv",
+      "kind": "metrics",
+      "target": { "model_version": "ICU_GPT-1.0", "use_case": "CDSS" },
+      "mode": "merge",
+      "note": "Links the rows of 8 conditions to the developer's retrospective study ICU-RETRO-2025 (no reporting guideline, high risk of bias): their evidence grades go down. The validation type follows the study design (pack v7 fix), and the counts of studies, sites, and samples follow the study; other values unchanged."
+    },
+    {
+      "file": "v5/metrics/radaiology-1.radiology-image-analysis.study-links.csv",
+      "kind": "metrics",
+      "target": { "model_version": "radAIology-1", "use_case": "Radiology image analysis" },
+      "mode": "merge",
+      "note": "Links the rows of 7 conditions to the independent randomized trial RAD-RCT-2026 (CONSORT-AI followed, low risk of bias): their evidence grades go up. The validation type follows the study design (pack v7 fix), and the counts of studies, sites, and samples follow the study; other values unchanged."
+    },
+    {
+      "file": "v5/metrics/skinai-1-0.skin-lesion-cdss.study-links.csv",
+      "kind": "metrics",
+      "target": { "model_version": "SkinAI-1.0", "use_case": "Skin lesion CDSS" },
+      "mode": "merge",
+      "note": "Links the rows of 5 conditions to the developer's vignette study DERM-VIG-2025 (guideline not followed, some concerns about bias): their evidence grades go down. The validation type follows the study design (pack v7 fix), and the counts of studies, sites, and samples follow the study; other values unchanged."
+    },
+    {
+      "file": "v6/studies/effect-studies.csv",
+      "kind": "studies",
+      "target": null,
+      "mode": "merge",
+      "note": "Adds 2 fictional studies that compared care with and without an AI system: the randomized trial VANTREL-RCT-2026 (Vantrel Triage 2.1) and the prospective before-and-after study QUILL-PROS-2026 (Quillary Scribe 1.0). No metric row links them, so no grade changes."
+    },
+    {
+      "file": "v6/effects/effects.csv",
+      "kind": "effects",
+      "target": null,
+      "mode": "replace",
+      "note": "Adds 3 fictional effects on outcomes (contract v1.13): time to treatment and under-triage (a harm, risk ratio) from VANTREL-RCT-2026, and documentation time from QUILL-PROS-2026. Effects are never graded; every grade stays as it was."
+    },
+    {
+      "file": "v7/studies/northbridge-icu-evaluation.csv",
+      "kind": "studies",
+      "target": null,
+      "mode": "merge",
+      "role": "hospital",
+      "note": "Adds the hospital study NBR-ICU-LOCAL-2026 (scope Hospital, local population northbridge-region): the fictional Northbridge General ICU evaluation of ICU_GPT-1.0 that the local results name."
+    },
+    {
+      "file": "v7/local/icu-gpt-1-0.cdss.northbridge-region.csv",
+      "kind": "local_metrics",
+      "target": { "model_version": "ICU_GPT-1.0", "use_case": "CDSS", "population_id": "northbridge-region" },
+      "mode": "replace",
+      "note": "Local results of ICU_GPT-1.0 / CDSS for Northbridge region: 12 conditions for all patients and 3 for Age 65+, from NBR-ICU-LOCAL-2026. With the population chosen they replace the public results; default answers are unchanged."
+    },
+    {
+      "file": "v7/safety/northbridge-hospital-incident.csv",
+      "kind": "safety",
+      "target": null,
+      "mode": "merge",
+      "role": "hospital",
+      "note": "Adds one incident recorded by a hospital (scope Hospital): later septic shock alerts for older patients at the fictional Northbridge General. A public release import keeps it."
+    },
+    {
+      "file": "v8/registry.csv",
+      "kind": "models",
+      "target": null,
+      "mode": "replace",
+      "note": "Adds configuration records (contract v1.14) to 13 of 14 cards, a performance measure and reference standard to every card, and data-protection declarations to 5 cards. Lineage: SynGPT-2.0 replaces SynGPT-1.0, and the new fictional Vantrel Triage 2.0 is replaced by Vantrel Triage 2.1. No grade changes."
+    },
+    {
+      "file": "v8/metrics/vantrel-triage-2-0.emergency-department-triage.csv",
+      "kind": "metrics",
+      "target": { "model_version": "Vantrel-Triage-2.0", "use_case": "Emergency department triage" },
+      "mode": "replace",
+      "note": "All-population metrics of the fictional earlier release Vantrel Triage 2.0 for 255 emergency conditions (circulatory, respiratory, sepsis, injuries), each with its evidence; other conditions read No data."
+    },
+    {
+      "file": "v9/studies/study-fields.csv",
+      "kind": "studies",
+      "target": null,
+      "mode": "merge",
+      "note": "Adds applicability concerns (each level), the appraisal tool (an APPRAISE-AI score of 81 and of 72, PROBAST+AI without a score), the setting category, and the configuration evaluated to the 10 fictional studies (contract v1.14). Never graded: every grade stays as it was."
+    },
+    {
+      "file": "v10/studies/setting-studies.csv",
+      "kind": "studies",
+      "target": null,
+      "mode": "merge",
+      "note": "Adds two fictional studies of SynGPT-2.0 in one care setting each (contract v1.14): an independent prospective emergency department validation (SYN-ED-2026) and the developer's primary care record review (SYN-PC-2026)."
+    },
+    {
+      "file": "v10/metrics/vantrel-triage-2-1.emergency-department-triage.emergency-department.csv",
+      "kind": "metrics",
+      "target": {
+        "model_version": "Vantrel-Triage-2.1",
+        "use_case": "Emergency department triage"
+      },
+      "mode": "merge",
+      "note": "Results of Vantrel Triage 2.1 in the emergency department (contract v1.14, care settings): 120 conditions for all patients, Age 65+, Age 18-39, female, and male, from the fictional randomized trial VANTREL-RCT-2026, and 12 of them from the developer's earlier triage simulation TRIAGE-SIM-2026 (an earlier configuration). Any setting stays as it was."
+    },
+    {
+      "file": "v10/metrics/icu-gpt-1-0.cdss.intensive-care.csv",
+      "kind": "metrics",
+      "target": {
+        "model_version": "ICU_GPT-1.0",
+        "use_case": "CDSS"
+      },
+      "mode": "merge",
+      "note": "Results of ICU_GPT-1.0 in intensive care (contract v1.14, care settings): 80 conditions for all patients, Age 65+, and Age 40-64, from the developer's fictional retrospective cohort ICU-RETRO-2025. Any setting stays as it was."
+    },
+    {
+      "file": "v10/metrics/syngpt-2-0.clinician-facing-cdss.emergency-department.csv",
+      "kind": "metrics",
+      "target": {
+        "model_version": "SynGPT-2.0",
+        "use_case": "Clinician Facing CDSS"
+      },
+      "mode": "merge",
+      "note": "Results of SynGPT-2.0 decision support in the emergency department (contract v1.14, care settings): 150 conditions for all patients, Age 65+, female, and male, from the fictional study SYN-ED-2026. Any setting stays as it was."
+    },
+    {
+      "file": "v10/metrics/syngpt-2-0.clinician-facing-cdss.primary-care.csv",
+      "kind": "metrics",
+      "target": {
+        "model_version": "SynGPT-2.0",
+        "use_case": "Clinician Facing CDSS"
+      },
+      "mode": "merge",
+      "note": "Results of SynGPT-2.0 decision support in primary care (contract v1.14, care settings): 200 conditions for all patients, Age 65+, female, and male, from the fictional study SYN-PC-2026. Any setting stays as it was."
+    },
+    {
+      "file": "v11/safety/syngpt-2-0-cdss-incident-history.csv",
+      "kind": "safety",
+      "target": null,
+      "mode": "merge",
+      "note": "Four more fictional incidents of SynGPT-2.0 decision support (contract v1.14, audience summaries), so the card has incidents over several months: two closed (December 2025, January 2026), one mitigated (March 2026), and one open (October 2026). Every other incident stays as it was."
+    },
+    {
+      "evaluation": "v12/evaluations/medicore-2-5.clinician-facing-cdss.harbourline-vignettes.json",
+      "note": "Evaluation results import (contract v1.14): an independent run of the fictional Harbourline Clinical Vignette Benchmark 3.0 on MediCore-2.5 decision support (its current configuration), 32 conditions for all patients and 4 for Age 65+. The proposed benchmark study is published first, then the metrics merge that names it."
+    },
+    {
+      "file": "v13/registry.csv",
+      "kind": "models",
+      "target": null,
+      "mode": "replace",
+      "note": "Adds two fictional products for the function categories Patient communication and Administrative (contract v1.14): Parlowe Answers 1.0 (patient question answering, built on SynGPT-2.0) and Tallyfern Coding 1.4 (clinical coding support, built on MediCore-2.5). Every other entry and field stays as in pack v8."
+    },
+    {
+      "file": "v13/studies/function-studies.csv",
+      "kind": "studies",
+      "target": null,
+      "mode": "merge",
+      "note": "Adds the two fictional studies behind the new products: an independent prospective evaluation of answers to patients' questions (PARL-QA-2026) and a hospital audit of inpatient coding (TALLY-CODE-2026)."
+    },
+    {
+      "file": "v13/metrics/parlowe-answers-1-0.patient-question-answering.csv",
+      "kind": "metrics",
+      "target": { "model_version": "Parlowe-Answers-1.0", "use_case": "Patient question answering" },
+      "mode": "replace",
+      "note": "All-population results of the fictional product Parlowe Answers 1.0 for 51 common conditions (three emergencies out of scope), plus rows for primary care and outpatient clinics, each from PARL-QA-2026."
+    },
+    {
+      "file": "v13/metrics/tallyfern-coding-1-4.clinical-coding-support.csv",
+      "kind": "metrics",
+      "target": { "model_version": "Tallyfern-Coding-1.4", "use_case": "Clinical coding support" },
+      "mode": "replace",
+      "note": "All-population results of the fictional product Tallyfern Coding 1.4 for 792 conditions from every chapter, plus rows for inpatient wards, each from TALLY-CODE-2026."
+    },
+    {
+      "file": "v13/safety/parlowe-answers-incident.csv",
+      "kind": "safety",
+      "target": null,
+      "mode": "merge",
+      "note": "Adds one fictional mitigated incident of Parlowe Answers 1.0 (an asthma answer without warning signs). Every other incident stays as it was."
+    },
+    {
+      "submission": {
+        "developer_name": "Tidewell Analytics (fictional)",
+        "model_version": "Tidewell-Sepsis-1.0",
+        "note": "New AI system Tidewell Sepsis 1.0 for sepsis early warning: registry entry, narrow model card, our prospective validation study, and its results for 20 conditions. Fictional."
+      },
+      "parts": [
+        { "file": "v7/submissions/tidewell-registry.csv", "kind": "models", "mode": "merge" },
+        {
+          "file": "v7/submissions/tidewell-sepsis-1-0.sepsis-early-warning.csv",
+          "kind": "metrics",
+          "target": { "model_version": "Tidewell-Sepsis-1.0", "use_case": "Sepsis early warning" },
+          "mode": "replace"
+        },
+        { "file": "v7/submissions/tidewell-studies.csv", "kind": "studies", "mode": "merge" },
+        {
+          "file": "v7/submissions/tidewell-sepsis-1-0.model-card.json",
+          "kind": "model_cards",
+          "target": { "model_version": "Tidewell-Sepsis-1.0" },
+          "format": "json"
+        }
+      ]
+    },
+    {
+      "submission": {
+        "developer_name": "Corvessa Diagnostics (fictional)",
+        "model_version": "Corvessa-Skin-Review-1.2",
+        "note": "Results of our prospective clinic study CORV-PROSP-2026 for 4 skin conditions, with the study record. Fictional."
+      },
+      "parts": [
+        { "file": "v7/submissions/corvessa-studies.csv", "kind": "studies", "mode": "merge" },
+        {
+          "file": "v7/submissions/corvessa-skin-review-1-2.prospective-merge.csv",
+          "kind": "metrics",
+          "target": { "model_version": "Corvessa-Skin-Review-1.2", "use_case": "Skin lesion CDSS" },
+          "mode": "merge"
+        }
+      ]
+    }
+  ]
+}

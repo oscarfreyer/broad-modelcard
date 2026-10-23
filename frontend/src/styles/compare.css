@@ -1,0 +1,853 @@
+/* The comparison page (compare.html): the catalogue's header and
+   page frame, then the chosen cards, the population and classification
+   choices, "About these cards", and the results table. Same world as the
+   other surfaces: grouped ground, white 16px cards, hairlines,
+   no card shadows, blue only for what can be pressed. A flag that a row is
+   not directly comparable is words and a neutral dashed outline, never a
+   status colour. */
+
+.compare-shell {
+  min-height: 100vh;
+}
+
+.cmp-main {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: var(--sp-8) var(--sp-8) 48px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sp-5);
+}
+
+/* The chosen cards, then Add a card. */
+.cmp-setup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.cmp-chips {
+  display: contents;
+  list-style: none;
+}
+
+.cmp-chip {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  min-height: 52px;
+  padding: 6px 8px 6px 14px;
+  border-radius: var(--r-card);
+  background: var(--card);
+}
+
+.cmp-chip-text {
+  flex: 1;
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.cmp-chip-name {
+  font-size: var(--fs-callout);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.cmp-chip-function {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-footnote);
+  color: var(--ink-2);
+}
+
+.cmp-chip-remove {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: var(--r-pill);
+  background: var(--fill);
+  color: var(--ink-2);
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.cmp-chip-remove:hover {
+  background: var(--fill-strong);
+  color: var(--ink);
+}
+
+.cmp-add {
+  min-height: 52px;
+  padding: 9px 16px;
+  border-radius: var(--r-card);
+}
+
+.cmp-add:disabled {
+  background: var(--fill);
+  color: var(--ink-3);
+  cursor: not-allowed;
+}
+
+.cmp-refusal {
+  flex-basis: 100%;
+  font-size: var(--fs-footnote);
+  color: var(--ink-2);
+}
+
+/* Add a card: a popover over the catalogue's cards, grouped by AI system. */
+.cmp-picker {
+  position: relative;
+}
+
+.cmp-picker-panel {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 30;
+  display: grid;
+  gap: var(--sp-2);
+  width: min(380px, calc(100vw - 32px));
+  max-height: min(480px, 70vh);
+  padding: var(--sp-3);
+  border-radius: var(--r-card);
+  background: var(--card);
+  box-shadow: var(--shadow-pop);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.cmp-picker-search {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 0 var(--sp-3);
+  border-radius: var(--r-control);
+  background: var(--fill);
+  color: var(--ink-3);
+}
+
+.cmp-picker-search input {
+  flex: 1;
+  min-width: 0;
+  min-height: 38px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font-size: var(--fs-body);
+}
+
+.cmp-picker-search input:focus {
+  outline: none;
+}
+
+.cmp-picker-search:focus-within {
+  box-shadow: 0 0 0 2px var(--focus);
+}
+
+.cmp-picker-groups,
+.cmp-picker-options {
+  list-style: none;
+}
+
+.cmp-picker-group + .cmp-picker-group {
+  margin-top: var(--sp-2);
+  padding-top: var(--sp-2);
+  border-top: 1px solid var(--hairline);
+}
+
+.cmp-picker-system {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 2px var(--sp-2) 4px;
+}
+
+.cmp-picker-system-name {
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.cmp-picker-option {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: var(--sp-2);
+  width: 100%;
+  min-height: 44px;
+  padding: 6px var(--sp-2);
+  border: 0;
+  border-radius: var(--r-control);
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.cmp-picker-option:hover:not(:disabled) {
+  background: var(--accent-soft);
+}
+
+.cmp-picker-option:disabled {
+  cursor: default;
+}
+
+.cmp-picker-option:disabled:not(.is-chosen) .cmp-picker-function {
+  color: var(--ink-3);
+}
+
+.cmp-picker-function {
+  font-size: var(--fs-body);
+  font-weight: 500;
+}
+
+.cmp-picker-meta {
+  grid-column: 1;
+  font-size: var(--fs-caption);
+  color: var(--ink-3);
+}
+
+.cmp-picker-check {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  color: var(--accent);
+}
+
+.cmp-picker-note,
+.cmp-picker-foot {
+  padding: 0 var(--sp-2);
+  font-size: var(--fs-footnote);
+  color: var(--ink-3);
+}
+
+/* The population and the classification the results are read for. */
+.cmp-choices {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: var(--sp-3);
+}
+
+.cmp-select {
+  display: grid;
+  gap: 4px;
+  min-width: 140px;
+}
+
+.cmp-select-label {
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.cmp-select .select-wrap select {
+  min-height: 38px;
+}
+
+/* The static demo's limits on the choices (R7): a help at the row's end. */
+.cmp-static-help {
+  align-self: flex-end;
+  margin-bottom: 8px;
+}
+
+/* A white inset card per section. */
+.cmp-panel {
+  display: grid;
+  gap: var(--sp-3);
+  min-width: 0;
+  padding: var(--sp-4) var(--sp-5) var(--sp-5);
+  border-radius: var(--r-card);
+  background: var(--card);
+}
+
+.cmp-panel:focus {
+  outline: none;
+}
+
+.cmp-panel-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--sp-3);
+}
+
+.cmp-panel-heading {
+  display: grid;
+  justify-items: start;
+  gap: 4px;
+}
+
+.cmp-panel-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-title3);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.cmp-back {
+  margin-left: -2px;
+}
+
+.cmp-context-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-footnote);
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+.cmp-context-line .icon {
+  color: var(--ink-3);
+}
+
+.cmp-panel-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: var(--sp-3);
+}
+
+.cmp-updating {
+  font-size: var(--fs-footnote);
+  color: var(--ink-3);
+}
+
+/* Reasons that hold on every row: said once, above the table. */
+.cmp-card-reasons {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-control);
+  background: var(--fill);
+  font-size: var(--fs-footnote);
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+.cmp-card-reasons .icon {
+  flex: none;
+  margin-top: 1px;
+  color: var(--ink-3);
+}
+
+.cmp-card-reasons strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.cmp-empty {
+  padding: var(--sp-4) 0;
+  font-size: var(--fs-body);
+  color: var(--ink-2);
+}
+
+.cmp-skeleton {
+  display: grid;
+  gap: var(--sp-3);
+  padding: var(--sp-2) 0;
+}
+
+/* Tables: they scroll sideways inside their card; the first column stays. */
+.cmp-scroll {
+  /* The gutter lets the table scroll to the card's edge; the sticky first column covers it. */
+  --cmp-gutter: var(--sp-5);
+  overflow-x: auto;
+  margin: 0 calc(-1 * var(--cmp-gutter));
+  padding: 0 var(--cmp-gutter);
+  scrollbar-color: var(--scrollbar) transparent;
+}
+
+.cmp-scroll:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: -2px;
+  border-radius: var(--r-control);
+}
+
+.cmp-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.cmp-table th,
+.cmp-table td {
+  padding: var(--sp-2) var(--sp-3);
+  border-bottom: 1px solid var(--hairline);
+  text-align: left;
+  vertical-align: top;
+}
+
+.cmp-table tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.cmp-table thead th {
+  padding-top: 0;
+  padding-bottom: var(--sp-2);
+  font-weight: 400;
+  vertical-align: bottom;
+}
+
+.cmp-col-label {
+  position: sticky;
+  left: calc(-1 * var(--cmp-gutter));
+  z-index: 1;
+  width: 28%;
+  min-width: 220px;
+  max-width: 340px;
+  background: var(--card);
+}
+
+thead .cmp-col-label {
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.cmp-col-card {
+  min-width: 180px;
+}
+
+.cmp-card-name {
+  display: block;
+  font-size: var(--fs-callout);
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+.cmp-card-function {
+  display: block;
+  font-size: var(--fs-footnote);
+  color: var(--ink-2);
+}
+
+/* A card's column heading opens its atlas: the name in Control Blue, the touch colour. */
+.cmp-card-link {
+  display: block;
+  margin: -4px -6px;
+  padding: 4px 6px;
+  border-radius: var(--r-control);
+  text-decoration: none;
+}
+
+.cmp-card-link .cmp-card-name {
+  color: var(--accent);
+}
+
+/* The card's atlas in miniature above its name, as on its catalogue tile. */
+.cmp-card-snapshot {
+  display: block;
+  width: 136px;
+  margin-bottom: var(--sp-2);
+}
+
+.cmp-card-snapshot .card-snapshot,
+.cmp-card-snapshot .snapshot-placeholder {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.cmp-card-link:hover {
+  background: var(--accent-soft);
+}
+
+.cmp-card-link:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 0;
+}
+
+/* About these cards. */
+.cmp-facts tbody th {
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.cmp-fact {
+  font-size: var(--fs-body);
+  line-height: 1.4;
+}
+
+.cmp-fact > span {
+  display: block;
+}
+
+.cmp-fact-strong {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.cmp-fact-quiet {
+  display: block;
+  font-size: var(--fs-footnote);
+  color: var(--ink-3);
+}
+
+/* A configuration id: a label, set in tabular figures so ids line up across cards. */
+.cmp-fact-code {
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.cmp-fact-list {
+  display: grid;
+  gap: 6px;
+  list-style: none;
+}
+
+.cmp-fact-list .cmp-fact-strong {
+  font-weight: 500;
+}
+
+/* A fact or a result the reasons single out: a solid neutral hairline (never
+   dashed, the retired No data look; never a status colour). A cell whose mark
+   is already an absence says it itself and is not outlined. */
+.cmp-fact.is-concerned,
+.cmp-cell.is-concerned .cmp-cell-link {
+  box-shadow: inset 0 0 0 1px var(--hairline-strong);
+  border-radius: var(--r-control);
+}
+
+.cmp-facts-more {
+  justify-self: start;
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+}
+
+/* Results. The row's name stays in view when the table scrolls sideways. */
+.cmp-concept {
+  position: sticky;
+  left: calc(-1 * var(--cmp-gutter));
+  z-index: 1;
+  font-weight: 400;
+  background: var(--card);
+  box-shadow: inset -1px 0 0 var(--hairline);
+}
+
+.cmp-concept-line {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+}
+
+.cmp-glyph {
+  flex: none;
+  margin-top: 1px;
+  color: var(--ink-2);
+}
+
+.cmp-glyph.is-empty {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+
+.cmp-concept-text {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: var(--sp-2);
+  row-gap: 2px;
+  min-width: 0;
+}
+
+.cmp-concept-name {
+  font-size: var(--fs-body);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.cmp-concept.is-level-1 .cmp-concept-name {
+  font-weight: 600;
+}
+
+.cmp-concept-code,
+.cmp-concept-level {
+  font-size: var(--fs-caption);
+  font-weight: 500;
+  color: var(--ink-3);
+}
+
+.cmp-concept-level {
+  flex-basis: 100%;
+}
+
+.cmp-concept.is-nested {
+  padding-left: calc(var(--sp-3) + 16px);
+}
+
+.cmp-drill {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font-size: var(--fs-body);
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: left;
+}
+
+.cmp-drill .icon {
+  flex: none;
+  color: var(--accent);
+}
+
+.cmp-drill:hover {
+  color: var(--accent);
+}
+
+.cmp-spread {
+  margin-top: 2px;
+  font-size: var(--fs-caption);
+  font-weight: 400;
+  color: var(--ink-3);
+}
+
+.cmp-flag {
+  margin-top: 4px;
+  max-width: 44ch;
+  font-size: var(--fs-caption);
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
+.cmp-flag-title {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.cmp-row.is-level-1 > * {
+  background: var(--row-hover);
+}
+
+.cmp-row.is-level-1 > .cmp-col-label,
+.cmp-row.is-level-1 > .cmp-concept {
+  background: var(--row-hover);
+}
+
+.cmp-cell {
+  padding: 4px;
+}
+
+.cmp-cell-link {
+  display: grid;
+  gap: 5px;
+  min-height: 44px;
+  padding: 6px 8px;
+  border-radius: var(--r-control);
+  color: var(--ink);
+  text-decoration: none;
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.cmp-cell-link:hover {
+  background: var(--fill);
+}
+
+.cmp-cell-link:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: -2px;
+}
+
+.cmp-cell-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cmp-cell-value {
+  font-size: var(--fs-callout);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.cmp-cell-word {
+  font-size: var(--fs-footnote);
+  font-weight: 500;
+  color: var(--absent-ink);
+}
+
+.cmp-cell-safety {
+  display: inline-flex;
+}
+
+/* A local result (§26.1, v1.14): the atlas's ink dot and the word, never a status colour. */
+.cmp-cell-local {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.cmp-cell-local .local-dot {
+  display: inline-block;
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+.cmp-cell-local .local-dot.is-within {
+  background: var(--card);
+  box-shadow: inset 0 0 0 1.5px var(--ink);
+}
+
+.cmp-cell-note {
+  font-size: var(--fs-caption);
+  color: var(--ink-3);
+}
+
+.cmp-cell .range-compact {
+  max-width: 180px;
+}
+
+/* How comparability is judged. */
+.cmp-rule {
+  padding: var(--sp-3) var(--sp-5);
+  border-radius: var(--r-card);
+  background: var(--card);
+  font-size: var(--fs-footnote);
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.cmp-rule summary {
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  font-size: var(--fs-callout);
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.cmp-rule p,
+.cmp-rule ul {
+  max-width: 72ch;
+  margin-top: var(--sp-2);
+}
+
+.cmp-rule ul {
+  padding-left: 1.2em;
+  display: grid;
+  gap: 4px;
+}
+
+@media (max-width: 1100px) {
+  .cmp-main {
+    padding: var(--sp-6) var(--sp-5) var(--sp-8);
+  }
+}
+
+/* Phones: the chips take the width, every control is a 44px target, and the
+   tables scroll sideways inside their cards; the page never does. */
+@media (max-width: 767px) {
+  .cmp-main {
+    padding: var(--sp-5) var(--sp-4) var(--sp-8);
+    gap: var(--sp-4);
+  }
+
+  .cmp-chip,
+  .cmp-picker,
+  .cmp-add {
+    flex: 1 1 100%;
+  }
+
+  .cmp-add {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .cmp-picker-panel {
+    width: 100%;
+  }
+
+  .cmp-chip-remove {
+    width: 44px;
+    height: 44px;
+  }
+
+  .cmp-choices {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cmp-select {
+    min-width: 0;
+  }
+
+  .cmp-select .select-wrap select {
+    min-height: 44px;
+  }
+
+  .cmp-panel {
+    padding: var(--sp-3) var(--sp-4) var(--sp-4);
+  }
+
+  .cmp-scroll {
+    --cmp-gutter: var(--sp-4);
+  }
+
+  .cmp-panel-tools {
+    width: 100%;
+  }
+
+  .cmp-panel-tools .segmented {
+    width: 100%;
+  }
+
+  .cmp-col-label {
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+  }
+
+  .cmp-col-card {
+    min-width: 150px;
+  }
+
+  .cmp-concept {
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+  }
+
+  .cmp-panel-tools .segment,
+  .cmp-drill,
+  .cmp-back,
+  .cmp-facts-more {
+    min-height: 44px;
+  }
+
+  .cmp-panel-tools .segment {
+    flex: 1 1 0;
+    padding: 5px 4px;
+    font-size: var(--fs-caption);
+  }
+
+  .cmp-rule {
+    padding: var(--sp-3) var(--sp-4);
+  }
+}

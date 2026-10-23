@@ -1,0 +1,4 @@
+# Broad Modelcard demo pack v7: one incident recorded by a hospital (scope Hospital). Aggregate synthetic data only. Never upload patient-level or real patient data.
+"# Every name, site, team, and link below is fictional (.example addresses). Nothing here is clinical evidence."
+Incident ID,Model version,Function,ICD-11 codes,Age,Sex,Ethnicity,Incident type,Harm,Status,Source type,Source reference,Study ID,Reported date,Updated date,Summary,Scope,Action
+NBR-SI-2026-001,ICU_GPT-1.0,CDSS,1G41,Age 65+,,,Performance drift,Possible,Open,Incident report,Northbridge General incident review NBR-IR-0412 (fictional),,2026-10-16,,"Synthetic: after a local software update, septic shock alerts for older patients came later than in the unit's own evaluation.",Hospital,

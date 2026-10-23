@@ -1,0 +1,11 @@
+/* Comparison page styles in cascade order: the shared tokens, base, the AI
+   system tags, the marks, the catalogue's header and page frame, then the
+   comparison itself, and the static demo's band. */
+@import './tokens.css';
+@import './base.css';
+@import './system.css';
+@import './range.css';
+@import './marks.css';
+@import './catalogue.css';
+@import './compare.css';
+@import './static.css';

@@ -1,0 +1,62 @@
+{
+  "schema": "broad-modelcard/narrow-model-card@1",
+  "model_version": "Tidewell-Sepsis-1.0",
+  "name": "Tidewell Sepsis",
+  "version": "1.0",
+  "license": "Proprietary (fictional)",
+  "date": "2026-09-30",
+  "intended_use": "Early warning of sepsis for adults on medical wards and in intensive care, reviewed by clinical staff. Fictional.",
+  "limitations": "Not evaluated for children or pregnant patients; alerts are a prompt for review, not a diagnosis. Synthetic demonstration only.",
+  "training_data": "Fictional: 41,000 synthetic admissions from 6 hospitals, 2022 to 2025.",
+  "model-index": [
+    {
+      "name": "Tidewell Sepsis 1.0",
+      "results": [
+        {
+          "task": {
+            "type": "classification",
+            "name": "Sepsis early warning"
+          },
+          "dataset": {
+            "name": "Tidewell prospective validation (fictional)",
+            "type": "TIDE-VAL-2026"
+          },
+          "metrics": [
+            {
+              "type": "auroc",
+              "name": "AUROC",
+              "value": 0.86,
+              "icd11_codes": [
+                "1G40"
+              ]
+            },
+            {
+              "type": "auroc",
+              "name": "AUROC",
+              "value": 0.81,
+              "icd11_codes": [
+                "1G41"
+              ]
+            }
+          ]
+        },
+        {
+          "task": {
+            "type": "classification",
+            "name": "Sepsis early warning"
+          },
+          "dataset": {
+            "name": "Synthetic ward benchmark (fictional)"
+          },
+          "metrics": [
+            {
+              "type": "sensitivity",
+              "name": "Sensitivity at alert threshold",
+              "value": 0.79
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

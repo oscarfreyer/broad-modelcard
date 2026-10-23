@@ -1,0 +1,8 @@
+# Broad Modelcard demo pack v2: a one-study merge update for SynGPT-2.0 / Clinician Facing CDSS. Aggregate synthetic data only. Never upload patient-level or real patient data.
+# The Northbridge multisite validation study is fictional; every value below is synthetic.
+ICD-11 code,Condition,Age,Sex,Ethnicity,Performance,CI low,CI high,Evidence grade,Samples,Sites,Studies,Peer-reviewed studies,Validation type,In intended use,Intended-use coverage,Intended-use level,Warnings,Action,Source,Study,Source date
+5A11,Type 2 diabetes mellitus,All ages,All sexes,All ethnicities,0.792,0.768,0.816,B,2410,9,1,1,Clinical study (multisite),Yes,1,In scope,clinician_review_required,,Northbridge multisite validation (fictional),NBR-2026-01,2026-09-15
+BA00,Essential hypertension,All ages,All sexes,All ethnicities,0.751,0.722,0.78,C,1980,9,1,1,Clinical study (multisite),Yes,1,In scope,clinician_review_required,,Northbridge multisite validation (fictional),NBR-2026-01,2026-09-15
+CA40,Pneumonia,All ages,All sexes,All ethnicities,0.763,0.737,0.789,B,2205,9,1,1,Clinical study (multisite),Yes,1,In scope,clinician_review_required,,Northbridge multisite validation (fictional),NBR-2026-01,2026-09-15
+5A11,Type 2 diabetes mellitus,Age 65+,All sexes,All ethnicities,0.861,0.829,0.893,C,920,9,1,1,Clinical study (multisite),Yes,1,In scope,clinician_review_required,,Northbridge multisite validation (fictional),NBR-2026-01,2026-09-15
+BA00,Essential hypertension,Age 65+,All sexes,All ethnicities,0.868,0.834,0.902,C,1010,9,1,1,Clinical study (multisite),Yes,1,In scope,clinician_review_required,,Northbridge multisite validation (fictional),NBR-2026-01,2026-09-15

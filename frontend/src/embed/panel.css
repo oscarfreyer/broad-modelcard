@@ -1,0 +1,564 @@
+/* The live panel inside its shadow root ("Live interaction panel").
+   The tokens (tokens.css, :root rewritten to :host) and the marks (marks.css)
+   are prepended by panelStyles.js, so the panel draws every state exactly as
+   the atlas does, on any host page, whatever that page's own CSS says. */
+
+:host {
+  all: initial;
+  display: block;
+  min-width: 260px;
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: 1.4;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* The type scale in px: the app's tokens use rem, which inside a shadow root
+   still follows the host page's root font size. The panel keeps the atlas's
+   sizes on any host (same values as tokens.css). */
+:host {
+  --fs-caption: 13px;
+  --fs-footnote: 14px;
+  --fs-body: 15px;
+  --fs-callout: 16px;
+  --fs-headline: 17px;
+  --fs-title3: 20px;
+  --fs-title2: 24px;
+  --fs-title1: 28px;
+  --fs-figure: 36px;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h2,
+h3,
+h4,
+p,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+::selection {
+  background: var(--selection);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.p-panel {
+  /* :host { all: initial } loses to a host page rule that matches the element
+     itself (for example a universal rule that sets a serif face), and the tree
+     inherits from the host. So the panel's root sets every inherited text
+     property again: nothing of the host's type reaches the panel. */
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  font-stretch: normal;
+  line-height: 1.4;
+  color: var(--ink);
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0;
+  text-align: start;
+  text-shadow: none;
+  white-space: normal;
+  direction: ltr;
+  visibility: visible;
+  cursor: auto;
+  display: grid;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  background: var(--card);
+  border-radius: var(--r-card);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+}
+
+/* Read by assistive technology only: the status region with the answer in one sentence. */
+.p-sr {
+  /* Outside the panel root, so it resets the host's inherited text too
+     (a screen reader may spell out text the host set in capitals). */
+  font: 400 13px/1.4 var(--font-sans);
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--ink);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.p-icon {
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Brand line and the demonstration line. */
+.p-brand {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px var(--sp-2);
+  font-size: var(--fs-caption);
+  color: var(--ink-3);
+}
+
+.p-brand-mark {
+  flex: none;
+}
+
+.p-brand-name {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.p-brand-job {
+  font-weight: 500;
+}
+
+.p-demo {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-control);
+  background: var(--tone-moderate-zone);
+  color: var(--tone-moderate-ink);
+  font-size: var(--fs-footnote);
+  line-height: 1.35;
+}
+
+.p-demo strong {
+  font-weight: 600;
+}
+
+.p-demo .p-icon {
+  margin-top: 1px;
+}
+
+/* The card the case is looked up on. */
+.p-card {
+  display: grid;
+  gap: 2px;
+}
+
+.p-system {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px var(--sp-2);
+  font-family: var(--font-display);
+  font-size: var(--fs-headline);
+  font-weight: 700;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.p-kind {
+  font-family: var(--font-sans);
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--ink-2);
+  background: var(--fill);
+  border-radius: var(--r-pill);
+  padding: 0 8px;
+}
+
+.p-function {
+  font-size: var(--fs-footnote);
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+.p-population {
+  font-size: var(--fs-caption);
+  font-weight: 500;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+/* One block per condition, then the combination. */
+.p-conditions {
+  display: grid;
+}
+
+.p-condition,
+.p-combination {
+  display: grid;
+  gap: var(--sp-2);
+  padding: var(--sp-3) 0;
+  border-top: 1px solid var(--hairline);
+}
+
+
+.p-cond-name {
+  font-size: var(--fs-callout);
+  font-weight: 600;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.p-code {
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.p-combination-note,
+.p-about {
+  font-size: var(--fs-footnote);
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
+.p-lead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px var(--sp-2);
+}
+
+.p-lead-word {
+  font-size: var(--fs-headline);
+  font-weight: 700;
+}
+
+.p-lead-view {
+  font-size: var(--fs-footnote);
+  font-weight: 500;
+  color: var(--ink-3);
+}
+
+.p-views {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px var(--sp-4);
+}
+
+.p-view,
+.p-safety {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px 6px;
+  font-size: var(--fs-footnote);
+}
+
+.p-view-label {
+  font-weight: 500;
+  color: var(--ink-3);
+}
+
+.p-word {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.p-word.tone-strong { color: var(--tone-strong-ink); }
+.p-word.tone-moderate { color: var(--tone-moderate-ink); }
+.p-word.tone-scope { color: var(--scope-in-ink); }
+.p-word.tone-weak { color: var(--tone-weak-ink); }
+.p-word.tone-absent { color: var(--absent-ink); }
+
+/* An open Serious or Caution incident leads its condition at the size of the result. */
+.p-safety.is-alert {
+  display: flex;
+  gap: 4px var(--sp-2);
+}
+
+.p-case-safety {
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--hairline);
+}
+
+.p-safety-count {
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.p-requirement {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: var(--fs-footnote);
+  line-height: 1.35;
+  color: var(--ink-2);
+}
+
+.p-card .p-requirement {
+  margin-top: var(--sp-2);
+}
+
+.p-requirement .p-icon {
+  margin-top: 1px;
+  color: var(--ink-3);
+}
+
+.p-requirement strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* Warnings, safeguards, and incidents: compact rows with their chip. */
+.p-group {
+  margin-top: var(--sp-1);
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  color: var(--ink-3);
+}
+
+.p-list {
+  display: grid;
+  border-radius: var(--r-control);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+}
+
+.p-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+}
+
+.p-item + .p-item {
+  border-top: 1px solid var(--hairline);
+}
+
+.p-item-main {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.p-item-title {
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.p-item-scope {
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.p-item-text {
+  font-size: var(--fs-footnote);
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
+.p-item-meta {
+  font-size: var(--fs-caption);
+  font-weight: 500;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.p-incident-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px 6px;
+  font-size: var(--fs-footnote);
+}
+
+.p-actions {
+  display: grid;
+  gap: 2px;
+  margin-top: 4px;
+  padding-left: var(--sp-4);
+  list-style: disc;
+  font-size: var(--fs-footnote);
+  color: var(--ink-2);
+}
+
+.p-chip {
+  flex: none;
+  margin-top: 1px;
+  padding: 1px 8px;
+  border-radius: var(--r-pill);
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.p-chip.tone-weak { background: var(--tone-weak-zone); color: var(--tone-weak-ink); }
+.p-chip.tone-moderate { background: var(--tone-moderate-zone); color: var(--tone-moderate-ink); }
+.p-chip.tone-absent { background: var(--fill); color: var(--ink-2); }
+
+.p-more {
+  font-size: var(--fs-caption);
+  font-weight: 500;
+  color: var(--ink-3);
+}
+
+.p-unmatched {
+  font-size: var(--fs-footnote);
+  color: var(--ink-2);
+}
+
+/* Links: blue means touch. */
+.p-link {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: var(--r-small);
+  color: var(--accent);
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+
+.p-link:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+.p-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2) var(--sp-3);
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--hairline);
+}
+
+.p-version {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-caption);
+  font-weight: 500;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.p-updating-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* States without an answer. */
+.p-empty {
+  font-size: var(--fs-footnote);
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
+.p-ignored {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: var(--r-control);
+  background: var(--fill);
+  font-size: var(--fs-caption);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
+.p-ignored .p-icon {
+  margin-top: 1px;
+}
+
+/* Lens fallback: the row stands in for the exact population (the card's sentence). */
+.p-fallback {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.p-fallback .p-icon {
+  flex: none;
+  margin-top: 1px;
+}
+
+.p-condition.is-loading .p-lead {
+  font-size: var(--fs-footnote);
+}
+
+.p-error {
+  display: grid;
+  gap: 6px;
+  padding: var(--sp-3);
+  border-radius: var(--r-control);
+  background: var(--tone-weak-zone);
+  font-size: var(--fs-footnote);
+  line-height: 1.4;
+}
+
+.p-error-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: var(--fs-callout);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--tone-weak-ink);
+}
+
+.p-error-title .p-icon {
+  margin-top: 2px;
+}
+
+.p-error-text {
+  color: var(--ink);
+}
+
+.p-command {
+  justify-self: start;
+  font-family: var(--font-sans);
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--card);
+  border-radius: var(--r-small);
+  padding: 4px 10px;
+  user-select: all;
+}
+
+/* Reduced motion: the panel, its tokens, and its marks have no animations
+   or transitions (tests/livePanel.test.js keeps it so), so it needs no
+   override. */

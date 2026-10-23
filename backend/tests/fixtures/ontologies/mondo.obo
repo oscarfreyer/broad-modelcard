@@ -1,0 +1,126 @@
+format-version: 1.2
+data-version: releases/2026-10-06
+remark: A tiny hand-written test fixture in MONDO's OBO format (tests/test_ontologies.py). The ids 9000xxx and their labels are made up; it is not an excerpt of MONDO.
+
+[Term]
+id: MONDO:0000001
+name: disease
+
+[Term]
+id: MONDO:0700096
+name: human disease
+is_a: MONDO:0000001 {source="fixture"} ! disease
+
+[Term]
+id: MONDO:7770006
+name: disease by body system or component
+is_a: MONDO:0700096 ! human disease
+
+[Term]
+id: MONDO:0005066
+name: metabolic disease
+is_a: MONDO:0700096 ! human disease
+
+[Term]
+id: MONDO:0004995
+name: cardiovascular disorder
+is_a: MONDO:7770006 ! disease by body system or component
+
+[Term]
+id: MONDO:9000010
+name: glucose metabolism disease
+is_a: MONDO:0005066 ! metabolic disease
+
+[Term]
+id: MONDO:9000011
+name: diabetes mellitus
+synonym: "sugar disease" EXACT [fixture:1]
+synonym: "Sugar  Disease" EXACT []
+synonym: "DM" EXACT []
+synonym: "type 2 diabetes mellitus" EXACT []
+synonym: "glycaemic \"sweet\" illness" EXACT []
+synonym: "glucose trouble" RELATED []
+synonym: "2024" EXACT []
+xref: icd11.foundation:2001 {source="fixture"}
+xref: DOID:0000000
+is_a: MONDO:9000010 ! glucose metabolism disease
+
+[Term]
+id: MONDO:9000012
+name: type 2 diabetes variant
+synonym: "parent only name" EXACT []
+is_a: MONDO:9000011 ! diabetes mellitus
+
+[Term]
+id: MONDO:9000013
+name: rare type 2 diabetes subtype
+is_a: MONDO:9000012 ! type 2 diabetes variant
+
+[Term]
+id: MONDO:9000014
+name: very rare subtype
+is_a: MONDO:9000013 ! rare type 2 diabetes subtype
+
+[Term]
+id: MONDO:9000015
+name: diabetes due to a genetic defect
+xref: ICD10CM:E13
+is_a: MONDO:9000011 ! diabetes mellitus
+
+[Term]
+id: MONDO:9000016
+name: hypoglycaemia disorder
+xref: icd11.foundation:2003
+xref: ICD10WHO:E16
+is_a: MONDO:9000010 ! glucose metabolism disease
+
+[Term]
+id: MONDO:9000017
+name: other glucose disorder
+xref: ICD10WHO:E14
+is_a: MONDO:9000010 ! glucose metabolism disease
+
+[Term]
+id: MONDO:9000018
+name: obsolete glucose disorder
+is_obsolete: true
+is_a: MONDO:9000010 ! glucose metabolism disease
+
+[Term]
+id: MONDO:9000019
+name: leaf metabolic condition
+xref: icd11.foundation:2002
+is_a: MONDO:0005066 ! metabolic disease
+
+[Term]
+id: MONDO:9000020
+name: hypertensive disorder
+is_a: MONDO:0004995 ! cardiovascular disorder
+
+[Term]
+id: MONDO:9000021
+name: essential hypertension
+synonym: "high blood pressure" EXACT []
+xref: ICD10CM:I10
+is_a: MONDO:9000020 ! hypertensive disorder
+
+[Term]
+id: MONDO:9000022
+name: hypertensive heart disease
+is_a: MONDO:9000020 ! hypertensive disorder
+is_a: MONDO:9000021 ! essential hypertension
+
+[Term]
+id: MONDO:9000023
+name: metabolic cardiomyopathy
+is_a: MONDO:0004995 ! cardiovascular disorder
+is_a: MONDO:9000010 ! glucose metabolism disease
+
+[Term]
+id: MONDO:9000030
+name: orphan grouping disease
+is_a: MONDO:0700096 ! human disease
+
+[Typedef]
+id: part_of
+name: part of

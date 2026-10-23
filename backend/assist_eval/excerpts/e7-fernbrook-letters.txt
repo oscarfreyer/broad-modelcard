@@ -1,0 +1,4 @@
+SYNTHETIC STUDY EXCERPT FOR THE BROAD MODELCARD HELPER EVALUATION. Fictional study; it names conditions without codes.
+
+Fernbrook letter quality study (fictional), study FLQ-2026-05, dated 2026-09-28, two hospitals, peer reviewed.
+SynGPT-2.0 generated discharge letters. Letters were rated complete and correct for asthma in 0.88 of cases (95% CI 0.84 to 0.91; 512 letters) and for osteoarthritis of hip in 0.81 of cases (95% CI 0.76 to 0.86; 290 letters).

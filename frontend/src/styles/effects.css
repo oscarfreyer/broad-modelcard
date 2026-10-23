@@ -1,0 +1,206 @@
+/* Effects on outcomes (contract v1.13, CONTRACT.md §27).
+   Evidence of a different kind from the predictive results above it, and drawn
+   so: no Strong / Moderate / Weak zones and no status colour. Each effect has
+   a hairline axis around the no-effect line, the confidence interval as an ink
+   line with caps, and the estimate as a square (the forest-plot convention;
+   the range chart's value is a ringed dot). The better side carries a quiet
+   fill and the bolder label. Never graded, and the card says so. */
+
+.effects-card {
+  display: grid;
+  background: var(--card);
+  border-radius: var(--r-card);
+  overflow: hidden;
+}
+
+.effects-lead {
+  padding: var(--sp-4) var(--sp-4) var(--sp-1);
+  font-size: var(--fs-footnote);
+  color: var(--ink-3);
+  line-height: 1.4;
+}
+
+.effect-list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.effect-row {
+  display: grid;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-4) var(--sp-4);
+}
+
+.effect-row + .effect-row {
+  border-top: 1px solid var(--hairline);
+  padding-top: var(--sp-4);
+}
+
+.effect-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-3);
+}
+
+.effect-outcome {
+  margin: 0;
+  font-size: var(--fs-body);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.effect-type {
+  flex: none;
+  padding: 1px var(--sp-2);
+  border-radius: var(--r-pill);
+  background: var(--fill);
+  font-size: var(--fs-caption);
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+.effect-sentence {
+  font-size: var(--fs-body);
+  color: var(--ink-2);
+  line-height: 1.45;
+}
+
+/* The plot. */
+.effect-plot {
+  display: grid;
+  gap: var(--sp-1);
+  padding-top: var(--sp-1);
+}
+
+.effect-plot-track {
+  position: relative;
+  height: 26px;
+}
+
+.effect-plot-better {
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  width: 50%;
+  background: var(--fill);
+}
+
+.effect-plot-better.is-left {
+  left: 0;
+  border-radius: var(--r-small) 0 0 var(--r-small);
+}
+
+.effect-plot-better.is-right {
+  right: 0;
+  border-radius: 0 var(--r-small) var(--r-small) 0;
+}
+
+.effect-plot-axis {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: var(--hairline-strong);
+}
+
+.effect-plot-null {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  margin-left: -0.5px;
+  background: var(--ink-3);
+}
+
+.effect-plot-ci {
+  position: absolute;
+  top: 50%;
+  height: 2px;
+  margin-top: -1px;
+  background: var(--ink);
+}
+
+.effect-plot-ci::before,
+.effect-plot-ci::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  width: 2px;
+  height: 10px;
+  background: var(--ink);
+}
+
+.effect-plot-ci::before {
+  left: -1px;
+}
+
+.effect-plot-ci::after {
+  right: -1px;
+}
+
+.effect-plot-estimate {
+  position: absolute;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  background: var(--ink);
+  box-shadow: 0 0 0 2px var(--card);
+}
+
+.effect-plot-scale {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: var(--sp-2);
+  font-size: var(--fs-caption);
+  color: var(--ink-3);
+  line-height: 1.3;
+}
+
+.effect-plot-scale > :last-child {
+  text-align: right;
+}
+
+.effect-plot-scale .is-better {
+  color: var(--ink-2);
+  font-weight: 600;
+}
+
+.effect-source {
+  font-size: var(--fs-footnote);
+  color: var(--ink-3);
+  line-height: 1.4;
+}
+
+.effect-facts .fact-row {
+  align-items: baseline;
+  font-size: var(--fs-footnote);
+}
+
+.effect-facts dd {
+  overflow-wrap: anywhere;
+}
+
+.effects-note {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-4);
+  border-top: 1px solid var(--hairline);
+  font-size: var(--fs-footnote);
+  font-weight: 500;
+  color: var(--ink-2);
+  line-height: 1.4;
+}
+
+.effects-note-icon {
+  flex: none;
+  margin-top: 1px;
+  color: var(--ink-3);
+}

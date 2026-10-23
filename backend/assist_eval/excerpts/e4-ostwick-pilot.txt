@@ -1,0 +1,5 @@
+SYNTHETIC STUDY EXCERPT FOR THE BROAD MODELCARD HELPER EVALUATION. Fictional study and a fictional condition; not clinical evidence.
+
+Ostwick single-site pilot of SynGPT-1.0 as clinician-facing CDSS (fictional), study OPS-2026-03, 2026-07-14.
+At one clinic, SynGPT-1.0 (Clinician Facing CDSS) answered questions on migraine with an accuracy of 0.71 (95% CI 0.64 to 0.78) over 300 consultations.
+On Grevell syndrome (a fictional condition, local code ZZ99) the accuracy was 0.66 over 40 consultations.

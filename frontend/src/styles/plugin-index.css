@@ -1,0 +1,5 @@
+/* Live interaction demo page styles in cascade order: the shared tokens and
+   base, then the page. The panel styles itself inside its shadow root. */
+@import './tokens.css';
+@import './base.css';
+@import './plugin.css';

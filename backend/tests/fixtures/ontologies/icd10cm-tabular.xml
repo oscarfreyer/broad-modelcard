@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A tiny hand-written test fixture in the shape of the ICD-10-CM tabular XML (tests/test_ontologies.py); not an excerpt of the release. -->
+<ICD10CM.tabular>
+  <version>2027</version>
+  <chapter>
+    <name>4</name>
+    <desc>Endocrine, nutritional and metabolic diseases (E00-E89)</desc>
+    <section id="E08-E13">
+      <desc>Diabetes mellitus (E08-E13)</desc>
+      <diag>
+        <name>E10</name>
+        <desc>Type 1 diabetes mellitus</desc>
+        <diag>
+          <name>E10.9</name>
+          <desc>Type 1 diabetes mellitus without complications</desc>
+        </diag>
+      </diag>
+      <diag>
+        <name>E11</name>
+        <desc>Type 2 diabetes mellitus</desc>
+        <diag>
+          <name>E11.6</name>
+          <desc>Type 2 diabetes mellitus with other specified complications</desc>
+          <diag>
+            <name>E11.65</name>
+            <desc>Type 2 diabetes mellitus with hyperglycemia</desc>
+          </diag>
+        </diag>
+        <diag>
+          <name>E11.9</name>
+          <desc>Type 2 diabetes mellitus without complications</desc>
+        </diag>
+      </diag>
+      <diag>
+        <name>E12</name>
+        <desc>A category without a WHO ICD-10 code</desc>
+      </diag>
+      <diag>
+        <name>E13</name>
+        <desc>Other specified diabetes mellitus</desc>
+      </diag>
+      <diag>
+        <name>E14</name>
+        <desc>A category whose ICD-11 code only an atlas block matches</desc>
+      </diag>
+    </section>
+    <section id="E15-E16">
+      <desc>Other disorders of glucose regulation (E15-E16)</desc>
+      <diag>
+        <name>E16</name>
+        <desc>A category whose ICD-11 code does not resolve</desc>
+      </diag>
+    </section>
+  </chapter>
+  <chapter>
+    <name>9</name>
+    <desc>Diseases of the circulatory system (I00-I99)</desc>
+    <section id="I10-I1A">
+      <desc>Hypertensive diseases (I10-I1A)</desc>
+      <diag>
+        <name>I10</name>
+        <desc>Essential (primary) hypertension</desc>
+      </diag>
+      <diag>
+        <name>I99</name>
+        <desc>A category that only a chapter row would match</desc>
+      </diag>
+    </section>
+  </chapter>
+  <chapter>
+    <name>18</name>
+    <desc>Symptoms, signs and abnormal clinical and laboratory findings, not elsewhere classified (R00-R99)</desc>
+    <section id="R00-R09">
+      <desc>Symptoms and signs involving the circulatory and respiratory systems (R00-R09)</desc>
+      <diag>
+        <name>R00</name>
+        <desc>Abnormalities of heart beat</desc>
+      </diag>
+    </section>
+  </chapter>
+</ICD10CM.tabular>

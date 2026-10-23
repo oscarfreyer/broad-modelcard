@@ -1,0 +1,5 @@
+/* Admin page styles in cascade order: the atlas tokens and base, then the admin. */
+@import './tokens.css';
+@import './base.css';
+@import './marks.css';
+@import './admin.css';

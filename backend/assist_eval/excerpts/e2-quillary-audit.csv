@@ -1,0 +1,6 @@
+# SYNTHETIC TABLE FOR THE BROAD MODELCARD HELPER EVALUATION. Fictional audit of Quillary Scribe 1.0 (discharge letter generation); not clinical evidence.
+# Quillary Scribe letter audit (fictional), study ID QSA-2026-02, dated 2026-08-30, one hospital, not peer reviewed. All patients (no subgroups).
+Condition,ICD-11,Letters reviewed,Correct letters (share),CI low,CI high
+Acute myocardial infarction,BA41,318,0.91,0.87,0.94
+Congestive heart failure,BD10,402,0.88,0.85,0.91
+Pneumonia,CA40,275,0.93,0.9,0.96

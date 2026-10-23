@@ -1,0 +1,45 @@
+/* The static, read-only build for GitHub Pages: one quiet
+   band above the page says what the site is. Neutral, not a caution: the
+   data is the same synthetic demo, only frozen. */
+
+.app-shell.is-static {
+  grid-template-rows: auto auto minmax(0, 1fr);
+}
+
+.static-band {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 6px var(--sp-4);
+  color: var(--ink-2);
+  background: var(--fill);
+  border-bottom: 1px solid var(--hairline);
+  font-size: var(--fs-footnote);
+  line-height: 1.35;
+}
+
+.static-band-icon {
+  flex: none;
+  color: var(--ink-3);
+}
+
+.static-band-text {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.static-band-text strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  .app-shell.is-static {
+    grid-template-rows: none;
+  }
+
+  .static-band {
+    align-items: flex-start;
+    font-size: var(--fs-caption);
+  }
+}

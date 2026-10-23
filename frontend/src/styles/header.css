@@ -1,0 +1,234 @@
+/* The one page frame (design/AppHeader.jsx): the same header
+   on every page, the same height, its parts in the same places. Brand and
+   badge on the left, the page links and Settings on the right. Page controls
+   (the atlas toolbar, the comparison's cards, the Data Library's sidebar)
+   sit under it. */
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  height: var(--header-height);
+  padding: 0 var(--sp-5);
+  background: var(--toolbar);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--hairline);
+  font-family: var(--font-sans);
+}
+
+.app-brand {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-height: 36px;
+  margin-left: calc(-1 * var(--sp-1));
+  padding: 0 var(--sp-1);
+  border-radius: var(--r-control);
+  color: var(--ink);
+  font-size: var(--fs-callout);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.app-brand:hover {
+  background: var(--fill);
+}
+
+.app-brand-mark {
+  display: block;
+}
+
+.app-header-badge {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.app-header .synthetic-badge {
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--tone-moderate-ink);
+  background: var(--tone-moderate-zone);
+  border-radius: var(--r-pill);
+  padding: 1px 8px;
+  white-space: nowrap;
+}
+
+.app-header-nav {
+  margin-left: auto;
+}
+
+.app-header .app-header-settings {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+/* The shared page links (SiteNav.jsx). Rules on buttons and links carry
+   .app-header, so base.css's button rules, which may load after this file,
+   never win over them. */
+.site-nav {
+  display: flex;
+  align-items: center;
+}
+
+.site-nav-list {
+  display: flex;
+  align-items: center;
+  gap: 2px var(--sp-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.app-header .site-nav-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* The current page: ink on a quiet fill, at the same weight as the links,
+   so no link moves from page to page. */
+.app-header .site-nav-link.is-current,
+.app-header .site-nav-link.is-current:hover {
+  color: var(--ink);
+  background: var(--fill);
+  cursor: default;
+}
+
+.site-nav-compact {
+  position: relative;
+  display: none;
+}
+
+.app-header .site-nav-menu-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.site-nav-popover {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 40;
+  width: max-content;
+  min-width: 200px;
+  padding: var(--sp-2);
+  background: var(--card);
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-pop);
+}
+
+.site-nav-menu-list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav-menu-link {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--sp-3);
+  border-radius: var(--r-control);
+  color: var(--accent);
+  font-size: var(--fs-body);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.site-nav-menu-link:hover {
+  background: var(--accent-soft);
+}
+
+.site-nav-menu-link.is-current {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.site-nav-menu-link.is-current:hover {
+  background: none;
+}
+
+/* Settings closes the phone menu, apart from the pages. */
+.site-nav-menu-settings {
+  margin-top: var(--sp-1);
+  padding-top: var(--sp-1);
+  border-top: 1px solid var(--hairline);
+}
+
+.site-nav-menu-settings .site-nav-menu-link {
+  width: 100%;
+  gap: var(--sp-2);
+  border: 0;
+  background: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.site-nav-menu-settings .site-nav-menu-link:hover {
+  background: var(--accent-soft);
+}
+
+.site-nav-menu-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Phones: the page links fold into one Pages menu, and Settings is an
+   icon (named for assistive tech); the brand stays top left. */
+@media (max-width: 767px) {
+  .app-header {
+    gap: var(--sp-2);
+    padding: 0 var(--sp-2) 0 var(--sp-4);
+  }
+
+  .site-nav-list {
+    display: none;
+  }
+
+  .site-nav-compact {
+    display: block;
+  }
+
+  /* Settings is the menu's last item here (SiteNav.jsx), so brand, badge, and menu fit 375px. */
+  .app-header .app-header-settings {
+    display: none;
+  }
+
+  .synthetic-badge-more {
+    display: none;
+  }
+}
+
+/* Very narrow phones: the mark alone carries the brand (named for assistive tech). */
+@media (max-width: 359px) {
+  .app-brand-name {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}

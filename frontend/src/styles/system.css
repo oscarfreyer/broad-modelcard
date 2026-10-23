@@ -1,0 +1,381 @@
+/* The AI system: its Model or Product tag (toolbar and Summary), "About this
+   AI system", and "Declared by the developer" as a block of its own. */
+
+.kind-tag {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: var(--ink-2);
+  background: var(--fill);
+  border-radius: var(--r-pill);
+  padding: 1px 8px;
+  white-space: nowrap;
+}
+
+.system-about,
+.system-declared {
+  display: grid;
+}
+
+.system-block {
+  display: grid;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  border-radius: var(--r-card);
+  background: var(--card);
+}
+
+.system-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-body);
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+.system-description {
+  font-size: var(--fs-body);
+  line-height: 1.45;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.system-block .fact-list {
+  margin-top: 0;
+}
+
+.system-block .fact-row dd {
+  font-variant-numeric: normal;
+  overflow-wrap: anywhere;
+}
+
+/* A link that stays in the atlas (opens another AI system). */
+.link-button {
+  border: 0;
+  padding: 0;
+  background: none;
+  font: inherit;
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  border-radius: var(--r-small);
+}
+
+.link-button:hover {
+  color: var(--accent-hover);
+}
+
+/* Declarations: the developer's words, never mixed with derived results. */
+.declared-note {
+  font-size: var(--fs-footnote);
+  line-height: 1.4;
+  color: var(--ink-3);
+  padding-bottom: var(--sp-3);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.declared-list {
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.declared-item {
+  display: grid;
+  gap: 2px;
+}
+
+.declared-item dt {
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  color: var(--ink-3);
+}
+
+.declared-item dd {
+  font-size: var(--fs-body);
+  line-height: 1.4;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.declared-item a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.declared-item a:hover {
+  color: var(--accent-hover);
+}
+
+/* The developer's narrow model card (§26): a declared block of its own. */
+.narrow-card-title {
+  color: var(--ink-2);
+  font-weight: 600;
+}
+
+.narrow-card-results {
+  font-size: var(--fs-footnote);
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
+/* Across groups in the Summary (contract v1.14, §24): which patient groups
+   differ most often from all patients, and which have no data. About patient
+   groups; a heuristic, never a grade. */
+.group-summary {
+  display: grid;
+}
+
+.group-summary-lead {
+  font-size: var(--fs-body);
+  line-height: 1.45;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.group-summary-groups .fact-row dd {
+  font-variant-numeric: tabular-nums;
+}
+
+.group-summary-subtitle {
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  color: var(--ink-2);
+  margin-bottom: var(--sp-1);
+}
+
+.group-summary-conditions ul {
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.group-summary-conditions li {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.group-summary-conditions .link-button,
+.group-summary-name {
+  justify-self: start;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+.group-summary-delta {
+  font-size: var(--fs-footnote);
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+/* The card's configuration (contract v1.14, §28.1): stated by the developer.
+   Plain depth shows its label, date, and one line; expert depth every field. */
+.system-config {
+  display: grid;
+  gap: var(--sp-2);
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--hairline);
+}
+
+.system-config-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--sp-2);
+  font-size: var(--fs-body);
+}
+
+.system-config-title {
+  color: var(--ink-3);
+}
+
+.system-config-id {
+  font-weight: 500;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.system-config-summary {
+  font-size: var(--fs-footnote);
+  line-height: 1.4;
+  color: var(--ink-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* "Compare with previous version": opens the comparison page. */
+.system-compare-link {
+  justify-self: start;
+  font-size: var(--fs-body);
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.system-compare-link:hover {
+  color: var(--accent-hover);
+}
+
+/* The audience summary (release 0.5; CONTRACT.md §30.2): the
+   reader's preset heads the Summary with a short white block. Each line is a
+   small mark or dot, a quiet label, and the figure in words; a line that
+   names a chapter opens it. "More" opens the lists behind the counts. */
+.audience-summary {
+  display: grid;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  border-radius: var(--r-card);
+  background: var(--card);
+}
+
+.audience-head {
+  display: grid;
+  gap: 2px;
+}
+
+.audience-eyebrow {
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--ink-3);
+}
+
+.audience-title {
+  font-size: var(--fs-headline);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.audience-lines {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--hairline);
+}
+
+.audience-line + .audience-line {
+  border-top: 1px solid var(--hairline);
+}
+
+.audience-line-body {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 12px minmax(0, 1fr);
+  align-items: start;
+  gap: var(--sp-3);
+  padding: var(--sp-2) 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+}
+
+.audience-line-body.is-link {
+  cursor: pointer;
+  border-radius: var(--r-small);
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.audience-line-body.is-link:hover {
+  background: var(--row-hover);
+}
+
+.audience-line-body.is-link .audience-label::after {
+  content: ' ›';
+  color: var(--ink-3);
+}
+
+.audience-mark {
+  display: grid;
+  place-items: center;
+  height: 1.35em;
+}
+
+.audience-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--r-pill);
+  background: var(--fill-strong);
+}
+
+.audience-copy {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.audience-label {
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--ink-3);
+}
+
+.audience-text {
+  font-size: var(--fs-body);
+  line-height: 1.4;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
+
+.audience-text a {
+  color: var(--accent);
+}
+
+.audience-more {
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.audience-more-toggle {
+  justify-self: start;
+  margin-left: calc(-1 * var(--sp-2));
+}
+
+.audience-more-body:not([hidden]) {
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.audience-more-title {
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  color: var(--ink-2);
+  margin-bottom: var(--sp-1);
+}
+
+.audience-more-group ul {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding-left: var(--sp-4);
+  font-size: var(--fs-footnote);
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
+.audience-foot {
+  display: grid;
+  gap: var(--sp-1);
+  padding-top: var(--sp-2);
+  border-top: 1px solid var(--hairline);
+}
+
+.audience-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1) var(--sp-4);
+  font-size: var(--fs-footnote);
+  color: var(--ink-3);
+}

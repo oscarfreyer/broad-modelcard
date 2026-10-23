@@ -1,0 +1,112 @@
+/* The question mark that explains (design/HelpTip.js): a quiet
+   icon button beside a heading or control, and a small card in the top layer
+   with the explanation. */
+
+.help-tip {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.help-tip-button {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  margin: -4px 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--ink-3);
+  cursor: help;
+}
+
+.help-tip-button:hover,
+.help-tip-button[aria-expanded='true'] {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.help-tip-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* Coarse pointers get a 44px target without moving the layout. */
+@media (pointer: coarse) {
+  .help-tip-button {
+    position: relative;
+  }
+
+  .help-tip-button::after {
+    content: '';
+    position: absolute;
+    inset: -10px;
+  }
+}
+
+.help-tip-bubble {
+  position: fixed;
+  inset: auto;
+  z-index: 60;
+  width: max-content;
+  max-width: min(300px, calc(100vw - 16px));
+  margin: 0;
+  padding: var(--sp-3);
+  overflow: visible;
+  border: 0;
+  border-radius: var(--r-control);
+  background: var(--card);
+  box-shadow: var(--shadow-pop);
+  color: var(--ink-2);
+  font-family: var(--font-sans);
+  font-size: var(--fs-footnote);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.45;
+  text-align: left;
+  text-transform: none;
+  white-space: normal;
+}
+
+.help-tip-bubble[hidden] {
+  display: none;
+}
+
+.help-tip-bubble > * + * {
+  margin-top: var(--sp-2);
+}
+
+.help-tip-bubble p {
+  margin: 0;
+}
+
+.help-tip-bubble ul {
+  margin: 0;
+  padding-left: 1.1em;
+}
+
+.help-tip-bubble strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.help-tip-bubble .button-link {
+  font-size: inherit;
+}
+
+/* Links to the longer guides, inside a help bubble. */
+.help-tip-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1) var(--sp-3);
+}
+
+/* A page or section title with its help beside it. */
+.page-title-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  min-width: 0;
+}

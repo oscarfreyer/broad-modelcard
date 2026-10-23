@@ -1,0 +1,173 @@
+/* The range chart (signature): zones, value dot, CI
+   whisker. Shared by the atlas (index.css, right after side.css, where it
+   lived until R4) and the comparison page (compare-index.css). */
+.range {
+  display: grid;
+  gap: 6px;
+  padding: 6px 0 2px;
+}
+
+.range-track {
+  position: relative;
+  height: 8px;
+}
+
+.range-compact {
+  padding: 0;
+  min-width: 96px;
+}
+
+.range-compact .range-track {
+  height: 6px;
+}
+
+.range-zone {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: var(--fill);
+}
+
+.range-zone:first-child {
+  border-radius: 99px 0 0 99px;
+}
+
+.range-zone:last-of-type {
+  border-radius: 0 99px 99px 0;
+}
+
+.range-zone + .range-zone {
+  box-shadow: inset 2px 0 0 var(--card);
+}
+
+.range-zone.tone-strong { background: var(--tone-strong-zone); }
+.range-zone.tone-moderate { background: var(--tone-moderate-zone); }
+.range-zone.tone-weak { background: var(--tone-weak-zone); }
+.range-zone.tone-absent { background: var(--fill); }
+.range-zone.tone-scope { background: var(--scope-in-zone); }
+.range-scope .range-zone.is-active.tone-scope { background: var(--scope-in); }
+
+.has-no-value .range-zone.is-active.tone-strong,
+.range-scope .range-zone.is-active.tone-strong { background: var(--tone-strong); }
+.has-no-value .range-zone.is-active.tone-moderate,
+.range-scope .range-zone.is-active.tone-moderate { background: var(--tone-moderate); }
+.has-no-value .range-zone.is-active.tone-weak { background: var(--tone-weak); }
+
+.range-ci {
+  position: absolute;
+  top: 50%;
+  height: 2px;
+  margin-top: -1px;
+  background: var(--ink);
+  border-radius: var(--r-pill);
+}
+
+.range-ci::before,
+.range-ci::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  width: 2px;
+  height: 12px;
+  background: var(--ink);
+  border-radius: var(--r-pill);
+}
+
+.range-ci::before {
+  left: -1px;
+}
+
+.range-ci::after {
+  right: -1px;
+}
+
+.range-dot {
+  position: absolute;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  border-radius: 50%;
+  background: var(--card);
+  border: 3px solid var(--ink);
+  box-shadow: var(--shadow-dot);
+}
+
+.range-compact .range-dot {
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-width: 2.5px;
+}
+
+.range-dot.is-clamped-low,
+.range-dot.is-clamped-high {
+  border-style: dashed;
+}
+
+.range-axis {
+  position: relative;
+  height: 16px;
+}
+
+.range-tick {
+  position: absolute;
+  transform: translateX(-50%);
+  font-size: var(--fs-caption);
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.range-zone-word {
+  position: absolute;
+  transform: translateX(-50%);
+  font-size: var(--fs-caption);
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+
+.range-zone-word.is-active {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.range-tick:first-child {
+  transform: none;
+}
+
+.range-tick:last-child {
+  transform: translateX(-100%);
+}
+
+.range-scope .range-track {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.range-scope .range-zone {
+  position: static;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.range-scope .range-zone:first-child {
+  border-radius: 99px 0 0 99px;
+}
+
+.range-scope .range-zone:last-child {
+  border-radius: 0 99px 99px 0;
+}
+
+.range-zone-labels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  font-size: var(--fs-caption);
+  color: var(--ink-3);
+  text-align: center;
+}
+
+.range-zone-labels .is-active {
+  color: var(--ink);
+  font-weight: 600;
+}

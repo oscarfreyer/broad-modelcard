@@ -1,0 +1,1075 @@
+/* The right column: Summary, the result card, the condition list, the combination. */
+
+.side-card {
+  display: grid;
+  gap: var(--sp-4);
+  align-content: start;
+}
+
+.side-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-title1);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.side-intro {
+  font-size: var(--fs-body);
+  color: var(--ink-2);
+  margin-top: calc(var(--sp-2) * -1);
+}
+
+/* The local population in use: a white inset row with the prevalence glyph. */
+.population-note {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  gap: var(--sp-3);
+  align-items: start;
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--card);
+  border-radius: var(--r-card);
+}
+
+.population-note-icon {
+  margin-top: 1px;
+  color: var(--ink-2);
+}
+
+.population-note-copy {
+  display: grid;
+  gap: 2px;
+}
+
+.population-note-title {
+  font-size: var(--fs-callout);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.population-note-text {
+  font-size: var(--fs-footnote);
+  color: var(--ink-2);
+}
+
+.side-hint {
+  font-size: var(--fs-footnote);
+  color: var(--ink-3);
+}
+
+.side-footer {
+  display: grid;
+  gap: 2px;
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--hairline);
+}
+
+.side-footer .button-plain {
+  justify-self: start;
+  margin-left: -8px;
+}
+
+/* The card record (contract v1.14) below the dataset export: one more quiet line. */
+.side-footer-item {
+  display: grid;
+  gap: 2px;
+  margin-top: var(--sp-2);
+}
+
+.export-confirm {
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.export-confirm-title {
+  font-size: var(--fs-callout);
+  font-weight: 600;
+}
+
+.export-confirm .button-row {
+  justify-content: flex-start;
+}
+
+.side-footnote {
+  font-size: var(--fs-caption);
+  color: var(--ink-3);
+}
+
+.group-heading {
+  font-size: var(--fs-headline);
+  font-weight: 700;
+  margin: var(--sp-2) 0 var(--sp-2);
+  scroll-margin-top: var(--sp-4);
+}
+
+.notice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-card);
+  background: var(--tone-weak-zone);
+  color: var(--tone-weak-ink);
+  font-size: var(--fs-footnote);
+}
+
+/* Summary highlights. */
+.highlight-list {
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.highlight-body {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  border: 0;
+  border-radius: var(--r-card);
+  background: var(--card);
+  text-align: left;
+}
+
+.highlight-body .status-mark {
+  margin-top: 4px;
+}
+
+.highlight-body.is-link {
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.highlight-body.is-link:hover {
+  background: var(--row-hover);
+}
+
+.highlight-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.highlight-title {
+  font-size: var(--fs-headline);
+  font-weight: 600;
+  line-height: 1.3;
+  text-wrap: pretty;
+}
+
+.highlight-text {
+  font-size: var(--fs-body);
+  color: var(--ink-2);
+  line-height: 1.4;
+}
+
+/* Square ends (2px corners): an outlined or edged band at the end of a
+   rounded pill read as a letter "D" (audit A34). A part is never narrower
+   than 6px, so a one-per-cent band still shows its mark. */
+.status-strip {
+  display: flex;
+  gap: 2px;
+  height: 8px;
+  margin-top: 6px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.status-strip-part {
+  flex-basis: 0;
+  min-width: 6px;
+  border-radius: 2px;
+}
+
+.highlight-chevron {
+  margin-top: 3px;
+  color: var(--ink-3);
+}
+
+/* An information card (evidence age, v1.14): a neutral glyph where a status card has its mark. */
+.highlight-info {
+  flex: none;
+  margin-top: 4px;
+  color: var(--ink-3);
+}
+
+/* The result card. */
+.detail-head {
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.detail-head-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+}
+
+.detail-trail {
+  font-size: var(--fs-footnote);
+  color: var(--ink-3);
+  line-height: 1.35;
+}
+
+.detail-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-title1);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+
+.detail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  font-size: var(--fs-footnote);
+  color: var(--ink-3);
+}
+
+/* Who the result is for: the lens and the prevalence, beside the result. */
+.detail-population {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.detail-population .icon {
+  flex: none;
+  color: var(--ink-3);
+}
+
+/* A local result (§26): one line under who the result is for. */
+.detail-local {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* Local and public (§26): the two results side by side, then their sources. */
+/* Built on (v1.14): the base model's result beside this card's, in the Local and public table's form. */
+.built-on-base {
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.built-on-base + .built-on-base {
+  margin-top: var(--sp-3);
+}
+
+.built-on-status,
+.built-on-note {
+  font-size: var(--fs-footnote);
+  color: var(--ink-3);
+}
+
+.built-on-conflict {
+  font-size: var(--fs-body);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.built-on-compare {
+  justify-self: start;
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.local-compare-lead {
+  margin: 0 0 var(--sp-2);
+  font-size: var(--fs-footnote);
+  color: var(--ink-2);
+}
+
+.local-compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-footnote);
+}
+
+.local-compare-table th,
+.local-compare-table td {
+  padding: var(--sp-2) var(--sp-3);
+  text-align: left;
+  vertical-align: top;
+}
+
+.local-compare-table thead th {
+  color: var(--ink-2);
+  font-weight: 600;
+}
+
+.local-compare-table tbody tr {
+  border-top: 1px solid var(--hairline);
+}
+
+.local-compare-table tbody th {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.local-compare-value {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px 6px;
+}
+
+.local-compare-figure {
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.local-compare-source {
+  padding: var(--sp-2) var(--sp-3) var(--sp-1);
+  border-top: 1px solid var(--hairline);
+}
+
+.local-compare-source-title {
+  margin: 0;
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+/* No data for this setting (contract v1.14, §29): the Any-setting result on request,
+   labelled and set apart below the message, never in the setting's place. */
+.any-setting-button {
+  margin-top: var(--sp-3);
+}
+
+.any-setting-card {
+  margin-top: var(--sp-3);
+  padding: var(--sp-2) var(--sp-3) var(--sp-3);
+}
+
+.any-setting-title {
+  margin: 0 0 var(--sp-2);
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.any-setting-rows {
+  display: grid;
+  gap: var(--sp-1);
+  margin: 0;
+  font-size: var(--fs-footnote);
+}
+
+.any-setting-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2px var(--sp-3);
+}
+
+.any-setting-row dt {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.any-setting-row dd {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px 6px;
+  margin: 0;
+}
+
+.any-setting-figure {
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.any-setting-note {
+  margin: var(--sp-2) 0 0;
+  font-size: var(--fs-footnote);
+  color: var(--ink-2);
+}
+
+/* The patient preset's one-line lead. */
+.detail-plain-summary {
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-card);
+  background: var(--card);
+  font-size: var(--fs-callout);
+  font-weight: 500;
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+
+.detail-lead {
+  display: grid;
+  gap: var(--sp-3);
+}
+
+/* Another classification (contract v1.13): the one line that names the ICD-11
+   result a condition shows, and at expert depth its other parents. */
+.detail-mapping,
+.detail-parents {
+  font-size: var(--fs-footnote);
+  color: var(--ink-2);
+  overflow-wrap: anywhere;
+}
+
+.detail-parents {
+  color: var(--ink-3);
+}
+
+.detail-status {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.detail-status-view {
+  font-size: var(--fs-footnote);
+  color: var(--ink-3);
+}
+
+/* Jump from the headline status to its high-priority warnings. */
+.warning-jump {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px 4px 8px;
+  border: 0;
+  border-radius: var(--r-pill);
+  background: var(--tone-weak-zone);
+  color: var(--tone-weak-ink);
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.warning-jump:hover {
+  background: color-mix(in srgb, var(--tone-weak-zone) 82%, var(--tone-weak-ink));
+}
+
+/* Open safety incidents: coral for Serious (as above), amber for Caution. */
+.incident-jump.tone-caution {
+  background: var(--tone-moderate-zone);
+  color: var(--tone-moderate-ink);
+}
+
+.incident-jump.tone-caution:hover {
+  background: color-mix(in srgb, var(--tone-moderate-zone) 82%, var(--tone-moderate-ink));
+}
+
+/* A use-case policy, stated once (not repeated as a warning). */
+.detail-requirement {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: var(--fs-footnote);
+  line-height: 1.35;
+  color: var(--ink-2);
+}
+
+.detail-requirement svg {
+  flex: none;
+  margin-top: 1px;
+  color: var(--ink-3);
+}
+
+.detail-requirement strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.metric-stack {
+  display: grid;
+  gap: var(--sp-3);
+  transition: opacity var(--dur) var(--ease-out);
+}
+
+.metric-stack.is-refreshing,
+.detail-card[aria-busy='true'] .metric-stack {
+  opacity: 0.6;
+}
+
+.metric-section {
+  display: grid;
+  gap: var(--sp-2);
+  padding: var(--sp-4);
+  border-radius: var(--r-card);
+  background: var(--card);
+}
+
+.metric-section.is-active-view {
+  box-shadow: inset 0 0 0 1.5px var(--hairline-strong);
+}
+
+.metric-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+}
+
+.metric-section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-callout);
+  font-weight: 600;
+}
+
+.tint-overall { color: var(--tint-overall); }
+.tint-performance { color: var(--tint-performance); }
+.tint-evidence { color: var(--tint-evidence); }
+.tint-intended_use { color: var(--tint-intended_use); }
+
+.metric-figure {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.metric-figure-value {
+  font-family: var(--font-display);
+  font-size: var(--fs-figure);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.metric-figure-unit {
+  font-size: var(--fs-body);
+  font-weight: 500;
+  color: var(--ink-3);
+}
+
+.metric-figure-word {
+  font-family: var(--font-display);
+  font-size: var(--fs-title2);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.metric-meaning {
+  font-size: var(--fs-body);
+  color: var(--ink-2);
+  line-height: 1.45;
+}
+
+.metric-section.is-empty .metric-figure-word {
+  color: var(--ink-3);
+}
+
+/* Evidence facts. */
+.fact-list {
+  display: grid;
+  margin-top: var(--sp-1);
+  border-top: 1px solid var(--hairline);
+}
+
+.fact-row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  padding: 8px 0;
+  border-bottom: 1px solid var(--hairline);
+  font-size: var(--fs-body);
+}
+
+.fact-row:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.fact-row dt {
+  color: var(--ink-3);
+}
+
+.fact-row dd {
+  font-weight: 500;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Grouped inset lists (warnings, safeguards, alternatives). */
+.inset-list {
+  display: grid;
+  background: var(--card);
+  border-radius: var(--r-card);
+  overflow: hidden;
+}
+
+.inset-row + .inset-row {
+  border-top: 1px solid var(--hairline);
+}
+
+.inset-row-button {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: start;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  border: 0;
+  background: transparent;
+  text-align: left;
+}
+
+.candidate-row {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+}
+
+.inset-row.is-static .inset-row-button {
+  grid-template-columns: minmax(0, 1fr) auto;
+  cursor: default;
+}
+
+button.inset-row-button:hover {
+  background: var(--row-hover);
+}
+
+.inset-row-main {
+  display: grid;
+  gap: 3px;
+}
+
+.inset-row-title {
+  font-size: var(--fs-callout);
+  font-weight: 600;
+}
+
+.inset-row-scope {
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.inset-row-text {
+  font-size: var(--fs-body);
+  color: var(--ink-2);
+  line-height: 1.4;
+}
+
+.inset-row-detail {
+  padding: 0 var(--sp-4) var(--sp-3);
+  font-size: var(--fs-body);
+  color: var(--ink-2);
+  line-height: 1.45;
+}
+
+.action-list {
+  display: grid;
+  gap: 2px;
+  margin-top: 4px;
+  padding-left: 1.1em;
+  list-style: disc;
+  font-size: var(--fs-footnote);
+  color: var(--ink-2);
+}
+
+.priority-chip {
+  margin-top: 1px;
+  padding: 2px 9px;
+  border-radius: var(--r-pill);
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.priority-chip.tone-weak { background: var(--tone-weak-zone); color: var(--tone-weak-ink); }
+.priority-chip.tone-moderate { background: var(--tone-moderate-zone); color: var(--tone-moderate-ink); }
+.priority-chip.tone-absent { background: var(--fill); color: var(--ink-2); }
+
+.disclosure {
+  margin-top: 3px;
+  color: var(--ink-3);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.disclosure.is-open {
+  transform: rotate(180deg);
+}
+
+.list-empty {
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-card);
+  background: var(--card);
+  font-size: var(--fs-body);
+  color: var(--ink-3);
+}
+
+/* Safety incidents (contract v1.7): like warnings, Serious and Caution carry
+   their mark and word; a closed incident is listed with a neutral chip. */
+.incident-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px var(--sp-2);
+  margin-bottom: 2px;
+}
+
+.incident-meta {
+  font-size: var(--fs-footnote);
+  color: var(--ink-3);
+  line-height: 1.4;
+}
+
+.incident-facts {
+  margin-top: var(--sp-2);
+}
+
+.incident-facts .fact-row {
+  font-size: var(--fs-footnote);
+}
+
+.incident-facts dd {
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.incident-row.is-closed .inset-row-title,
+.incident-row.is-closed .inset-row-text {
+  color: var(--ink-2);
+}
+
+.incident-empty {
+  display: grid;
+  gap: var(--sp-1);
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-card);
+  background: var(--card);
+}
+
+/* Closed incidents only: the No open incidents line sits above the list. */
+.incident-empty + .incident-list {
+  margin-top: var(--sp-2);
+}
+
+.incident-empty p,
+.incident-note {
+  margin: 0;
+  font-size: var(--fs-footnote);
+  color: var(--ink-3);
+  line-height: 1.4;
+}
+
+.incident-note {
+  padding: var(--sp-2) var(--sp-4) 0;
+}
+
+/* How was this assessed? and Study quality (contract v1.13): the appraisal on
+   demand in an inset row, and the underlying study's quality in its own block. */
+.assessment-toggle {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+}
+
+.assessment-body {
+  display: grid;
+  gap: var(--sp-2);
+  padding: 0 var(--sp-4) var(--sp-4);
+  font-size: var(--fs-body);
+  color: var(--ink-2);
+  line-height: 1.45;
+}
+
+.assessment-body .fact-row,
+.study-quality .fact-row {
+  align-items: baseline;
+}
+
+.assessment-body dd,
+.study-quality dd {
+  overflow-wrap: anywhere;
+}
+
+.assessment-record .fact-row {
+  font-size: var(--fs-footnote);
+}
+
+.study-quality {
+  display: grid;
+  gap: var(--sp-1);
+  padding: var(--sp-4);
+  border-radius: var(--r-card);
+  background: var(--card);
+}
+
+.study-quality-lead {
+  font-size: var(--fs-footnote);
+  color: var(--ink-3);
+  line-height: 1.4;
+}
+
+/* Across groups (contract v1.13, §24): one row per patient group, each a
+   compact range track with the all-patients line. About population groups;
+   Study quality above is about the study, so the two never share a look. */
+.across-groups-body {
+  display: grid;
+  gap: var(--sp-3);
+  padding: 0 var(--sp-4) var(--sp-4);
+}
+
+.across-groups-lead,
+.across-groups-note {
+  font-size: var(--fs-footnote);
+  color: var(--ink-3);
+  line-height: 1.4;
+}
+
+.across-groups > .inset-list > .inset-row > .across-groups-lead {
+  padding: 0 var(--sp-4) var(--sp-4);
+}
+
+.group-axis {
+  display: grid;
+  gap: 2px;
+}
+
+.group-axis-label {
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.group-list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.group-row + .group-row {
+  border-top: 1px solid var(--hairline);
+}
+
+.group-row-body {
+  width: 100%;
+  display: grid;
+  gap: 4px;
+  padding: var(--sp-2) var(--sp-2);
+  margin: 0 calc(-1 * var(--sp-2));
+  border: 0;
+  border-radius: var(--r-small);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  box-sizing: content-box;
+}
+
+button.group-row-body {
+  cursor: pointer;
+}
+
+button.group-row-body:hover {
+  background: var(--row-hover);
+}
+
+.group-row-head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-width: 0;
+}
+
+.group-row-name {
+  font-size: var(--fs-body);
+  font-weight: 600;
+}
+
+.group-row.is-reference .group-row-name {
+  font-weight: 700;
+}
+
+.group-row-value {
+  margin-left: auto;
+  font-size: var(--fs-body);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.group-row-current {
+  padding: 0 7px;
+  border-radius: var(--r-pill);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: var(--fs-caption);
+  font-weight: 600;
+}
+
+.group-row-meta {
+  font-size: var(--fs-caption);
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+/* The difference flag: a word and an arrow in ink on the neutral fill. A
+   heuristic about the group, not a grade, so it never wears a status colour. */
+.group-flag {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 1px 8px 1px 5px;
+  border-radius: var(--r-pill);
+  background: var(--fill);
+  color: var(--ink);
+  font-size: var(--fs-caption);
+  font-weight: 700;
+}
+
+.group-range {
+  min-width: 0;
+}
+
+/* The all-patients line on each group's track. */
+.group-range-reference {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  width: 0;
+  border-left: 2px dotted var(--ink-2);
+  transform: translateX(-1px);
+}
+
+.group-range-absent {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-footnote);
+  color: var(--absent-ink);
+}
+
+/* About this result. */
+.about-block {
+  display: grid;
+}
+
+.about-text {
+  display: grid;
+  gap: var(--sp-2);
+  padding: var(--sp-4);
+  border-radius: var(--r-card);
+  background: var(--card);
+  font-size: var(--fs-body);
+  color: var(--ink-2);
+  line-height: 1.45;
+}
+
+.about-text p:last-child {
+  color: var(--ink-3);
+  font-size: var(--fs-footnote);
+}
+
+.detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+.detail-actions .button-tinted:disabled {
+  background: var(--fill);
+  color: var(--ink-3);
+}
+
+.detail-actions-note {
+  flex-basis: 100%;
+  font-size: var(--fs-caption);
+  color: var(--ink-3);
+}
+
+/* Combination tokens. */
+.token-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+.token {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  padding: 4px 4px 4px 6px;
+  border-radius: var(--r-pill);
+  background: var(--card);
+  box-shadow: inset 0 0 0 1px var(--hairline-strong);
+  font-size: var(--fs-footnote);
+  font-weight: 500;
+}
+
+.token-index {
+  display: inline-grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: var(--fs-caption);
+  font-weight: 700;
+}
+
+.token-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.token-remove {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--fill);
+  color: var(--ink-2);
+}
+
+.token-remove:hover {
+  background: var(--fill-strong);
+  color: var(--ink);
+}
+
+.notice.is-info {
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--hairline-strong);
+}
+
+/* Multimorbidity: each condition alone, then together (audit A19). */
+.alone-values {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+  font-size: var(--fs-footnote);
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.alone-value {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.alone-arrow {
+  color: var(--ink-3);
+}

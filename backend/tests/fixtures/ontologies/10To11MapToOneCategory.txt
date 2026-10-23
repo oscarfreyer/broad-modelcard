@@ -1,0 +1,10 @@
+10ClassKind	10DepthInKind	icd10Code	icd10Chapter	icd10Title	11ClassKind	11DepthInKind	ICD-11 FoundationURI	Linearization (releaseURI)	icd11Code	icd11Chapter	icd11Title	2026-Jan-17
+chapter	1	I	I	Fixture chapter row	category	1	http://id.who.int/icd/entity/1000	http://id.who.int/icd/release/11/2026-01/mms/1000/unspecified	BA00	11	Fixture
+category	1	E10	IV	Fixture E10	category	1	http://id.who.int/icd/entity/1010	http://id.who.int/icd/release/11/2026-01/mms/1010	5A10	05	Fixture
+category	1	E11	IV	Fixture E11	category	1	http://id.who.int/icd/entity/1011	http://id.who.int/icd/release/11/2026-01/mms/1011	5A11	05	Fixture
+category	2	E11.9	IV	Fixture E11.9	category	2	http://id.who.int/icd/entity/1019	http://id.who.int/icd/release/11/2026-01/mms/1019	5A11.Q	05	Fixture
+category	1	E13	IV	Fixture E13	category	2	http://id.who.int/icd/entity/1013	http://id.who.int/icd/release/11/2026-01/mms/1013	5A13.1	05	Fixture
+category	1	E14	IV	Fixture E14	category	1	http://id.who.int/icd/entity/1014	http://id.who.int/icd/release/11/2026-01/mms/1014	5A0Q	05	Fixture
+category	1	E16	IV	Fixture E16	category	1	http://id.who.int/icd/entity/1016	http://id.who.int/icd/release/11/2026-01/mms/1016	9Z99	05	Fixture
+category	1	I10	IX	Fixture I10	category	1	http://id.who.int/icd/entity/2001	http://id.who.int/icd/release/11/2026-01/mms/1110	BA00	11	Fixture
+block	1		IV	Fixture block row	block	1	http://id.who.int/icd/entity/1099	http://id.who.int/icd/release/11/2026-01/mms/1099		05	Fixture

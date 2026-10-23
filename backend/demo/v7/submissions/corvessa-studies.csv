@@ -1,0 +1,4 @@
+# Broad Modelcard demo pack v7: a developer's prospective study in a developer submission. Aggregate synthetic data only. Never upload patient-level or real patient data.
+"# Every name, site, team, and link below is fictional (.example addresses). Nothing here is clinical evidence."
+Study ID,Title,Design,Setting,Sites,Patients,Peer reviewed,Conducted by,Reporting guideline,Guideline followed,Risk of bias,Risk-of-bias notes,Population,Evaluation conditions,Model version evaluated,Publication date,Source URL,Scope,Local population,Action
+CORV-PROSP-2026,Corvessa prospective clinic study (fictional),Prospective,"Dermatology outpatient clinics, 5 hospitals (fictional)",5,2900,No,Developer,STARD-AI,Yes,Low,,Adults referred with a suspicious skin lesion (synthetic),Consecutive referrals April to August 2026; histopathology or 12-month follow-up as reference; synthetic data.,Corvessa-Skin-Review-1.2,2026-10-17,https://studies.example/corv-prosp-2026,Public,,

@@ -1,0 +1,5 @@
+SYNTHETIC INCIDENT SUMMARIES FOR THE BROAD MODELCARD HELPER EVALUATION. Fictional events, no patient details.
+
+1. Fictional developer notice DN-31 (synthetic), first reported 2026-08-11, updated 2026-09-01. SynGPT-1.0, discharge letter generation: draft letters after admissions for type 2 diabetes mellitus listed a medication that was never prescribed (fabricated content). No harm occurred; the developer has mitigated the issue with a new check.
+
+2. Fictional incident report IR-8802 (synthetic), reported 2026-09-14. Nimbus Notes 3, a fictional letter-writing system that is not in this catalogue, invented a follow-up appointment in a discharge letter after pneumonia. Harm was possible; the case is open.

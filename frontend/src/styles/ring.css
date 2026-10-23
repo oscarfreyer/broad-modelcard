@@ -1,0 +1,714 @@
+/* The ring column: the ring tile (header, the radial ring, the hover card)
+   and the legend tile beside it. */
+
+/* The legend is its own tile, the ring tile's sibling, at one placement in
+   the atlas, every chapter, both modes, and every view, set by the window's
+   width alone (never by the pane's shape, the scroll, or what the legend
+   lists): from 768px up it is a fixed-width column to the left of the ring
+   tile, top-aligned, as tall as its content and never taller than the ring
+   tile (it scrolls, with scroll shadows, only in a very short window); on a
+   phone, where the page scrolls, it sits under the ring at its content's
+   height. Its width is fixed and it never shares the ring's height, so a
+   view that lists more or fewer marks never resizes the ring. */
+.ring-column {
+  min-height: 0;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: var(--legend-width) minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  gap: var(--sp-3);
+  --legend-width: 13rem;
+}
+
+/* The ring tile follows the legend in the reading order, so it keeps the
+   second column by placement, not by source order. */
+.ring-column > .ring-pane {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.ring-column > .legend-tile {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.ring-pane {
+  min-height: 0;
+  min-width: 0;
+  display: grid;
+  background: var(--card);
+  border-radius: var(--r-pane);
+  overflow: hidden;
+}
+
+.ring-pane-layout {
+  min-height: 0;
+  min-width: 0;
+  display: grid;
+  /* One column as wide as the tile: a long chapter title with the local
+     population chip ellipsizes instead of widening the ring's stage (it
+     once pushed a chapter ring past the tile's edge at 1280×800). */
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
+}
+
+.ring-pane-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  min-height: 56px;
+  padding: var(--sp-3) var(--sp-4) 0 var(--sp-5);
+}
+
+.ring-pane-path {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-width: 0;
+}
+
+/* From 1280px the heading (the way back and the title) and the chips sit
+   on the path's one row as if they were not grouped; below, they take a
+   line each (responsive.css). */
+.ring-pane-heading,
+.ring-pane-chips {
+  display: contents;
+}
+
+/* The mode (Conditions, Multimorbidity) ends the ring tile's header: one
+   row, so the header's height, and the ring under it, never change (the
+   title gives way first). */
+.ring-mode {
+  flex: none;
+}
+
+/* The way back keeps its words on one line; the title and the population
+   chip give way and ellipsize. */
+.ring-pane-path .button-back {
+  flex: none;
+  white-space: nowrap;
+}
+
+.ring-pane-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-title3);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* The local population in use (contract v1.10): a quiet neutral chip, never
+   a status hue; the ring key repeats it next to the synthetic notice. */
+.population-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  /* In a narrow header the chip gives way before the title, down to its
+     icon (its full name is in its tooltip, the legend, and Summary): it
+     shrinks far faster than the title, which ellipsizes only when the chip
+     has nothing left to give. */
+  flex: 0 1000 auto;
+  min-width: 30px;
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--ink-2);
+  background: var(--fill);
+  border-radius: var(--r-pill);
+  padding: 2px 9px 2px 7px;
+}
+
+.population-chip .icon {
+  flex: none;
+  color: var(--ink-3);
+}
+
+.population-chip-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ring-updating {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-footnote);
+  color: var(--ink-3);
+}
+
+.ring-updating-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: skeleton-pulse 1s ease-in-out infinite;
+}
+
+/* Stage: the ring fills the largest square that fits. */
+.ring-host {
+  min-height: 0;
+  display: grid;
+}
+
+.ring-stage {
+  position: relative;
+  min-height: 0;
+  container-type: size;
+  display: grid;
+  place-items: center;
+}
+
+.ring-canvas {
+  position: relative;
+  width: min(100cqw, 100cqh);
+  aspect-ratio: 1;
+}
+
+.ring-host.is-entering .ring-canvas {
+  transform-origin: var(--enter-x, 50%) var(--enter-y, 50%);
+  animation: chapter-grow var(--dur) var(--ease-out);
+}
+
+@keyframes chapter-grow {
+  from {
+    transform: scale(0.3);
+    opacity: 0.25;
+  }
+}
+
+.ring-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  font-family: var(--font-sans);
+}
+
+/* Sectors and frame: no alternating bands; a hairline between
+   sectors keeps the chapters apart, and a sector fills only when selected or
+   hovered. */
+.ring-sector {
+  fill: transparent;
+  stroke: var(--sector-line);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  transition: fill var(--dur) var(--ease-out);
+}
+
+.ring-sector.is-selected { fill: var(--accent-soft); }
+
+/* Atlas chapters (R2): the rim band outside a sector, its label, and its
+   badge open the chapter. The wedge itself takes no clicks, so clicks between
+   bubbles and on the centre still clear the selection. */
+.ring-chapters.is-interactive .ring-sector {
+  pointer-events: none;
+}
+
+.ring-chapter-hit {
+  fill: transparent;
+  pointer-events: all;
+}
+
+.ring-chapters.is-interactive .ring-chapter-hit,
+.ring-chapters.is-interactive .ring-chapter-label {
+  cursor: pointer;
+}
+
+.ring-chapters.is-interactive .ring-chapter:hover .ring-sector:not(.is-selected) {
+  fill: var(--fill);
+}
+
+.ring-chapters.is-interactive .ring-chapter:hover .ring-curved-label {
+  fill: var(--ink);
+}
+
+.ring-chapter:focus {
+  outline: none;
+}
+
+/* The focused chapter: its sector outlined in the focus blue, drawn over its neighbours. */
+.ring-sector-focus {
+  fill: none;
+  stroke: var(--focus);
+  stroke-width: 3;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+.ring-band-outline {
+  fill: none;
+  stroke: var(--sector-line);
+  vector-effect: non-scaling-stroke;
+}
+
+.ring-separator {
+  stroke: var(--sector-line-strong);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.ring-curved-label {
+  fill: var(--ink-2);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.ring-curved-label.is-group {
+  fill: var(--ink-3);
+  font-weight: 500;
+}
+
+.ring-badge {
+  fill: var(--card);
+  stroke: var(--sector-line-strong);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.ring-badge-icon {
+  color: var(--ink-2);
+}
+
+/* The chapter switch around a chapter circle: a thick quiet
+   band of every chapter, each arc holding its Healthicons glyph; the open
+   chapter in ink with a white glyph. One click opens another chapter, and its
+   full name shows at once on hover. */
+.ring-rim-segment {
+  cursor: pointer;
+}
+
+.ring-rim-segment.is-current {
+  cursor: default;
+}
+
+.ring-rim-arc {
+  fill: none;
+  stroke: var(--fill-strong);
+  stroke-width: 24;
+  transition: stroke var(--dur-fast) var(--ease-out);
+}
+
+.ring-rim-icon {
+  color: var(--ink-3);
+  pointer-events: none;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.ring-rim-segment:not(.is-current):hover .ring-rim-arc {
+  stroke: var(--rim-hover);
+}
+
+.ring-rim-segment:not(.is-current):hover .ring-rim-icon {
+  color: var(--ink);
+}
+
+.ring-rim-segment.is-current .ring-rim-arc {
+  stroke: var(--ink-2);
+}
+
+.ring-rim-segment.is-current .ring-rim-icon {
+  color: var(--card);
+}
+
+/* Keyboard focus on the chapter switch: the arc outlined in the focus blue. */
+.ring-rim-segment:focus {
+  outline: none;
+}
+
+.ring-rim-segment:focus-visible .ring-rim-arc {
+  stroke: var(--focus);
+}
+
+.ring-rim-segment.is-current:focus-visible .ring-rim-icon {
+  color: var(--card);
+}
+
+.ring-rim-segment:not(.is-current):focus-visible .ring-rim-icon {
+  color: var(--card);
+}
+
+/* Bubbles: one mark per state (marks.css); here only interaction. */
+.bubble {
+  vector-effect: non-scaling-stroke;
+  transition: fill var(--dur-fast) var(--ease-out), stroke var(--dur-fast) var(--ease-out);
+  cursor: pointer;
+}
+
+/* .bubble.mark outweighs the mark's own edge (marks.css loads later). */
+.bubble.mark:hover {
+  stroke: var(--ink);
+  stroke-width: 1.75;
+}
+
+.bubble:focus {
+  outline: none;
+}
+
+.bubble.mark:focus-visible {
+  stroke: var(--focus);
+  stroke-width: 3;
+}
+
+.ring-svg.is-loading .bubble {
+  cursor: progress;
+}
+
+/* Loading: the pale marks stay still; a pulse over thousands of bubbles would
+   repaint the layer every frame while the metric map is fetched and decoded. */
+
+/* Touch targets under small atlas bubbles (RingBubbles.jsx RingHitAreas):
+   invisible, and live only on a touch screen or a phone, where a bubble can
+   be narrower than a fingertip; under the bubbles, so each bubble keeps its
+   own hit area where it is drawn. */
+.bubble-hit {
+  fill: transparent;
+  pointer-events: none;
+}
+
+@media (pointer: coarse), (max-width: 767px) {
+  .bubble-hit {
+    pointer-events: all;
+    cursor: pointer;
+  }
+}
+
+/* The local dot in the legend and the hover card: the ring's dot at text size. */
+.local-sample {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  flex: none;
+}
+
+.local-dot {
+  display: inline-block;
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ink);
+  vertical-align: 0;
+  margin-right: 4px;
+}
+
+.local-sample .local-dot {
+  margin-right: 0;
+}
+
+.local-dot.is-within {
+  background: var(--card);
+  box-shadow: inset 0 0 0 1.5px var(--ink);
+}
+
+/* A local result (§26): a small ink dot on a white edge at the bubble's
+   upper right; hollow on a subchapter or chapter that holds some. */
+.bubble-local {
+  fill: var(--ink);
+  stroke: var(--card);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+.bubble-local.is-within {
+  fill: var(--card);
+  stroke: var(--ink);
+}
+
+/* The legend's secondary marks: one hairline below the marks of the view. */
+.legend-list.is-secondary {
+  padding-top: var(--sp-2);
+  border-top: 1px solid var(--hairline);
+}
+
+.bubble-core {
+  pointer-events: none;
+  vector-effect: non-scaling-stroke;
+  transition: r var(--dur-fast) var(--ease-out);
+}
+
+/* Finding a subchapter in a chapter (RingGroupFocus): the other sectors
+   veiled while a Summary card names it, its sector outlined in the
+   selection blue (audit A20). */
+.ring-group-veil {
+  fill: var(--card);
+  opacity: 0.62;
+  pointer-events: none;
+}
+
+.ring-group-outline {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+/* The selected bubble: a thin white gap, then a 2px blue ring that hugs it
+, visible on every mark colour and on a dense chapter
+   without hiding the neighbours. After a search jump a ring pings outward. */
+.bubble-halo-group {
+  pointer-events: none;
+}
+
+.bubble-halo-gap {
+  fill: none;
+  stroke: var(--card);
+  stroke-width: 4;
+  vector-effect: non-scaling-stroke;
+}
+
+.bubble-halo {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.bubble-halo-ping {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: halo-ping 600ms var(--ease-out) 2;
+}
+
+@keyframes halo-ping {
+  from {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(2.6);
+  }
+}
+
+/* Hover card: one line of result beside the bubble. */
+.hover-card {
+  position: absolute;
+  z-index: 10;
+  width: max-content;
+  max-width: 300px;
+  display: grid;
+  gap: 4px;
+  padding: 10px 12px;
+  background: var(--card);
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-pop);
+  pointer-events: none;
+}
+
+.hover-card-name {
+  font-size: var(--fs-body);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.hover-card-meta {
+  font-size: var(--fs-caption);
+  color: var(--ink-3);
+}
+
+.hover-card-meta .status-mark {
+  vertical-align: -2px;
+}
+
+/* Who the result is for, under a hairline at the card's foot. */
+.hover-card-for {
+  margin-top: 2px;
+  padding-top: 6px;
+  border-top: 1px solid var(--hairline);
+  font-size: var(--fs-caption);
+  color: var(--ink-3);
+}
+
+/* A reported incident off the Safety view: the Safety mark and one line in
+   Ink Secondary, so it reads before the range bar without a status hue. */
+.hover-card-incident {
+  color: var(--ink-2);
+  font-weight: 600;
+}
+
+.hover-card-result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+}
+
+.hover-card-value {
+  font-size: var(--fs-callout);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* The legend tile: a heading with its help (what the marks mean, the
+   notes), then the marks of the active view (mark, word, count), then the
+   ring's other glyphs. Top-aligned beside the ring at its content's height
+   (the ring's size never depends on it, its column is fixed), never taller than the ring tile: in a short
+   window its body scrolls, and a soft shadow at the top or bottom edge says
+   more lines are there (Lea Verou's scroll shadows). */
+.legend-tile {
+  align-self: start;
+  height: auto;
+  max-height: 100%;
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border-radius: var(--r-pane);
+  overflow: hidden;
+}
+
+.legend-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 var(--sp-3);
+  padding: var(--sp-3) var(--sp-4) var(--sp-2);
+}
+
+.legend-title {
+  font-size: var(--fs-callout);
+  font-weight: 700;
+}
+
+/* The legend's help: each mark's meaning, the notes, the guides. */
+.legend-help-list {
+  display: grid;
+  gap: 2px;
+}
+
+
+.legend-caption {
+  font-size: var(--fs-footnote);
+  color: var(--ink-3);
+}
+
+.legend-body {
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  display: grid;
+  align-content: start;
+  gap: var(--sp-2);
+  padding: 0 var(--sp-4) var(--sp-3);
+  background:
+    linear-gradient(var(--card) 30%, rgba(255, 255, 255, 0)) center top / 100% 28px no-repeat local,
+    linear-gradient(rgba(255, 255, 255, 0), var(--card) 70%) center bottom / 100% 28px no-repeat local,
+    radial-gradient(farthest-side at 50% 0, rgba(28, 28, 30, 0.14), rgba(28, 28, 30, 0)) center top / 100% 10px no-repeat scroll,
+    radial-gradient(farthest-side at 50% 100%, rgba(28, 28, 30, 0.14), rgba(28, 28, 30, 0)) center bottom / 100% 10px no-repeat scroll;
+  background-color: var(--card);
+  scrollbar-color: var(--ink-3) transparent;
+  overscroll-behavior: contain;
+}
+
+/* Focusable only while it scrolls (RingLegend.jsx): the focus ring sits inside the
+   tile, which clips anything outside it. */
+.legend-body:focus-visible {
+  outline-offset: -3px;
+  border-radius: 0 0 var(--r-pane) var(--r-pane);
+}
+
+.legend-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(13.5rem, 100%), 1fr));
+  gap: var(--sp-1) var(--sp-5);
+}
+
+/* Mark, word, count on one line, the count right-aligned in a tabular
+   column; what the mark means is the row's tooltip and in the help. */
+.legend-row {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr) auto;
+  align-items: start;
+  column-gap: var(--sp-2);
+  font-size: var(--fs-footnote);
+  line-height: 1.3;
+}
+
+.legend-mark {
+  display: flex;
+  height: 1.3em;
+  align-items: center;
+  justify-content: center;
+}
+
+.legend-label {
+  min-width: 0;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.legend-count {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+/* A zero row stays, so the list never jumps; only its words dim. */
+.legend-row.is-zero .legend-label,
+.legend-row.is-zero .legend-count {
+  color: var(--ink-3);
+  font-weight: 400;
+}
+
+.core-sample svg {
+  display: block;
+  overflow: visible;
+}
+
+/* Failure state inside the ring's footprint. */
+.ring-state {
+  align-self: center;
+  justify-self: center;
+  max-width: 440px;
+  display: grid;
+  justify-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-8);
+  text-align: center;
+}
+
+.ring-state-icon {
+  color: var(--tone-weak-ink);
+}
+
+.ring-state-title {
+  font-size: var(--fs-title3);
+  font-weight: 700;
+}
+
+.ring-state-text {
+  font-size: var(--fs-body);
+  color: var(--ink-2);
+}
+
+.ring-state-hint {
+  font-size: var(--fs-footnote);
+  color: var(--ink-3);
+}
+
+.ring-state-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp-2);
+  margin-top: var(--sp-1);
+}
+
+.ring-state-actions a {
+  text-decoration: none;
+}

@@ -1,0 +1,53 @@
+{
+  "format": "bmc-evaluation-results/1",
+  "model_version": "MediCore-2.5",
+  "use_case": "Clinician Facing CDSS",
+  "configuration_id": "cfg-medicore-cdss-2025-03",
+  "benchmark": {
+    "name": "Harbourline Clinical Vignette Benchmark (fictional)",
+    "version": "3.0",
+    "description": "Synthetic written case vignettes with a reference diagnosis set by a panel of three clinicians (fictional).",
+    "url": "https://studies.example/harbourline-vignette-benchmark-3"
+  },
+  "run_date": "2026-10-18",
+  "conducted_by": "independent",
+  "setting": "mixed",
+  "results": [
+    {
+      "icd11_code": "5A11",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.82,
+      "ci_low": 0.76,
+      "ci_high": 0.88,
+      "cases": 160,
+      "sites": 3
+    },
+    {
+      "icd11_code": "BA41.Z",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.74,
+      "ci_low": 0.63,
+      "ci_high": 0.85,
+      "cases": 60,
+      "sites": 2
+    },
+    {
+      "icd11_code": "BA41",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.69,
+      "cases": 44,
+      "age": "Age 65+"
+    },
+    {
+      "icd11_code": "CA40",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.71,
+      "ci_low": 0.62,
+      "ci_high": 0.8,
+      "cases": 96,
+      "sites": 2,
+      "sex": "Sex Female",
+      "ethnicity": "All ethnicities"
+    }
+  ]
+}

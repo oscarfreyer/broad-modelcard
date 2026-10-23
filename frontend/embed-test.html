@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live panel embed test – Broad Modelcard</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Ccircle%20cx%3D%2222.99%22%20cy%3D%228.98%22%20r%3D%225.31%22%20fill%3D%22%2348a08c%22%2F%3E%3Ccircle%20cx%3D%2225.31%22%20cy%3D%2219.36%22%20r%3D%224.2%22%20fill%3D%22%2348a08c%22%2F%3E%3Ccircle%20cx%3D%2217.69%22%20cy%3D%2225.76%22%20r%3D%224.65%22%20fill%3D%22%23d1d1d6%22%2F%3E%3Ccircle%20cx%3D%228.85%22%20cy%3D%2222.85%22%20r%3D%223.54%22%20fill%3D%22%23d1d1d6%22%2F%3E%3Ccircle%20cx%3D%226.39%22%20cy%3D%2213.64%22%20r%3D%224.87%22%20fill%3D%22%23d1d1d6%22%2F%3E%3Ccircle%20cx%3D%2213.07%22%20cy%3D%226.54%22%20r%3D%223.76%22%20fill%3D%22%23d1d1d6%22%2F%3E%3C%2Fsvg%3E" />
+    <!--
+      A plain host page with none of the app's CSS. It keeps the browser's default face and colours and adds
+      rules of its own to show that nothing leaks into the panel's shadow root
+      and nothing leaks out of it: element rules (small caps headings, indented
+      paragraphs) and, harder, a rule on the element itself, whose inherited
+      properties (serif, uppercase, spacing, colour, centring) would reach an
+      unguarded shadow tree. Data is synthetic; not for clinical use.
+    -->
+    <style>
+      body { margin: 0; line-height: 1.5; }
+      header { padding: 12px 24px; }
+      h1 { margin: 0; font-size: 28px; }
+      main { display: flex; flex-wrap: wrap; gap: 24px; padding: 24px; align-items: flex-start; }
+      .ai-output { flex: 1 1 420px; max-width: 680px; }
+      .ai-output h2 { margin-top: 0; font-size: 20px; }
+      p { text-indent: 1em; letter-spacing: 0.01em; }
+      h2, h3, h4 { font-variant: small-caps; }
+      aside { flex: 0 1 380px; min-width: 280px; }
+      /* A host theme that styles everything, the panel element included. */
+      aside, aside *, bmc-live-panel { font-family: serif; text-transform: uppercase; letter-spacing: 0.06em; color: #6b2a2a; text-align: center; }
+      details { max-width: 680px; }
+      code { font-size: 15px; }
+      footer { padding: 0 24px 24px; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Example host application (simulated)</h1>
+    </header>
+    <main>
+      <section class="ai-output" aria-label="AI output (simulated)">
+        <h2>SynGPT-2.0 output (simulated)</h2>
+        <p>
+          This block stands in for the AI system's own answer. It is placeholder text on a synthetic case, not a recommendation.
+          Case: ICD-11 5A11 and GB61, age group 65+, female.
+        </p>
+        <p>The panel beside it is the real Broad Modelcard component, loaded with one script tag.</p>
+        <details>
+          <summary>What this page tests</summary>
+          <p>
+            The host styles the panel element itself (serif, uppercase, wide spacing, a dark red, centred text). None of it should
+            reach the panel, and nothing of the panel should reach this page.
+          </p>
+          <p>
+            Change the case from the browser console, for example
+            <code>document.querySelector('bmc-live-panel').setAttribute('codes', '2C30')</code>. The case attributes:
+            <code>codes</code> (ICD-11 codes, comma-separated), <code>age-group</code> (0-17, 18-39, 40-64, 65+), <code>sex</code>
+            (female, male), <code>ethnicity</code> (white, black, hispanic, asian, other), and <code>depth</code> (plain, expert); the
+            card is named by <code>model</code> and the function attribute, as in this page's source. The text above does not follow
+            such changes.
+          </p>
+        </details>
+      </section>
+      <aside>
+        <bmc-live-panel
+          model="SynGPT-2.0"
+          use-case="Clinician Facing CDSS"
+          codes="5A11, GB61"
+          age-group="65+"
+          sex="female"
+        ></bmc-live-panel>
+      </aside>
+    </main>
+    <footer>Demonstration, synthetic data, not for clinical use. <a href="./plugin.html">Back to the live interaction demo</a></footer>
+    <script type="module" src="/src/embed/index.js"></script>
+  </body>
+</html>

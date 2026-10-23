@@ -1,0 +1,319 @@
+{
+ "set": "Broad Modelcard assisted data entry study set",
+ "version": 1,
+ "notice": "Synthetic demonstration data. Every study, report, system name not in the demo pack, number, and the condition 'Grevell syndrome' are fictional. Nothing here is clinical evidence.",
+ "store": "The demo store (seed import plus demo pack v2): its cards and ICD-11 codes.",
+ "scored_fields": "Each expected record lists the fields the excerpt states; only those are scored. Fields a proposal takes from the stored row are not scored.",
+ "cases": [
+  {
+   "id": "E1",
+   "file": "excerpts/e1-harrowgate-medicore.txt",
+   "kind": "metrics",
+   "card": null,
+   "about": "Plain text, three metrics records for one card, one at a specific age group.",
+   "expected": {
+    "records": [
+     {
+      "model_version": "MediCore-2.5",
+      "use_case": "Clinician Facing CDSS",
+      "code": "5A11",
+      "age": "All ages",
+      "sex": "All sexes",
+      "ethnicity": "All ethnicities",
+      "perf": 0.83,
+      "ci_low": 0.8,
+      "ci_high": 0.86,
+      "n_samples": 1240,
+      "n_sites": 5,
+      "n_studies": 1,
+      "peer_reviewed_studies": 1,
+      "validation_type": "Clinical study (multisite)",
+      "source": "Harrowgate multisite evaluation of MediCore-2.5 as clinician-facing decision support (fictional)",
+      "study": "HMS-2026-07",
+      "source_date": "2026-10-02"
+     },
+     {
+      "model_version": "MediCore-2.5",
+      "use_case": "Clinician Facing CDSS",
+      "code": "CA22",
+      "age": "All ages",
+      "sex": "All sexes",
+      "ethnicity": "All ethnicities",
+      "perf": 0.77,
+      "ci_low": 0.72,
+      "ci_high": 0.81,
+      "n_samples": 610,
+      "n_sites": 5,
+      "n_studies": 1,
+      "peer_reviewed_studies": 1,
+      "validation_type": "Clinical study (multisite)",
+      "source": "Harrowgate multisite evaluation of MediCore-2.5 as clinician-facing decision support (fictional)",
+      "study": "HMS-2026-07",
+      "source_date": "2026-10-02"
+     },
+     {
+      "model_version": "MediCore-2.5",
+      "use_case": "Clinician Facing CDSS",
+      "code": "5A11",
+      "age": "Age 65+",
+      "sex": "All sexes",
+      "ethnicity": "All ethnicities",
+      "perf": 0.79,
+      "ci_low": 0.74,
+      "ci_high": 0.84,
+      "n_samples": 420,
+      "n_sites": 5,
+      "n_studies": 1,
+      "peer_reviewed_studies": 1,
+      "validation_type": "Clinical study (multisite)",
+      "source": "Harrowgate multisite evaluation of MediCore-2.5 as clinician-facing decision support (fictional)",
+      "study": "HMS-2026-07",
+      "source_date": "2026-10-02"
+     }
+    ],
+    "dropped": []
+   }
+  },
+  {
+   "id": "E2",
+   "file": "excerpts/e2-quillary-audit.csv",
+   "kind": "metrics",
+   "card": null,
+   "about": "A CSV table for a product card (all-population lens only); values cited by row and column.",
+   "expected": {
+    "records": [
+     {
+      "model_version": "Quillary-Scribe-1.0",
+      "use_case": "Discharge letter generation",
+      "code": "BA41",
+      "age": "All ages",
+      "sex": "All sexes",
+      "ethnicity": "All ethnicities",
+      "perf": 0.91,
+      "ci_low": 0.87,
+      "ci_high": 0.94,
+      "n_samples": 318,
+      "n_sites": 1,
+      "n_studies": 1,
+      "peer_reviewed_studies": 0,
+      "validation_type": "Clinical study (single site)",
+      "source": "Quillary Scribe letter audit (fictional)",
+      "study": "QSA-2026-02",
+      "source_date": "2026-08-30"
+     },
+     {
+      "model_version": "Quillary-Scribe-1.0",
+      "use_case": "Discharge letter generation",
+      "code": "BD10",
+      "age": "All ages",
+      "sex": "All sexes",
+      "ethnicity": "All ethnicities",
+      "perf": 0.88,
+      "ci_low": 0.85,
+      "ci_high": 0.91,
+      "n_samples": 402,
+      "n_sites": 1,
+      "n_studies": 1,
+      "peer_reviewed_studies": 0,
+      "validation_type": "Clinical study (single site)",
+      "source": "Quillary Scribe letter audit (fictional)",
+      "study": "QSA-2026-02",
+      "source_date": "2026-08-30"
+     },
+     {
+      "model_version": "Quillary-Scribe-1.0",
+      "use_case": "Discharge letter generation",
+      "code": "CA40",
+      "age": "All ages",
+      "sex": "All sexes",
+      "ethnicity": "All ethnicities",
+      "perf": 0.93,
+      "ci_low": 0.9,
+      "ci_high": 0.96,
+      "n_samples": 275,
+      "n_sites": 1,
+      "n_studies": 1,
+      "peer_reviewed_studies": 0,
+      "validation_type": "Clinical study (single site)",
+      "source": "Quillary Scribe letter audit (fictional)",
+      "study": "QSA-2026-02",
+      "source_date": "2026-08-30"
+     }
+    ],
+    "dropped": []
+   }
+  },
+  {
+   "id": "E3",
+   "file": "excerpts/e3-vantrel-incident.txt",
+   "kind": "safety",
+   "card": null,
+   "about": "One safety incident for a product, at one age group.",
+   "expected": {
+    "records": [
+     {
+      "model_version": "Vantrel-Triage-2.1",
+      "use_case": "Emergency department triage",
+      "codes": "BA41",
+      "age": "Age 40-64",
+      "sex": "All sexes",
+      "ethnicity": "All ethnicities",
+      "incident_type": "Harmful or incorrect recommendation",
+      "harm": "Possible",
+      "status": "Open",
+      "source_type": "Incident report",
+      "source_reference": "Fictional incident report IR-7731 (synthetic)",
+      "study_id": null,
+      "reported_date": "2026-09-20",
+      "updated_date": null
+     }
+    ],
+    "dropped": []
+   }
+  },
+  {
+   "id": "E4",
+   "file": "excerpts/e4-ostwick-pilot.txt",
+   "kind": "metrics",
+   "card": null,
+   "about": "One valid record and one with a code the atlas does not have (ZZ99): dropped, never guessed.",
+   "expected": {
+    "records": [
+     {
+      "model_version": "SynGPT-1.0",
+      "use_case": "Clinician Facing CDSS",
+      "code": "8A80",
+      "age": "All ages",
+      "sex": "All sexes",
+      "ethnicity": "All ethnicities",
+      "perf": 0.71,
+      "ci_low": 0.64,
+      "ci_high": 0.78,
+      "n_samples": 300,
+      "n_sites": 1,
+      "n_studies": 1,
+      "validation_type": "Clinical study (single site)",
+      "source": "Ostwick single-site pilot of SynGPT-1.0 as clinician-facing CDSS (fictional)",
+      "study": "OPS-2026-03",
+      "source_date": "2026-07-14"
+     }
+    ],
+    "dropped": [
+     "unknown_code"
+    ]
+   }
+  },
+  {
+   "id": "E5",
+   "file": "excerpts/e5-kestrel-review.txt",
+   "kind": "metrics",
+   "card": null,
+   "about": "Vague wording: an approximate value and an unclear group must be flagged uncertain.",
+   "expected": {
+    "records": [
+     {
+      "model_version": "ICU_GPT-1.0",
+      "use_case": "CDSS",
+      "code": "CA40",
+      "age": "All ages",
+      "sex": "All sexes",
+      "ethnicity": "All ethnicities",
+      "perf": 0.7,
+      "n_samples": 850,
+      "n_sites": 3,
+      "n_studies": 1,
+      "validation_type": "Clinical study (multisite)",
+      "source": "Kestrel ICU retrospective review of ICU_GPT-1.0 (fictional)",
+      "study": "KIR-2026-11",
+      "source_date": "2026-09-05"
+     }
+    ],
+    "dropped": [],
+    "uncertain": [
+     "perf",
+     "sex"
+    ]
+   }
+  },
+  {
+   "id": "E6",
+   "file": "excerpts/e6-letter-incidents.txt",
+   "kind": "safety",
+   "card": null,
+   "about": "Two incidents; one concerns an AI system that is not in the catalogue and is dropped.",
+   "expected": {
+    "records": [
+     {
+      "model_version": "SynGPT-1.0",
+      "use_case": "Discharge letter generation",
+      "codes": "5A11",
+      "age": "All ages",
+      "sex": "All sexes",
+      "ethnicity": "All ethnicities",
+      "incident_type": "Fabricated content",
+      "harm": "None",
+      "status": "Mitigated",
+      "source_type": "Developer notice",
+      "source_reference": "Fictional developer notice DN-31 (synthetic)",
+      "study_id": null,
+      "reported_date": "2026-08-11",
+      "updated_date": "2026-09-01"
+     }
+    ],
+    "dropped": [
+     "unknown_card"
+    ]
+   }
+  },
+  {
+   "id": "E7",
+   "file": "excerpts/e7-fernbrook-letters.txt",
+   "kind": "metrics",
+   "card": null,
+   "about": "Conditions named without codes: the backend resolves them by exact name in the store (the local-model path).",
+   "expected": {
+    "records": [
+     {
+      "model_version": "SynGPT-2.0",
+      "use_case": "Discharge letter generation",
+      "code": "CA23",
+      "age": "All ages",
+      "sex": "All sexes",
+      "ethnicity": "All ethnicities",
+      "perf": 0.88,
+      "ci_low": 0.84,
+      "ci_high": 0.91,
+      "n_samples": 512,
+      "n_sites": 2,
+      "n_studies": 1,
+      "peer_reviewed_studies": 1,
+      "validation_type": "Clinical study (multisite)",
+      "source": "Fernbrook letter quality study (fictional)",
+      "study": "FLQ-2026-05",
+      "source_date": "2026-09-28"
+     },
+     {
+      "model_version": "SynGPT-2.0",
+      "use_case": "Discharge letter generation",
+      "code": "FA00",
+      "age": "All ages",
+      "sex": "All sexes",
+      "ethnicity": "All ethnicities",
+      "perf": 0.81,
+      "ci_low": 0.76,
+      "ci_high": 0.86,
+      "n_samples": 290,
+      "n_sites": 2,
+      "n_studies": 1,
+      "peer_reviewed_studies": 1,
+      "validation_type": "Clinical study (multisite)",
+      "source": "Fernbrook letter quality study (fictional)",
+      "study": "FLQ-2026-05",
+      "source_date": "2026-09-28"
+     }
+    ],
+    "dropped": []
+   }
+  }
+ ]
+}

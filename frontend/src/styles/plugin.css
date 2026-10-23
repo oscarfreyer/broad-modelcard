@@ -1,0 +1,502 @@
+/* The live interaction demo page (plugin.html): the catalogue's header, an
+   intro with the caution band, then the case setup beside a simulated host
+   application that holds the real <bmc-live-panel>. Same world as the atlas
+: grouped ground, white 16px cards, hairlines, blue only for
+   what can be pressed. */
+
+.plg-shell {
+  min-height: 100vh;
+}
+
+.plg-main {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: var(--sp-8) var(--sp-8) 48px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sp-6);
+}
+
+.plg-intro {
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.plg-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-title1);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.plg-lede {
+  max-width: 60ch;
+  font-size: var(--fs-body);
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+/* The caution band: the demonstration status cannot be missed. */
+.plg-band {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  max-width: 60ch;
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-card);
+  background: var(--tone-moderate-zone);
+  color: var(--tone-moderate-ink);
+}
+
+.plg-band .icon {
+  flex: none;
+  margin-top: 1px;
+}
+
+.plg-band-title {
+  font-size: var(--fs-callout);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.plg-band-text {
+  margin-top: 2px;
+  font-size: var(--fs-footnote);
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.plg-workspace {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  align-items: start;
+  gap: var(--sp-5);
+}
+
+.plg-section-title {
+  font-size: var(--fs-title3);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+/* Case setup: one white card of grouped fields. It scrolls with the page
+   (no scroll box of its own); the page has one scroll. */
+.plg-setup {
+  display: grid;
+  gap: var(--sp-5);
+  padding: var(--sp-5) var(--sp-4);
+  background: var(--card);
+  border-radius: var(--r-card);
+}
+
+.plg-group {
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.plg-group-title {
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  color: var(--ink-3);
+}
+
+.plg-presets {
+  display: grid;
+  gap: 2px;
+  margin: 0 calc(-1 * var(--sp-2));
+}
+
+.plg-preset {
+  display: grid;
+  gap: 2px;
+  width: 100%;
+  padding: var(--sp-2);
+  border: 0;
+  border-radius: var(--r-control);
+  background: transparent;
+  text-align: left;
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.plg-preset:hover {
+  background: var(--row-hover);
+}
+
+.plg-preset.is-active {
+  background: var(--accent-soft);
+}
+
+.plg-preset-title {
+  font-size: var(--fs-body);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.plg-preset.is-active .plg-preset-title {
+  color: var(--accent);
+}
+
+.plg-preset-note {
+  font-size: var(--fs-caption);
+  font-weight: 500;
+  color: var(--ink-3);
+}
+
+/* The case's AI system, on its own line rather than after a dot. */
+.plg-preset-note.is-system {
+  font-weight: 600;
+}
+
+.plg-input {
+  width: 100%;
+  border: 0;
+  border-radius: var(--r-control);
+  background: var(--fill);
+  padding: 8px 12px;
+  font-size: var(--fs-body);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.plg-input:hover {
+  background: var(--fill-strong);
+}
+
+.plg-input::placeholder {
+  color: var(--ink-3);
+}
+
+.plg-hint {
+  font-size: var(--fs-caption);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--ink-3);
+}
+
+.plg-hint.is-warning {
+  color: var(--tone-moderate-ink);
+}
+
+.plg-lens {
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.plg-error {
+  font-size: var(--fs-footnote);
+  line-height: 1.4;
+  color: var(--tone-weak-ink);
+}
+
+.plg-stage {
+  display: grid;
+  gap: var(--sp-5);
+  min-width: 0;
+}
+
+/* The simulated host application: a quiet window around output and panel. */
+.plg-host {
+  background: var(--card);
+  border-radius: var(--r-pane);
+  /* clip, not hidden: rounds the corners without becoming a scroll box, so
+     the output can stay in view (position: sticky) beside the panel. */
+  overflow: clip;
+}
+
+.plg-host-bar {
+  padding: 10px var(--sp-5);
+  background: var(--sector-b);
+  border-bottom: 1px solid var(--hairline);
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--ink-3);
+}
+
+.plg-host-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+  align-items: start;
+  gap: var(--sp-5);
+  padding: var(--sp-5);
+}
+
+/* The host's own output stays in view beside the panel while the panel is
+   read, so the window has no empty column (it follows the reader down). */
+.plg-output {
+  position: sticky;
+  top: 72px;
+  display: grid;
+  gap: var(--sp-3);
+  align-content: start;
+  max-width: 68ch;
+}
+
+.plg-output-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-title3);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.plg-output-function {
+  margin-top: -8px;
+  font-size: var(--fs-body);
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+.plg-output-case {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-control);
+  background: var(--fill);
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.plg-output-label {
+  font-weight: 500;
+  color: color-mix(in srgb, var(--ink-3) 65%, var(--ink-2)); /* ≥4.8:1 */
+}
+
+.plg-output-text {
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.plg-panel-slot {
+  /* A preset on a narrow screen scrolls here; the sticky header stays clear of it. */
+  scroll-margin-top: 72px;
+  min-width: 0;
+}
+
+/* Embed it: the markup a host page needs. */
+.plg-embed {
+  display: grid;
+  gap: var(--sp-3);
+  padding: var(--sp-5);
+  background: var(--card);
+  border-radius: var(--r-card);
+}
+
+.plg-embed-text {
+  max-width: 60ch;
+  font-size: var(--fs-body);
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+/* An inline command in the system face, like the command chip; the markup
+   block keeps the browser's code face (no font files). */
+.plg-embed-text code {
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--fs-footnote);
+  padding: 1px 6px;
+  border-radius: var(--r-small);
+  background: var(--fill);
+  color: var(--ink);
+}
+
+.plg-snippet {
+  margin: 0;
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-control);
+  background: var(--fill);
+  color: var(--ink);
+  font-size: var(--fs-caption);
+  line-height: 1.55;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.plg-embed-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2) var(--sp-3);
+}
+
+.plg-copy {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.plg-copy-status {
+  font-size: var(--fs-footnote);
+  color: var(--ink-2);
+}
+
+.plg-copy-status:empty {
+  display: none;
+}
+
+.plg-embed-link {
+  text-decoration: none;
+}
+
+/* The CDS Hooks mode (contract v1.14, §33): the request, then the cards a host would show. */
+.plg-mode {
+  justify-self: start;
+}
+
+.cds-stage-body {
+  display: grid;
+  gap: var(--sp-3);
+  padding: var(--sp-5);
+  min-width: 0;
+}
+
+.cds-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2) var(--sp-3);
+}
+
+.cds-request {
+  max-height: 20rem;
+  overflow: auto;
+}
+
+.cds-cards {
+  display: grid;
+  gap: var(--sp-3);
+  margin: var(--sp-2) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cds-card {
+  display: grid;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px solid var(--hairline-strong);
+  border-radius: var(--r-control);
+  background: var(--card);
+}
+
+/* The indicator chip carries the word; the card's whole outline only hints at it. */
+.cds-card.is-critical {
+  border-color: color-mix(in srgb, var(--alert-serious-edge) 45%, var(--hairline-strong));
+}
+
+.cds-card.is-warning {
+  border-color: color-mix(in srgb, var(--alert-caution-edge) 45%, var(--hairline-strong));
+}
+
+.cds-card-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--sp-2);
+}
+
+.cds-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 1px 8px;
+  border-radius: var(--r-pill);
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  background: var(--fill);
+  color: var(--ink-2);
+}
+
+.cds-indicator.is-critical {
+  background: var(--tone-weak-zone);
+  color: var(--tone-weak-ink);
+}
+
+.cds-indicator.is-warning {
+  background: var(--tone-moderate-zone);
+  color: var(--tone-moderate-ink);
+}
+
+.cds-card-summary {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.cds-card-detail {
+  font-size: var(--fs-footnote);
+  line-height: 1.45;
+  color: var(--ink-2);
+  overflow-wrap: anywhere;
+}
+
+.cds-card-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  font-size: var(--fs-caption);
+  color: var(--ink-3);
+}
+
+.cds-card-link {
+  text-decoration: none;
+}
+
+.cds-raw summary {
+  cursor: pointer;
+  font-size: var(--fs-footnote);
+  color: var(--ink-2);
+}
+
+/* Below 1180px the panel sits under the simulated output. */
+@media (max-width: 1180px) {
+  .plg-host-body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .plg-panel-slot {
+    max-width: 420px;
+  }
+
+  .plg-output {
+    position: static;
+  }
+}
+
+/* Below 900px the case setup goes above the stage. */
+@media (max-width: 900px) {
+  .plg-workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .plg-lens {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+/* Phones: one column. */
+@media (max-width: 767px) {
+  .plg-main {
+    padding: var(--sp-5) var(--sp-4) var(--sp-8);
+    gap: var(--sp-5);
+  }
+
+  .plg-host-body,
+  .plg-embed {
+    padding: var(--sp-4);
+  }
+
+  .plg-panel-slot {
+    max-width: none;
+  }
+}

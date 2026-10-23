@@ -1,0 +1,1432 @@
+{
+ "notice": "Canned model answers for the fake provider (tests and the offline evaluation). Synthetic.",
+ "answers": {
+  "E1": {
+   "records": [
+    {
+     "model_version": {
+      "value": "MediCore-2.5",
+      "quote": "MediCore-2.5, used as Clinician Facing CDSS",
+      "location": "Methods",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "use_case": {
+      "value": "Clinician Facing CDSS",
+      "quote": "MediCore-2.5, used as Clinician Facing CDSS",
+      "location": "Methods",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "code": {
+      "value": "5A11",
+      "quote": "type 2 diabetes mellitus",
+      "location": "Results, page 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "condition": {
+      "value": "Type 2 diabetes mellitus",
+      "quote": "type 2 diabetes mellitus",
+      "location": "Results, page 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "perf": {
+      "value": 0.83,
+      "quote": "the accuracy was 0.83",
+      "location": "Results, page 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "ci_low": {
+      "value": 0.8,
+      "quote": "95% CI 0.80 to 0.86",
+      "location": "Results, page 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "ci_high": {
+      "value": 0.86,
+      "quote": "95% CI 0.80 to 0.86",
+      "location": "Results, page 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_samples": {
+      "value": 1240,
+      "quote": "over 1,240 cases",
+      "location": "Results, page 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "source": {
+      "value": "Harrowgate multisite evaluation of MediCore-2.5 as clinician-facing decision support (fictional)",
+      "quote": "Harrowgate multisite evaluation of MediCore-2.5 as clinician-facing decision support (fictional)",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "study": {
+      "value": "HMS-2026-07",
+      "quote": "Study ID: HMS-2026-07",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "source_date": {
+      "value": "2026-10-02",
+      "quote": "Published 2026-10-02",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_sites": {
+      "value": 5,
+      "quote": "at 5 hospitals",
+      "location": "Methods",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_studies": {
+      "value": 1,
+      "quote": "Harrowgate multisite evaluation",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "peer_reviewed_studies": {
+      "value": 1,
+      "quote": "(peer reviewed)",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "validation_type": {
+      "value": "Clinical study (multisite)",
+      "quote": "at 5 hospitals",
+      "location": "Methods",
+      "confidence": 0.95,
+      "uncertain": false
+     }
+    },
+    {
+     "model_version": {
+      "value": "MediCore-2.5",
+      "quote": "MediCore-2.5, used as Clinician Facing CDSS",
+      "location": "Methods",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "use_case": {
+      "value": "Clinician Facing CDSS",
+      "quote": "MediCore-2.5, used as Clinician Facing CDSS",
+      "location": "Methods",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "code": {
+      "value": "CA22",
+      "quote": "chronic obstructive pulmonary disease",
+      "location": "Results, page 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "condition": {
+      "value": "Chronic obstructive pulmonary disease",
+      "quote": "chronic obstructive pulmonary disease",
+      "location": "Results, page 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "perf": {
+      "value": 0.77,
+      "quote": "the accuracy was 0.77",
+      "location": "Results, page 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "ci_low": {
+      "value": 0.72,
+      "quote": "95% CI 0.72 to 0.81",
+      "location": "Results, page 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "ci_high": {
+      "value": 0.81,
+      "quote": "95% CI 0.72 to 0.81",
+      "location": "Results, page 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_samples": {
+      "value": 610,
+      "quote": "over 610 cases",
+      "location": "Results, page 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "source": {
+      "value": "Harrowgate multisite evaluation of MediCore-2.5 as clinician-facing decision support (fictional)",
+      "quote": "Harrowgate multisite evaluation of MediCore-2.5 as clinician-facing decision support (fictional)",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "study": {
+      "value": "HMS-2026-07",
+      "quote": "Study ID: HMS-2026-07",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "source_date": {
+      "value": "2026-10-02",
+      "quote": "Published 2026-10-02",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_sites": {
+      "value": 5,
+      "quote": "at 5 hospitals",
+      "location": "Methods",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_studies": {
+      "value": 1,
+      "quote": "Harrowgate multisite evaluation",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "peer_reviewed_studies": {
+      "value": 1,
+      "quote": "(peer reviewed)",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "validation_type": {
+      "value": "Clinical study (multisite)",
+      "quote": "at 5 hospitals",
+      "location": "Methods",
+      "confidence": 0.95,
+      "uncertain": false
+     }
+    },
+    {
+     "model_version": {
+      "value": "MediCore-2.5",
+      "quote": "MediCore-2.5, used as Clinician Facing CDSS",
+      "location": "Methods",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "use_case": {
+      "value": "Clinician Facing CDSS",
+      "quote": "MediCore-2.5, used as Clinician Facing CDSS",
+      "location": "Methods",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "code": {
+      "value": "5A11",
+      "quote": "type 2 diabetes accuracy",
+      "location": "Results, page 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "condition": {
+      "value": "Type 2 diabetes mellitus",
+      "quote": "type 2 diabetes",
+      "location": "Results, page 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "age": {
+      "value": "Age 65+",
+      "quote": "patients aged 65 and older",
+      "location": "Results, page 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "perf": {
+      "value": 0.79,
+      "quote": "type 2 diabetes accuracy was 0.79",
+      "location": "Results, page 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "ci_low": {
+      "value": 0.74,
+      "quote": "95% CI 0.74 to 0.84",
+      "location": "Results, page 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "ci_high": {
+      "value": 0.84,
+      "quote": "95% CI 0.74 to 0.84",
+      "location": "Results, page 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_samples": {
+      "value": 420,
+      "quote": "over 420 cases",
+      "location": "Results, page 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "source": {
+      "value": "Harrowgate multisite evaluation of MediCore-2.5 as clinician-facing decision support (fictional)",
+      "quote": "Harrowgate multisite evaluation of MediCore-2.5 as clinician-facing decision support (fictional)",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "study": {
+      "value": "HMS-2026-07",
+      "quote": "Study ID: HMS-2026-07",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "source_date": {
+      "value": "2026-10-02",
+      "quote": "Published 2026-10-02",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_sites": {
+      "value": 5,
+      "quote": "at 5 hospitals",
+      "location": "Methods",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_studies": {
+      "value": 1,
+      "quote": "Harrowgate multisite evaluation",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "peer_reviewed_studies": {
+      "value": 1,
+      "quote": "(peer reviewed)",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "validation_type": {
+      "value": "Clinical study (multisite)",
+      "quote": "at 5 hospitals",
+      "location": "Methods",
+      "confidence": 0.95,
+      "uncertain": false
+     }
+    }
+   ],
+   "notes": []
+  },
+  "E2": {
+   "records": [
+    {
+     "model_version": {
+      "value": "Quillary-Scribe-1.0",
+      "quote": "audit of Quillary Scribe 1.0 (discharge letter generation)",
+      "location": "row 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "use_case": {
+      "value": "Discharge letter generation",
+      "quote": "audit of Quillary Scribe 1.0 (discharge letter generation)",
+      "location": "row 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "code": {
+      "value": "BA41",
+      "quote": "BA41",
+      "location": "row 4, column ICD-11",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "condition": {
+      "value": "Acute myocardial infarction",
+      "quote": "Acute myocardial infarction",
+      "location": "row 4, column Condition",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "perf": {
+      "value": 0.91,
+      "quote": "0.91",
+      "location": "row 4, column Correct letters (share)",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "ci_low": {
+      "value": 0.87,
+      "quote": "0.87",
+      "location": "row 4, column CI low",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "ci_high": {
+      "value": 0.94,
+      "quote": "0.94",
+      "location": "row 4, column CI high",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_samples": {
+      "value": 318,
+      "quote": "318",
+      "location": "row 4, column Letters reviewed",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "source": {
+      "value": "Quillary Scribe letter audit (fictional)",
+      "quote": "Quillary Scribe letter audit (fictional)",
+      "location": "row 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "study": {
+      "value": "QSA-2026-02",
+      "quote": "study ID QSA-2026-02",
+      "location": "row 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "source_date": {
+      "value": "2026-08-30",
+      "quote": "dated 2026-08-30",
+      "location": "row 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_sites": {
+      "value": 1,
+      "quote": "one hospital",
+      "location": "row 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_studies": {
+      "value": 1,
+      "quote": "Quillary Scribe letter audit",
+      "location": "row 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "peer_reviewed_studies": {
+      "value": 0,
+      "quote": "not peer reviewed",
+      "location": "row 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "validation_type": {
+      "value": "Clinical study (single site)",
+      "quote": "one hospital",
+      "location": "row 2",
+      "confidence": 0.95,
+      "uncertain": false
+     }
+    },
+    {
+     "model_version": {
+      "value": "Quillary-Scribe-1.0",
+      "quote": "audit of Quillary Scribe 1.0 (discharge letter generation)",
+      "location": "row 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "use_case": {
+      "value": "Discharge letter generation",
+      "quote": "audit of Quillary Scribe 1.0 (discharge letter generation)",
+      "location": "row 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "code": {
+      "value": "BD10",
+      "quote": "BD10",
+      "location": "row 5, column ICD-11",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "condition": {
+      "value": "Congestive heart failure",
+      "quote": "Congestive heart failure",
+      "location": "row 5, column Condition",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "perf": {
+      "value": 0.88,
+      "quote": "0.88",
+      "location": "row 5, column Correct letters (share)",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "ci_low": {
+      "value": 0.85,
+      "quote": "0.85",
+      "location": "row 5, column CI low",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "ci_high": {
+      "value": 0.91,
+      "quote": "0.91",
+      "location": "row 5, column CI high",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_samples": {
+      "value": 402,
+      "quote": "402",
+      "location": "row 5, column Letters reviewed",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "source": {
+      "value": "Quillary Scribe letter audit (fictional)",
+      "quote": "Quillary Scribe letter audit (fictional)",
+      "location": "row 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "study": {
+      "value": "QSA-2026-02",
+      "quote": "study ID QSA-2026-02",
+      "location": "row 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "source_date": {
+      "value": "2026-08-30",
+      "quote": "dated 2026-08-30",
+      "location": "row 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_sites": {
+      "value": 1,
+      "quote": "one hospital",
+      "location": "row 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_studies": {
+      "value": 1,
+      "quote": "Quillary Scribe letter audit",
+      "location": "row 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "peer_reviewed_studies": {
+      "value": 0,
+      "quote": "not peer reviewed",
+      "location": "row 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "validation_type": {
+      "value": "Clinical study (single site)",
+      "quote": "one hospital",
+      "location": "row 2",
+      "confidence": 0.95,
+      "uncertain": false
+     }
+    },
+    {
+     "model_version": {
+      "value": "Quillary-Scribe-1.0",
+      "quote": "audit of Quillary Scribe 1.0 (discharge letter generation)",
+      "location": "row 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "use_case": {
+      "value": "Discharge letter generation",
+      "quote": "audit of Quillary Scribe 1.0 (discharge letter generation)",
+      "location": "row 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "code": {
+      "value": "CA40",
+      "quote": "CA40",
+      "location": "row 6, column ICD-11",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "condition": {
+      "value": "Pneumonia",
+      "quote": "Pneumonia",
+      "location": "row 6, column Condition",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "perf": {
+      "value": 0.93,
+      "quote": "0.93",
+      "location": "row 6, column Correct letters (share)",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "ci_low": {
+      "value": 0.9,
+      "quote": "0.9",
+      "location": "row 6, column CI low",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "ci_high": {
+      "value": 0.96,
+      "quote": "0.96",
+      "location": "row 6, column CI high",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_samples": {
+      "value": 275,
+      "quote": "275",
+      "location": "row 6, column Letters reviewed",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "source": {
+      "value": "Quillary Scribe letter audit (fictional)",
+      "quote": "Quillary Scribe letter audit (fictional)",
+      "location": "row 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "study": {
+      "value": "QSA-2026-02",
+      "quote": "study ID QSA-2026-02",
+      "location": "row 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "source_date": {
+      "value": "2026-08-30",
+      "quote": "dated 2026-08-30",
+      "location": "row 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_sites": {
+      "value": 1,
+      "quote": "one hospital",
+      "location": "row 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_studies": {
+      "value": 1,
+      "quote": "Quillary Scribe letter audit",
+      "location": "row 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "peer_reviewed_studies": {
+      "value": 0,
+      "quote": "not peer reviewed",
+      "location": "row 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "validation_type": {
+      "value": "Clinical study (single site)",
+      "quote": "one hospital",
+      "location": "row 2",
+      "confidence": 0.95,
+      "uncertain": false
+     }
+    }
+   ],
+   "notes": []
+  },
+  "E3": {
+   "records": [
+    {
+     "model_version": {
+      "value": "Vantrel-Triage-2.1",
+      "quote": "Vantrel Triage 2.1 (Vantrel-Triage-2.1)",
+      "location": "line 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "use_case": {
+      "value": "Emergency department triage",
+      "quote": "function: emergency department triage",
+      "location": "line 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "codes": {
+      "value": [
+       "BA41"
+      ],
+      "quote": "later diagnosed as acute myocardial infarction",
+      "location": "What happened",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "conditions": {
+      "value": [
+       "Acute myocardial infarction"
+      ],
+      "quote": "acute myocardial infarction",
+      "location": "What happened",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "age": {
+      "value": "Age 40-64",
+      "quote": "adults aged 40 to 64",
+      "location": "What happened",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "incident_type": {
+      "value": "Harmful or incorrect recommendation",
+      "quote": "assigned a low urgency category",
+      "location": "What happened",
+      "confidence": 0.85,
+      "uncertain": false
+     },
+     "harm": {
+      "value": "Possible",
+      "quote": "harm was possible",
+      "location": "What happened",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "status": {
+      "value": "Open",
+      "quote": "Status: open",
+      "location": "Status",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "source_type": {
+      "value": "Incident report",
+      "quote": "Fictional incident report IR-7731",
+      "location": "line 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "source_reference": {
+      "value": "Fictional incident report IR-7731 (synthetic)",
+      "quote": "Fictional incident report IR-7731 (synthetic)",
+      "location": "line 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "reported_date": {
+      "value": "2026-09-20",
+      "quote": "reported 2026-09-20",
+      "location": "line 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "summary": {
+      "value": "Synthetic example: chest pain in adults 40 to 64 was triaged as low urgency in cases later diagnosed as heart attack; staff re-triaged before harm.",
+      "quote": "assigned a low urgency category in several cases",
+      "location": "What happened",
+      "confidence": 0.95,
+      "uncertain": false
+     }
+    }
+   ],
+   "notes": []
+  },
+  "E4": {
+   "records": [
+    {
+     "model_version": {
+      "value": "SynGPT-1.0",
+      "quote": "SynGPT-1.0 (Clinician Facing CDSS)",
+      "location": "paragraph 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "use_case": {
+      "value": "Clinician Facing CDSS",
+      "quote": "SynGPT-1.0 (Clinician Facing CDSS)",
+      "location": "paragraph 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "code": {
+      "value": "8A80",
+      "quote": "migraine",
+      "location": "paragraph 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "condition": {
+      "value": "Migraine",
+      "quote": "migraine",
+      "location": "paragraph 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "perf": {
+      "value": 0.71,
+      "quote": "an accuracy of 0.71",
+      "location": "paragraph 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "ci_low": {
+      "value": 0.64,
+      "quote": "95% CI 0.64 to 0.78",
+      "location": "paragraph 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "ci_high": {
+      "value": 0.78,
+      "quote": "95% CI 0.64 to 0.78",
+      "location": "paragraph 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_samples": {
+      "value": 300,
+      "quote": "over 300 consultations",
+      "location": "paragraph 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "source": {
+      "value": "Ostwick single-site pilot of SynGPT-1.0 as clinician-facing CDSS (fictional)",
+      "quote": "Ostwick single-site pilot of SynGPT-1.0 as clinician-facing CDSS (fictional)",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "study": {
+      "value": "OPS-2026-03",
+      "quote": "study OPS-2026-03",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "source_date": {
+      "value": "2026-07-14",
+      "quote": "2026-07-14",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_sites": {
+      "value": 1,
+      "quote": "At one clinic",
+      "location": "paragraph 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_studies": {
+      "value": 1,
+      "quote": "Ostwick single-site pilot",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "validation_type": {
+      "value": "Clinical study (single site)",
+      "quote": "single-site pilot",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     }
+    },
+    {
+     "model_version": {
+      "value": "SynGPT-1.0",
+      "quote": "SynGPT-1.0 (Clinician Facing CDSS)",
+      "location": "paragraph 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "use_case": {
+      "value": "Clinician Facing CDSS",
+      "quote": "SynGPT-1.0 (Clinician Facing CDSS)",
+      "location": "paragraph 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "code": {
+      "value": "ZZ99",
+      "quote": "local code ZZ99",
+      "location": "paragraph 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "condition": {
+      "value": "Grevell syndrome",
+      "quote": "Grevell syndrome",
+      "location": "paragraph 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "perf": {
+      "value": 0.66,
+      "quote": "the accuracy was 0.66",
+      "location": "paragraph 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_samples": {
+      "value": 40,
+      "quote": "over 40 consultations",
+      "location": "paragraph 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "source": {
+      "value": "Ostwick single-site pilot of SynGPT-1.0 as clinician-facing CDSS (fictional)",
+      "quote": "Ostwick single-site pilot of SynGPT-1.0 as clinician-facing CDSS (fictional)",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "study": {
+      "value": "OPS-2026-03",
+      "quote": "study OPS-2026-03",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "source_date": {
+      "value": "2026-07-14",
+      "quote": "2026-07-14",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_sites": {
+      "value": 1,
+      "quote": "At one clinic",
+      "location": "paragraph 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_studies": {
+      "value": 1,
+      "quote": "Ostwick single-site pilot",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "validation_type": {
+      "value": "Clinical study (single site)",
+      "quote": "single-site pilot",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     }
+    }
+   ],
+   "notes": [
+    "Grevell syndrome is described as a fictional condition."
+   ]
+  },
+  "E5": {
+   "records": [
+    {
+     "model_version": {
+      "value": "ICU_GPT-1.0",
+      "quote": "ICU_GPT-1.0 (function: CDSS)",
+      "location": "paragraph 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "use_case": {
+      "value": "CDSS",
+      "quote": "function: CDSS",
+      "location": "paragraph 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "code": {
+      "value": "CA40",
+      "quote": "flagged pneumonia",
+      "location": "paragraph 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "condition": {
+      "value": "Pneumonia",
+      "quote": "pneumonia",
+      "location": "paragraph 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "sex": {
+      "value": "Sex Female",
+      "quote": "a mostly female cohort",
+      "location": "paragraph 1",
+      "confidence": 0.4,
+      "uncertain": true,
+      "reason": "The cohort is mostly, not only, female; it may be the whole cohort."
+     },
+     "perf": {
+      "value": 0.7,
+      "quote": "a sensitivity of around 0.7",
+      "location": "paragraph 1",
+      "confidence": 0.6,
+      "uncertain": true,
+      "reason": "Approximate value (around 0.7)."
+     },
+     "n_samples": {
+      "value": 850,
+      "quote": "roughly 850 admissions",
+      "location": "paragraph 1",
+      "confidence": 0.6,
+      "uncertain": true,
+      "reason": "Approximate count."
+     },
+     "n_sites": {
+      "value": 3,
+      "quote": "three intensive care units",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_studies": {
+      "value": 1,
+      "quote": "Kestrel ICU retrospective review",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "validation_type": {
+      "value": "Clinical study (multisite)",
+      "quote": "three intensive care units",
+      "location": "title",
+      "confidence": 0.7,
+      "uncertain": false
+     },
+     "source": {
+      "value": "Kestrel ICU retrospective review of ICU_GPT-1.0 (fictional)",
+      "quote": "Kestrel ICU retrospective review of ICU_GPT-1.0 (fictional)",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "study": {
+      "value": "KIR-2026-11",
+      "quote": "study KIR-2026-11",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "source_date": {
+      "value": "2026-09-05",
+      "quote": "dated 2026-09-05",
+      "location": "title",
+      "confidence": 0.95,
+      "uncertain": false
+     }
+    }
+   ],
+   "notes": [
+    "No confidence interval is reported."
+   ]
+  },
+  "E6": {
+   "records": [
+    {
+     "model_version": {
+      "value": "SynGPT-1.0",
+      "quote": "SynGPT-1.0, discharge letter generation",
+      "location": "item 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "use_case": {
+      "value": "Discharge letter generation",
+      "quote": "discharge letter generation",
+      "location": "item 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "codes": {
+      "value": [
+       "5A11"
+      ],
+      "quote": "admissions for type 2 diabetes mellitus",
+      "location": "item 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "conditions": {
+      "value": [
+       "Type 2 diabetes mellitus"
+      ],
+      "quote": "type 2 diabetes mellitus",
+      "location": "item 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "incident_type": {
+      "value": "Fabricated content",
+      "quote": "(fabricated content)",
+      "location": "item 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "harm": {
+      "value": "None",
+      "quote": "No harm occurred",
+      "location": "item 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "status": {
+      "value": "Mitigated",
+      "quote": "the developer has mitigated the issue",
+      "location": "item 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "source_type": {
+      "value": "Developer notice",
+      "quote": "Fictional developer notice DN-31",
+      "location": "item 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "source_reference": {
+      "value": "Fictional developer notice DN-31 (synthetic)",
+      "quote": "Fictional developer notice DN-31 (synthetic)",
+      "location": "item 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "reported_date": {
+      "value": "2026-08-11",
+      "quote": "first reported 2026-08-11",
+      "location": "item 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "updated_date": {
+      "value": "2026-09-01",
+      "quote": "updated 2026-09-01",
+      "location": "item 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "summary": {
+      "value": "Synthetic example: draft discharge letters after type 2 diabetes admissions listed a medication that was never prescribed; mitigated with a new check.",
+      "quote": "listed a medication that was never prescribed",
+      "location": "item 1",
+      "confidence": 0.95,
+      "uncertain": false
+     }
+    },
+    {
+     "model_version": {
+      "value": "Nimbus-Notes-3",
+      "quote": "Nimbus Notes 3, a fictional letter-writing system",
+      "location": "item 2",
+      "confidence": 0.5,
+      "uncertain": true,
+      "reason": "Not one of the listed cards."
+     },
+     "use_case": {
+      "value": "Discharge letter generation",
+      "quote": "discharge letter",
+      "location": "item 2",
+      "confidence": 0.5,
+      "uncertain": false
+     },
+     "codes": {
+      "value": [
+       "CA40"
+      ],
+      "quote": "after pneumonia",
+      "location": "item 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "incident_type": {
+      "value": "Fabricated content",
+      "quote": "invented a follow-up appointment",
+      "location": "item 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "harm": {
+      "value": "Possible",
+      "quote": "Harm was possible",
+      "location": "item 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "status": {
+      "value": "Open",
+      "quote": "the case is open",
+      "location": "item 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "source_type": {
+      "value": "Incident report",
+      "quote": "Fictional incident report IR-8802",
+      "location": "item 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "source_reference": {
+      "value": "Fictional incident report IR-8802 (synthetic)",
+      "quote": "Fictional incident report IR-8802 (synthetic)",
+      "location": "item 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "reported_date": {
+      "value": "2026-09-14",
+      "quote": "reported 2026-09-14",
+      "location": "item 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "summary": {
+      "value": "Synthetic example: an invented follow-up appointment in a discharge letter.",
+      "quote": "invented a follow-up appointment",
+      "location": "item 2",
+      "confidence": 0.95,
+      "uncertain": false
+     }
+    }
+   ],
+   "notes": [
+    "Nimbus Notes 3 is not in the catalogue."
+   ]
+  },
+  "E7": {
+   "records": [
+    {
+     "model_version": {
+      "value": "SynGPT-2.0",
+      "quote": "SynGPT-2.0 generated discharge letters",
+      "location": "line 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "use_case": {
+      "value": "Discharge letter generation",
+      "quote": "SynGPT-2.0 generated discharge letters",
+      "location": "line 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "condition": {
+      "value": "Asthma",
+      "quote": "for asthma",
+      "location": "line 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "perf": {
+      "value": 0.88,
+      "quote": "in 0.88 of cases",
+      "location": "line 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "ci_low": {
+      "value": 0.84,
+      "quote": "95% CI 0.84 to 0.91",
+      "location": "line 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "ci_high": {
+      "value": 0.91,
+      "quote": "95% CI 0.84 to 0.91",
+      "location": "line 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_samples": {
+      "value": 512,
+      "quote": "512 letters",
+      "location": "line 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "source": {
+      "value": "Fernbrook letter quality study (fictional)",
+      "quote": "Fernbrook letter quality study (fictional)",
+      "location": "line 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "study": {
+      "value": "FLQ-2026-05",
+      "quote": "study FLQ-2026-05",
+      "location": "line 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "source_date": {
+      "value": "2026-09-28",
+      "quote": "dated 2026-09-28",
+      "location": "line 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_sites": {
+      "value": 2,
+      "quote": "two hospitals",
+      "location": "line 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_studies": {
+      "value": 1,
+      "quote": "Fernbrook letter quality study",
+      "location": "line 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "peer_reviewed_studies": {
+      "value": 1,
+      "quote": "peer reviewed",
+      "location": "line 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "validation_type": {
+      "value": "Clinical study (multisite)",
+      "quote": "two hospitals",
+      "location": "line 1",
+      "confidence": 0.95,
+      "uncertain": false
+     }
+    },
+    {
+     "model_version": {
+      "value": "SynGPT-2.0",
+      "quote": "SynGPT-2.0 generated discharge letters",
+      "location": "line 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "use_case": {
+      "value": "Discharge letter generation",
+      "quote": "SynGPT-2.0 generated discharge letters",
+      "location": "line 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "condition": {
+      "value": "Osteoarthritis of hip",
+      "quote": "for osteoarthritis of hip",
+      "location": "line 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "perf": {
+      "value": 0.81,
+      "quote": "in 0.81 of cases",
+      "location": "line 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "ci_low": {
+      "value": 0.76,
+      "quote": "95% CI 0.76 to 0.86",
+      "location": "line 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "ci_high": {
+      "value": 0.86,
+      "quote": "95% CI 0.76 to 0.86",
+      "location": "line 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_samples": {
+      "value": 290,
+      "quote": "290 letters",
+      "location": "line 2",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "source": {
+      "value": "Fernbrook letter quality study (fictional)",
+      "quote": "Fernbrook letter quality study (fictional)",
+      "location": "line 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "study": {
+      "value": "FLQ-2026-05",
+      "quote": "study FLQ-2026-05",
+      "location": "line 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "source_date": {
+      "value": "2026-09-28",
+      "quote": "dated 2026-09-28",
+      "location": "line 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_sites": {
+      "value": 2,
+      "quote": "two hospitals",
+      "location": "line 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "n_studies": {
+      "value": 1,
+      "quote": "Fernbrook letter quality study",
+      "location": "line 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "peer_reviewed_studies": {
+      "value": 1,
+      "quote": "peer reviewed",
+      "location": "line 1",
+      "confidence": 0.95,
+      "uncertain": false
+     },
+     "validation_type": {
+      "value": "Clinical study (multisite)",
+      "quote": "two hospitals",
+      "location": "line 1",
+      "confidence": 0.95,
+      "uncertain": false
+     }
+    }
+   ],
+   "notes": []
+  }
+ }
+}

@@ -1,0 +1,152 @@
+/* One mark per state: the shapes StatusMark.js draws, and the
+   same states as bands in the status strip and the scope track. Tokens:
+   tokens.css --mark-*. Nothing else styles a status mark. */
+
+.status-mark {
+  flex: none;
+  display: inline-block;
+  overflow: visible;
+}
+
+.mark {
+  vector-effect: non-scaling-stroke;
+}
+
+/* Results: a fill with a 1px darker edge. */
+.mark-fill,
+.mark-alert {
+  stroke-width: var(--mark-edge-width);
+}
+
+.mark-fill.tone-strong { fill: var(--tone-strong); stroke: var(--tone-strong-edge); }
+.mark-fill.tone-moderate { fill: var(--tone-moderate); stroke: var(--tone-moderate-edge); }
+.mark-fill.tone-weak { fill: var(--tone-weak); stroke: var(--tone-weak-edge); }
+
+/* Safety incidents: the vivid yellow and coral, never a result's fill (status.js keeps
+   the tones moderate and weak for Caution and Serious words). */
+.mark-alert.tone-moderate { fill: var(--alert-caution); stroke: var(--alert-caution-edge); }
+.mark-alert.tone-weak { fill: var(--alert-serious); stroke: var(--alert-serious-edge); }
+
+/* Scope (Intended use): In scope filled, Partly in scope a pale disc whose
+   left half is filled (audit A22). */
+.mark-fill.tone-scope { fill: var(--scope-in); stroke: var(--scope-in-edge); }
+
+.mark-half {
+  fill: var(--scope-partly);
+  stroke: var(--scope-partly-edge);
+  stroke-width: var(--mark-edge-width);
+}
+
+.mark-glyph-half { fill: var(--scope-in); }
+
+/* A subchapter's weak centre (RingCores.jsx, the legend's sample) keeps its
+   mark's own 1px edge and no white ring (2026-10-15). */
+
+/* Absence: one grey family. */
+.mark-outline {
+  fill: var(--mark-outline-fill);
+  stroke: var(--mark-outline);
+  stroke-width: var(--mark-stroke-width);
+}
+
+.mark-barred {
+  fill: var(--mark-barred);
+  stroke: var(--mark-barred-edge);
+  stroke-width: var(--mark-edge-width);
+}
+
+/* No mapping (another ontology, contract v1.13): the No data disc struck
+   through by a thin diagonal (⊘, nothing to map to), never the horizontal
+   bar of Out of scope. */
+.mark-slashed {
+  fill: var(--mark-outline-fill);
+  stroke: var(--mark-outline);
+  stroke-width: var(--mark-stroke-width);
+}
+
+/* The disc stays as the pointer target and the hover outline; only the dot shows. */
+.mark-dot {
+  fill: transparent;
+  stroke: none;
+}
+
+.mark-pale {
+  fill: var(--mark-pale);
+  stroke: none;
+}
+
+.mark-quiet {
+  fill: var(--mark-quiet);
+  stroke: var(--mark-quiet-edge);
+  stroke-width: var(--mark-edge-width);
+}
+
+.mark-glyph {
+  pointer-events: none;
+}
+
+.mark-glyph-bar { fill: var(--mark-bar); }
+.mark-glyph-dot { fill: var(--mark-dot); }
+.mark-glyph-slash { fill: var(--mark-bar); }
+
+/* Caution: a dark "!" on bright orange-amber (8.3:1), Serious: a white "!" on neon coral (3.1:1). */
+.mark-glyph-alert.tone-moderate { fill: var(--ink); }
+.mark-glyph-alert.tone-weak { fill: var(--card); }
+
+/* The same states as bands (status strip, active scope step). */
+.strip-fill.tone-strong { background: var(--tone-strong); }
+.strip-fill.tone-moderate { background: var(--tone-moderate); }
+.strip-fill.tone-weak { background: var(--tone-weak); }
+.strip-fill.tone-scope { background: var(--scope-in); }
+
+.strip-half {
+  box-sizing: border-box;
+  background: linear-gradient(90deg, var(--scope-in) 50%, var(--scope-partly) 50%);
+  border: var(--mark-edge-width) solid var(--scope-partly-edge);
+}
+
+/* Safety view: quiet grey for No reported incidents, the vivid fills for Caution and Serious. */
+.strip-quiet {
+  box-sizing: border-box;
+  background: var(--mark-quiet);
+  border: var(--mark-edge-width) solid var(--mark-quiet-edge);
+}
+.strip-alert.tone-moderate { background: var(--alert-caution); }
+.strip-alert.tone-weak { background: var(--alert-serious); }
+
+.strip-barred {
+  box-sizing: border-box;
+  background: linear-gradient(var(--mark-bar), var(--mark-bar)) center / 100% 2px no-repeat, var(--mark-barred);
+  border: var(--mark-edge-width) solid var(--mark-barred-edge);
+}
+
+.strip-outline {
+  box-sizing: border-box;
+  background: var(--mark-outline-fill);
+  border: var(--mark-stroke-width) solid var(--mark-outline);
+}
+
+.strip-slashed {
+  box-sizing: border-box;
+  background: repeating-linear-gradient(-45deg, var(--mark-outline-fill) 0 4px, var(--mark-bar) 4px 5px);
+  border: var(--mark-stroke-width) solid var(--mark-outline);
+}
+
+/* A range chart without a value: the state's mark and word instead of a track. */
+.range-absent-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 16px;
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--absent-ink);
+}
+
+.range-regular.range-absent {
+  padding-block: 4px 2px;
+}
+
+.range-absent-meaning {
+  font-weight: 400;
+}

@@ -1,0 +1,430 @@
+/* Page reset, app shell, typography defaults, and shared controls. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-sans);
+  font-size: 100%;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* Every page keeps the scrollbar's gutter, scrolling or not, so the shared
+     header's parts sit in the same place on every page. */
+  scrollbar-gutter: stable;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  font-size: var(--fs-body);
+}
+
+/* A modal dialog is open (features/label/dialogFocus.js lockPageScroll): the
+   page behind it stays still. The gutter is kept, so nothing shifts. */
+html.has-modal {
+  overflow: hidden;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+dl,
+dd {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+::selection {
+  background: var(--selection);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+input {
+  caret-color: var(--accent);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar) transparent;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.code,
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.code {
+  color: var(--ink-3);
+  letter-spacing: 0.01em;
+}
+
+.muted {
+  color: var(--ink-3);
+}
+
+/* App shell: toolbar over a two-column workspace. */
+.app-shell {
+  height: 100vh;
+  display: grid;
+  /* At least the toolbar's height; more when its rows wrap (enlarged text). */
+  grid-template-rows: auto minmax(0, 1fr);
+}
+
+.workspace {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--side-width);
+  gap: var(--sp-4);
+  padding: var(--sp-4);
+}
+
+.side-column {
+  /* The containing block of absolutely placed content inside (a visually
+     hidden table caption): without it such content escaped the scroller,
+     made the page itself scroll, and a click in the card moved the toolbar. */
+  position: relative;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  display: grid;
+  align-content: start;
+  gap: var(--sp-3);
+  padding: 2px 2px var(--sp-4);
+  margin: -2px;
+}
+
+/* The bottom sheet's grabber (below 1100px, responsive.css). */
+.sheet-grabber {
+  display: none;
+}
+
+/* Keyboard shortcut chips. */
+.shortcut {
+  font-family: var(--font-sans);
+  font-size: var(--fs-caption);
+  font-weight: 500;
+  color: var(--ink-2);
+  background: var(--fill);
+  border-radius: var(--r-small);
+  padding: 1px 6px;
+  line-height: 1.4;
+}
+
+/* Segmented control: grey track, the active segment raised in white. */
+.segmented {
+  display: inline-flex;
+  padding: 2px;
+  border-radius: var(--r-control);
+  background: var(--fill);
+  gap: 2px;
+}
+
+.segment {
+  border: 0;
+  background: transparent;
+  border-radius: var(--r-segment);
+  padding: 5px 13px;
+  font-size: var(--fs-footnote);
+  font-weight: 500;
+  color: var(--ink-2);
+  white-space: nowrap;
+  transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+
+.segment:hover:not(.is-active):not(.is-disabled) {
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+/* A segment that does not apply here (an Intended use view on a card without
+   a statement): visible, quiet, and it says why in its tooltip. */
+.segment.is-disabled {
+  color: color-mix(in srgb, var(--ink-3) 65%, var(--ink-2)); /* ≥4.8:1 on the track */
+  cursor: not-allowed;
+}
+
+.segment.is-active {
+  background: var(--card);
+  color: var(--ink);
+  font-weight: 600;
+  box-shadow: var(--shadow-segment);
+}
+
+.segmented-small .segment {
+  padding: 3px 10px;
+  font-size: var(--fs-caption);
+}
+
+/* Buttons. */
+.button-filled,
+.button-tinted,
+.button-plain,
+.button-back,
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 0;
+  border-radius: var(--r-control);
+  font-size: var(--fs-body);
+  font-weight: 500;
+  line-height: 1.2;
+  transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+
+.button-filled {
+  background: var(--accent);
+  color: var(--on-accent);
+  padding: 9px 16px;
+}
+
+.button-filled:hover {
+  background: var(--accent-hover);
+}
+
+.button-tinted {
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 9px 14px;
+}
+
+.button-tinted:hover {
+  background: var(--accent-soft-hover);
+}
+
+.button-block {
+  width: 100%;
+}
+
+.button-plain {
+  background: transparent;
+  color: var(--accent);
+  padding: 6px 8px;
+}
+
+.button-plain:hover:not(:disabled) {
+  background: var(--accent-soft);
+}
+
+.button-plain:disabled {
+  color: var(--ink-3);
+}
+
+.button-back {
+  background: transparent;
+  color: var(--accent);
+  padding: 4px 8px 4px 2px;
+  font-size: var(--fs-callout);
+}
+
+.button-back:hover {
+  background: var(--accent-soft);
+}
+
+.icon-button {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--fill);
+  color: var(--ink-2);
+}
+
+.icon-button:hover {
+  background: var(--fill-strong);
+  color: var(--ink);
+}
+
+/* A command to type, shown in failure states (atlas and Data Library). */
+.ring-state-command {
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--fill);
+  border-radius: var(--r-small);
+  padding: 4px 10px;
+  user-select: all;
+}
+
+.button-row {
+  display: flex;
+  gap: var(--sp-1);
+}
+
+/* Form fields (Population popover). */
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field-label {
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+/* A label with its help beside it (HelpTip.js). */
+.field-label-row {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  min-width: 0;
+}
+
+.select-wrap {
+  position: relative;
+  display: block;
+}
+
+.select-wrap select {
+  appearance: none;
+  width: 100%;
+  border: 0;
+  border-radius: var(--r-control);
+  background: var(--fill);
+  padding: 8px 32px 8px 12px;
+  font-size: var(--fs-body);
+}
+
+.select-wrap select:hover:not(:disabled) {
+  background: var(--fill-strong);
+}
+
+/* A choice that is fixed for now (the static demo's population in another classification, R7). */
+.select-wrap select:disabled {
+  color: var(--ink-3);
+  cursor: not-allowed;
+}
+
+.select-chevron {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--ink-3);
+}
+
+/* Status words and dots: one vocabulary everywhere. */
+.status-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.status-label-large {
+  font-size: var(--fs-headline);
+  gap: 8px;
+}
+
+.status-label.is-toned.tone-strong .status-word { color: var(--tone-strong-ink); }
+.status-label.is-toned.tone-moderate .status-word { color: var(--tone-moderate-ink); }
+.status-label.is-toned.tone-scope .status-word { color: var(--scope-in-ink); }
+.status-label.is-toned.tone-weak .status-word { color: var(--tone-weak-ink); }
+.status-label.is-toned.tone-absent .status-word { color: var(--absent-ink); }
+
+.grade-chip {
+  display: inline-grid;
+  place-items: center;
+  min-width: 22px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: var(--r-small);
+  background: var(--fill);
+  color: var(--ink-2);
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Skeletons for loading lists. */
+.skeleton-line,
+.skeleton-dot {
+  display: block;
+  background: var(--fill);
+  border-radius: var(--r-small);
+  animation: skeleton-pulse 1.4s ease-in-out infinite;
+}
+
+.skeleton-line {
+  height: 12px;
+  width: 60%;
+}
+
+.skeleton-line.is-wide {
+  width: 85%;
+  height: 14px;
+}
+
+.skeleton-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+
+@keyframes skeleton-pulse {
+  50% {
+    opacity: 0.55;
+  }
+}
+
+/* Reduced motion: loading shapes hold still; their grey shape says "loading". */
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-line,
+  .skeleton-dot {
+    animation: none;
+  }
+}

@@ -1,0 +1,2670 @@
+/* Data Library (admin): a Settings-style sidebar of data sets and one page per
+   data set whose update flow reads top to bottom as steps. Same tokens and
+   rules as the atlas: white inset cards on the grouped ground, hairlines, big
+   tabular figures, blue only for what can be pressed, status colours only for
+   results, cautions, and errors. */
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 2px;
+}
+
+a[class^='button-'],
+a[class*=' button-'] {
+  text-decoration: none;
+}
+
+.admin-shell {
+  min-height: calc(100vh - var(--header-height));
+  display: grid;
+  grid-template-columns: 272px minmax(0, 1fr);
+}
+
+/* Sidebar: grouped lists, each row with its version and date, under the
+   shared header (AppHeader.jsx). */
+.admin-sidebar {
+  position: sticky;
+  top: var(--header-height);
+  height: calc(100vh - var(--header-height));
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding: var(--sp-5) var(--sp-3) var(--sp-4) var(--sp-4);
+  border-right: 1px solid var(--hairline);
+}
+
+/* Nothing in the sidebar shrinks: when the window is short, the sidebar scrolls. */
+.admin-sidebar > * {
+  flex-shrink: 0;
+}
+
+.sidebar-heading {
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  color: var(--ink-3);
+  padding: var(--sp-2) var(--sp-3) 0;
+}
+
+.sidebar-group {
+  background: var(--card);
+  border-radius: var(--r-card);
+  overflow: hidden;
+}
+
+.sidebar-group li {
+  position: relative;
+}
+
+/* Hairlines between rows start under the text, as in a grouped list. */
+.sidebar-group li + li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 46px;
+  right: 0;
+  height: 1px;
+  background: var(--hairline);
+}
+
+.sidebar-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: 10px var(--sp-3);
+  color: var(--ink);
+  text-decoration: none;
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.sidebar-row:hover {
+  background: var(--row-hover);
+}
+
+.sidebar-row.is-current {
+  background: var(--accent-soft);
+}
+
+.sidebar-row:focus-visible {
+  outline-offset: -2px;
+}
+
+.sidebar-icon {
+  flex: none;
+  color: var(--ink-2);
+}
+
+.sidebar-row.is-current .sidebar-icon {
+  color: var(--accent);
+}
+
+.sidebar-text {
+  min-width: 0;
+  flex: 1;
+  display: grid;
+}
+
+.sidebar-title-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+}
+
+.sidebar-title {
+  font-size: var(--fs-callout);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.sidebar-detail {
+  font-size: var(--fs-caption);
+  font-weight: 500;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  /* Wraps rather than cutting the date ("Changed in version 10, 13 …"). */
+  overflow-wrap: anywhere;
+}
+
+.sidebar-row.is-current .sidebar-detail {
+  color: var(--ink-2);
+}
+
+.sidebar-badge {
+  flex: none;
+  height: 20px;
+  display: inline-grid;
+  place-items: center;
+  padding: 0 8px;
+  white-space: nowrap;
+  border-radius: var(--r-pill);
+  background: var(--fill);
+  color: var(--ink);
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Page column. */
+.admin-main {
+  min-width: 0;
+  padding: var(--sp-8) var(--sp-8) 64px;
+}
+
+.admin-page {
+  /* About 880px of content inside the cards at 1440px; prose keeps its own measure (68ch). */
+  max-width: 960px;
+  display: grid;
+  /* One column that never grows past the page for a wide child (a nowrap segmented control at 375px). */
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sp-4);
+}
+
+.admin-page-header {
+  display: grid;
+  gap: var(--sp-1);
+  margin-bottom: var(--sp-2);
+}
+
+.admin-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-title1);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.admin-subtitle {
+  font-size: var(--fs-body);
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+  max-width: 68ch;
+}
+
+.admin-card {
+  background: var(--card);
+  border-radius: var(--r-card);
+  padding: var(--sp-5);
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.admin-card-title {
+  font-size: var(--fs-headline);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.admin-card-text {
+  font-size: var(--fs-body);
+  color: var(--ink-2);
+  line-height: 1.45;
+  max-width: 68ch;
+}
+
+.inline-icon {
+  vertical-align: -4px;
+  color: var(--ink-3);
+}
+
+/* Big figures: the number large and tabular, its unit small and grey. */
+.figure-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-8);
+  margin: 0;
+}
+
+.figure-cell {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 2px;
+}
+
+.figure-cell dd {
+  margin: 0;
+}
+
+.figure {
+  font-family: var(--font-display);
+  font-size: var(--fs-figure);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.figure-unit {
+  font-size: var(--fs-footnote);
+  font-weight: 500;
+  color: var(--ink-3);
+}
+
+.figure-cell.is-caution .figure {
+  color: var(--tone-moderate-ink);
+}
+
+.figure-caption {
+  font-size: var(--fs-footnote);
+  color: var(--ink-3);
+  margin-top: calc(var(--sp-2) * -1);
+}
+
+.figure-line {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+/* Local population picker (contract v1.10). */
+.population-draft {
+  padding-top: var(--sp-1);
+}
+
+.population-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-6);
+  margin: 0;
+}
+
+.population-facts div {
+  display: grid;
+  gap: 2px;
+}
+
+.population-facts dt {
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.population-facts dd {
+  margin: 0;
+  font-size: var(--fs-body);
+}
+
+.population-actions {
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--hairline);
+}
+
+/* The aggregate-only rule of local populations, on a patient_level_data problem. */
+.issue-rule {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  justify-self: start;
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  color: var(--tone-weak-ink);
+}
+
+/* Model × use case picker. */
+.target-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--sp-3);
+}
+
+.target-waiting {
+  display: grid;
+  gap: var(--sp-1);
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--hairline);
+}
+
+.target-waiting-label {
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.target-waiting ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1) var(--sp-2);
+}
+
+.target-waiting-status {
+  color: var(--ink-3);
+  font-weight: 500;
+  font-size: var(--fs-footnote);
+}
+
+/* Steps: one card per step; the order carries meaning, so each shows its number. */
+.step-list {
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.step-card {
+  background: var(--card);
+  border-radius: var(--r-card);
+}
+
+.step-heading {
+  font-size: inherit;
+}
+
+.step-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-4) var(--sp-5);
+  border: 0;
+  border-radius: var(--r-card);
+  background: transparent;
+  text-align: left;
+  color: var(--ink);
+}
+
+.step-header:disabled {
+  cursor: default;
+}
+
+.step-header:not(:disabled):hover {
+  background: var(--row-hover);
+}
+
+.step-glyph {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: var(--fs-footnote);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.step-glyph.is-waiting {
+  color: var(--ink-3);
+  box-shadow: inset 0 0 0 1.5px var(--absent-faint);
+}
+
+.step-glyph.is-ready {
+  color: var(--ink-2);
+  box-shadow: inset 0 0 0 1.5px var(--ink-3);
+}
+
+.step-glyph.is-current,
+.step-glyph.is-working {
+  color: var(--ink);
+  box-shadow: inset 0 0 0 2px var(--ink);
+}
+
+.step-glyph.is-working {
+  animation: step-working 1.4s ease-in-out infinite;
+}
+
+.step-glyph.is-done {
+  color: var(--card);
+  background: var(--ink);
+}
+
+.step-glyph.is-fix {
+  color: var(--tone-weak-ink);
+  background: var(--tone-weak-zone);
+}
+
+@keyframes step-working {
+  50% {
+    box-shadow: inset 0 0 0 2px var(--ink-3);
+  }
+}
+
+.step-title {
+  flex: 1;
+  font-size: var(--fs-headline);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.step-card.is-waiting .step-title {
+  color: var(--ink-2);
+  font-weight: 500;
+}
+
+.step-state {
+  font-size: var(--fs-footnote);
+  font-weight: 500;
+  color: var(--ink-3);
+}
+
+.step-card.is-fix .step-state {
+  color: var(--tone-weak-ink);
+  font-weight: 600;
+}
+
+.step-chevron {
+  color: var(--ink-3);
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.step-card.is-open .step-chevron {
+  transform: rotate(180deg);
+}
+
+.step-summary {
+  margin-top: calc(var(--sp-3) * -1);
+  padding: 0 var(--sp-5) var(--sp-4) calc(var(--sp-5) + 30px + var(--sp-3));
+  font-size: var(--fs-footnote);
+  color: var(--ink-2);
+}
+
+.step-body {
+  display: grid;
+  gap: var(--sp-4);
+  padding: 0 var(--sp-5) var(--sp-5) calc(var(--sp-5) + 30px + var(--sp-3));
+  animation: step-unfold var(--dur) var(--ease-out);
+}
+
+@keyframes step-unfold {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+.step-body > .segmented {
+  justify-self: start;
+}
+
+.step-text {
+  font-size: var(--fs-body);
+  line-height: 1.45;
+  color: var(--ink-2);
+  max-width: 68ch;
+}
+
+.step-text strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.step-subtitle {
+  font-size: var(--fs-callout);
+  font-weight: 600;
+  margin-top: var(--sp-2);
+}
+
+/* Inset rows (templates, shifts, history). */
+.admin-list {
+  border-radius: var(--r-control);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+}
+
+.admin-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+}
+
+.admin-row + .admin-row {
+  border-top: 1px solid var(--hairline);
+}
+
+.admin-row-icon {
+  flex: none;
+  color: var(--ink-2);
+}
+
+.admin-row-icon.is-quiet {
+  color: var(--ink-3);
+}
+
+.admin-row-main {
+  min-width: 0;
+  flex: 1;
+  display: grid;
+  gap: 2px;
+}
+
+.admin-row-title {
+  font-size: var(--fs-callout);
+  font-weight: 600;
+}
+
+.admin-row-text {
+  font-size: var(--fs-footnote);
+  color: var(--ink-2);
+}
+
+/* Upload. */
+.drop-zone {
+  display: grid;
+  justify-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-6) var(--sp-4);
+  border-radius: var(--r-card);
+  background: var(--row-hover);
+  box-shadow: inset 0 0 0 1.5px var(--hairline-strong);
+  text-align: center;
+  transition: background-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.drop-zone.is-over {
+  background: var(--accent-soft);
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+.drop-zone.is-disabled {
+  background: var(--fill);
+}
+
+.drop-zone-icon {
+  color: var(--ink-3);
+}
+
+.drop-zone-text {
+  font-size: var(--fs-body);
+  color: var(--ink-2);
+}
+
+.button-filled:disabled,
+.button-tinted:disabled {
+  background: var(--fill);
+  color: var(--ink-3);
+  cursor: default;
+}
+
+.button-plain.is-destructive {
+  color: var(--tone-weak-ink);
+}
+
+.button-plain.is-destructive:hover:not(:disabled) {
+  background: var(--tone-weak-zone);
+}
+
+/* A confirmation that deletes (Remove population) speaks in the error voice. */
+.button-filled.is-destructive:not(:disabled) {
+  background: var(--tone-weak-zone);
+  color: var(--tone-weak-ink);
+}
+
+.button-filled.is-destructive:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--tone-weak-zone) 82%, var(--tone-weak-ink));
+}
+
+.replace-prompt {
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.replace-prompt-title {
+  font-size: var(--fs-callout);
+  font-weight: 600;
+}
+
+.discard-confirm {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-1);
+  font-size: var(--fs-footnote);
+  color: var(--ink-2);
+}
+
+/* Notices: caution (amber), error (coral), info (neutral). */
+.admin-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-card);
+  font-size: var(--fs-footnote);
+  line-height: 1.45;
+}
+
+.admin-notice-icon {
+  flex: none;
+  margin-top: 1px;
+}
+
+.admin-notice-text {
+  flex: 1;
+  display: grid;
+  gap: 2px;
+}
+
+.admin-notice-title {
+  font-size: var(--fs-callout);
+  font-weight: 600;
+}
+
+.admin-notice-detail {
+  color: var(--ink-2);
+}
+
+.admin-notice-actions {
+  flex: none;
+  display: flex;
+  gap: var(--sp-1);
+}
+
+.admin-notice.is-caution {
+  background: var(--tone-moderate-zone);
+  color: var(--ink);
+}
+
+.admin-notice.is-caution .admin-notice-icon,
+.admin-notice.is-caution strong,
+.admin-notice.is-caution .admin-notice-title {
+  color: var(--tone-moderate-ink);
+}
+
+.admin-notice.is-error {
+  background: var(--tone-weak-zone);
+  color: var(--ink);
+}
+
+.admin-notice.is-error .admin-notice-icon,
+.admin-notice.is-error .admin-notice-title {
+  color: var(--tone-weak-ink);
+}
+
+.admin-notice.is-info {
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--hairline-strong);
+}
+
+/* Check. */
+.check-progress {
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.progress {
+  height: 8px;
+  border-radius: var(--r-pill);
+  background: var(--fill);
+  overflow: hidden;
+}
+
+.progress-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+  transform-origin: left center;
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.check-result {
+  display: grid;
+  gap: var(--sp-1);
+}
+
+.check-result.is-fix .figure {
+  color: var(--tone-weak-ink);
+}
+
+.marked-files {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-1) var(--sp-2);
+  font-size: var(--fs-footnote);
+  color: var(--ink-2);
+}
+
+.issue-list {
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.issue-group {
+  display: grid;
+  gap: var(--sp-2);
+  padding: var(--sp-4);
+  border-radius: var(--r-control);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+}
+
+.issue-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-3);
+}
+
+.issue-count {
+  flex: none;
+  min-width: 28px;
+  padding: 1px 8px;
+  border-radius: var(--r-pill);
+  background: var(--tone-weak-zone);
+  color: var(--tone-weak-ink);
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.issue-count.is-note {
+  background: var(--fill);
+  color: var(--ink-2);
+}
+
+.issue-message {
+  font-size: var(--fs-callout);
+  font-weight: 600;
+}
+
+.issue-fix {
+  font-size: var(--fs-body);
+  color: var(--ink-2);
+  max-width: 68ch;
+}
+
+.issue-fix-label {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.issue-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-footnote);
+}
+
+.issue-table th {
+  text-align: left;
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--ink-2);
+  padding: 6px 10px 6px 0;
+  border-bottom: 1px solid var(--hairline-strong);
+}
+
+.issue-table td {
+  padding: 6px 10px 6px 0;
+  border-bottom: 1px solid var(--hairline);
+  vertical-align: top;
+  color: var(--ink);
+}
+
+.issue-value {
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.issue-more {
+  justify-self: start;
+}
+
+.issue-footnote {
+  font-size: var(--fs-caption);
+  color: var(--ink-3);
+}
+
+/* Changes. */
+.change-names {
+  display: grid;
+  gap: 2px;
+  font-size: var(--fs-body);
+}
+
+.change-names-title {
+  font-weight: 600;
+}
+
+.shift-groups {
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.shift-groups.is-compact .shift-row {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.shift-groups.is-compact .shift-count {
+  min-width: 44px;
+  font-size: var(--fs-callout);
+}
+
+.shift-groups.is-compact .shift-move {
+  font-size: var(--fs-body);
+}
+
+.shift-group {
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.shift-view {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-callout);
+  font-weight: 600;
+}
+
+.tint-overall { color: var(--tint-overall); }
+.tint-performance { color: var(--tint-performance); }
+.tint-evidence { color: var(--tint-evidence); }
+.tint-intended_use { color: var(--tint-intended_use); }
+
+.shift-row {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.shift-count {
+  flex: none;
+  min-width: 64px;
+  font-size: var(--fs-title3);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.shift-move {
+  flex: 1;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-callout);
+  font-weight: 600;
+}
+
+.shift-word {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.shift-arrow {
+  color: var(--ink-3);
+}
+
+/* The rows behind the counts, by name (contract v1.4 samples). */
+.named-changes {
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.named-list {
+  display: grid;
+  gap: 2px;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Shifts per model and use case (prevalence). */
+.target-groups {
+  display: grid;
+  gap: var(--sp-5);
+}
+
+.target-groups.is-compact {
+  gap: var(--sp-3);
+}
+
+.target-group {
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.target-group + .target-group {
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--hairline);
+}
+
+.target-title {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  font-size: var(--fs-headline);
+  font-weight: 700;
+}
+
+.target-count {
+  font-size: var(--fs-footnote);
+  font-weight: 500;
+}
+
+.skeleton-block {
+  display: grid;
+  gap: var(--sp-2);
+}
+
+/* Results after publish or rollback. */
+.result-card {
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: var(--sp-3);
+}
+
+.result-card > :not(.result-glyph) {
+  grid-column: 2;
+}
+
+.result-glyph {
+  grid-row: span 3;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--card);
+}
+
+/* Confirmation sheet. */
+.sheet {
+  width: min(560px, calc(100vw - 32px));
+  overflow-y: auto;
+  max-height: calc(100vh - 64px);
+  padding: var(--sp-6);
+  border: 0;
+  border-radius: var(--r-pane);
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: var(--shadow-pop);
+}
+
+.sheet[open] {
+  display: grid;
+  gap: var(--sp-4);
+  animation: sheet-rise var(--dur) var(--ease-out);
+}
+
+.sheet::backdrop {
+  background: var(--scrim);
+}
+
+@keyframes sheet-rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+}
+
+/* A title that takes the focus when its sheet or result opens is a reading
+   start, not a control: no input-like focus box around a heading (S8). */
+.sheet-title:focus,
+.result-card .admin-card-title:focus {
+  outline: none;
+}
+
+.sheet-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-title3);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.sheet-body {
+  display: grid;
+  gap: var(--sp-3);
+  font-size: var(--fs-body);
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+.sheet-summary {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* What a restore takes back: the later versions of the data set, by their
+   History summary and note, before anything is published. */
+.restore-undone {
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.restore-undone-list {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-radius: var(--r-control);
+  box-shadow: inset 0 0 0 1px var(--hairline-strong);
+}
+
+.restore-undone-list li {
+  padding: var(--sp-2) var(--sp-3);
+  font-size: var(--fs-footnote);
+  color: var(--ink);
+}
+
+.restore-undone-list li + li {
+  border-top: 1px solid var(--hairline);
+}
+
+.restore-undone-version {
+  font-weight: 700;
+}
+
+.restore-undone-note,
+.restore-undone-more,
+.restore-undone-none {
+  color: var(--ink-2);
+  font-size: var(--fs-footnote);
+}
+
+.sheet-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--sp-2);
+}
+
+.radio-group {
+  display: grid;
+  gap: var(--sp-1);
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.radio-group legend {
+  padding: 0;
+  margin-bottom: var(--sp-2);
+  color: var(--ink);
+}
+
+.radio-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 6px 0;
+  color: var(--ink);
+}
+
+.radio-row input {
+  accent-color: var(--accent);
+  width: 16px;
+  height: 16px;
+  margin: 0;
+}
+
+/* History. Six filters outgrow a phone: the control scrolls sideways
+   instead of widening the page. */
+/* The data set filter: one select, as wide as its longest choice. */
+.history-filter {
+  justify-self: start;
+  width: min(20rem, 100%);
+}
+
+.history-list {
+  background: var(--card);
+  box-shadow: none;
+  border-radius: var(--r-card);
+}
+
+.history-version {
+  flex: none;
+  width: 120px;
+  display: grid;
+  gap: 4px;
+  justify-items: start;
+}
+
+.history-number {
+  font-size: var(--fs-callout);
+  font-weight: 700;
+}
+
+.live-chip {
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--fill);
+  border-radius: var(--r-pill);
+  padding: 1px 8px;
+}
+
+.history-current {
+  font-size: var(--fs-footnote);
+  padding: 0 var(--sp-2);
+}
+
+/* Failure state. */
+.admin-state {
+  justify-items: start;
+  padding-top: var(--sp-8);
+}
+
+.admin-state-icon {
+  color: var(--tone-weak-ink);
+}
+
+/* Narrow windows: the sidebar becomes a band above the page. */
+@media (max-width: 899px) {
+  .admin-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-sidebar {
+    position: static;
+    height: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--hairline);
+    padding: var(--sp-4);
+  }
+
+  /* The data sets become a compact grid, so the chosen page starts on the
+     first screen. Hairlines become the grid's gaps. */
+  .admin-sidebar {
+    gap: var(--sp-2);
+  }
+
+  .sidebar-group.is-datasets {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--hairline);
+  }
+
+  .sidebar-group.is-datasets li {
+    background: var(--card);
+  }
+
+  .sidebar-group.is-datasets li + li::before {
+    content: none;
+  }
+
+  .sidebar-group.is-datasets .sidebar-row {
+    height: 100%;
+    align-items: flex-start;
+    gap: var(--sp-2);
+    padding: var(--sp-3);
+  }
+
+  .sidebar-group.is-datasets .sidebar-title-line {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    row-gap: 2px;
+  }
+
+  .admin-main {
+    padding: var(--sp-5) var(--sp-4) 48px;
+  }
+
+  .step-body,
+  .step-summary {
+    padding-left: var(--sp-5);
+  }
+
+  .target-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .history-row,
+  .admin-row {
+    flex-wrap: wrap;
+  }
+
+  .admin-row-main {
+    flex-basis: calc(100% - 40px);
+  }
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+  .sidebar-group.is-datasets {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Reduced motion, the Data Library's one rule: nothing slides, scales,
+   rotates, or keeps pulsing. Steps and sheets appear in place, the chevron
+   and the progress bar take their end state at once, and a working step keeps
+   its ring without the pulse, so every state change still shows. Colour
+   changes (hover, pressed) keep their short fade. */
+@media (prefers-reduced-motion: reduce) {
+  .step-body,
+  .sheet[open],
+  .step-glyph.is-working {
+    animation: none;
+  }
+
+  .step-chevron,
+  .progress-fill {
+    transition: none;
+  }
+}
+
+/* Template help: the optional columns of a template, as a short list. */
+.template-notes {
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.template-notes .step-subtitle {
+  margin-top: 0;
+}
+
+.template-note-list {
+  display: grid;
+  gap: var(--sp-2);
+  max-width: 68ch;
+  padding-left: 1.1em;
+  font-size: var(--fs-body);
+  line-height: 1.45;
+  color: var(--ink-2);
+  list-style: disc;
+}
+
+.template-note-list li::marker {
+  color: var(--ink-3);
+}
+
+/* One-record forms, merge choice, and change notes (S3, contract v1.7).
+   Fields are Inset Fill wells like the selects: no stroke, 9px corners, a
+   Footnote 600 label above. Problems speak in the coral error ink, hints in
+   Ink Tertiary. The only status colour on a form is the severity line. */
+.step-body > .entry-switch {
+  justify-self: start;
+  max-width: 100%;
+}
+
+.text-input {
+  width: 100%;
+  border: 0;
+  border-radius: var(--r-control);
+  background: var(--fill);
+  color: var(--ink);
+  padding: 8px 12px;
+  font: inherit;
+  font-size: var(--fs-body);
+  line-height: 1.35;
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.text-input:hover {
+  background: var(--fill-strong);
+}
+
+.text-input:focus {
+  background: var(--card);
+  box-shadow: inset 0 0 0 1px var(--hairline-strong);
+}
+
+/* Ink Secondary: Ink Tertiary on the Inset Fill well is 4.497:1, and less on
+   its hover fill, so it missed the 4.5:1 floor (S8 detector). The entered
+   value stays Ink, so the two still read apart. */
+.text-input::placeholder {
+  color: var(--ink-2);
+}
+
+.text-input[aria-invalid='true'],
+.select-wrap select[aria-invalid='true'] {
+  box-shadow: inset 0 0 0 1.5px var(--tone-weak-edge);
+}
+
+.text-area {
+  resize: vertical;
+  min-height: 64px;
+}
+
+.field-optional {
+  font-weight: 400;
+  color: var(--ink-3);
+}
+
+/* "(required)": the fields a one-record form cannot send without. */
+.field-required {
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+/* Warnings of a metrics row: one checkbox per known code, in the card's words. */
+.warning-checklist {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  grid-column: 1 / -1;
+}
+
+.warning-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 2px var(--sp-4);
+  margin-top: var(--sp-1);
+}
+
+.warning-option {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  min-height: 32px;
+  padding: 4px 0;
+  font-size: var(--fs-footnote);
+  line-height: 1.35;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.warning-option input {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin: 1px 0 0;
+  accent-color: var(--accent);
+}
+
+.warning-code {
+  display: block;
+  font-size: var(--fs-caption);
+  color: var(--ink-3);
+  overflow-wrap: anywhere;
+}
+
+.field-label-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--sp-2);
+}
+
+.field-count {
+  font-size: var(--fs-caption);
+  color: var(--ink-3);
+}
+
+.field-count.is-over {
+  color: var(--tone-weak-ink);
+  font-weight: 600;
+}
+
+.field-hint {
+  font-size: var(--fs-footnote);
+  line-height: 1.4;
+  color: var(--ink-3);
+  max-width: 68ch;
+}
+
+.field-problem {
+  font-size: var(--fs-footnote);
+  line-height: 1.4;
+  font-weight: 600;
+  color: var(--tone-weak-ink);
+}
+
+.field.is-narrow .text-input {
+  max-width: 280px;
+}
+
+.record-form {
+  display: grid;
+  gap: var(--sp-5);
+}
+
+.form-group {
+  display: grid;
+  gap: var(--sp-3);
+  margin: 0;
+  padding: var(--sp-4) 0 0;
+  border: 0;
+  border-top: 1px solid var(--hairline);
+  min-width: 0;
+}
+
+.form-group-title {
+  float: left;
+  width: 100%;
+  margin-bottom: var(--sp-3);
+  padding: 0;
+  font-size: var(--fs-callout);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.form-group-body {
+  clear: both;
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.form-group-body > .segmented {
+  justify-self: start;
+}
+
+.form-row {
+  display: grid;
+  gap: var(--sp-3);
+  align-items: start;
+}
+
+.form-row.is-two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.form-row.is-three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.form-row > .is-wide {
+  grid-column: 1 / -1;
+}
+
+.form-actions {
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Harm and Status: every choice visible, the chosen one raised. */
+.choice-field {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.choice-field legend {
+  padding: 0;
+  margin-bottom: 6px;
+}
+
+/* The pills and their help (FormFields.jsx). */
+.choice-row {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  max-width: 100%;
+}
+
+.choice-pills {
+  justify-self: start;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 2px;
+  border-radius: var(--r-control);
+  background: var(--fill);
+}
+
+.choice-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--r-segment);
+  padding: 5px 12px;
+  font-size: var(--fs-footnote);
+  font-weight: 500;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+
+.choice-pill:hover:not(.is-chosen) {
+  background: var(--fill-strong);
+}
+
+.choice-pill.is-chosen {
+  background: var(--card);
+  color: var(--ink);
+  font-weight: 600;
+  box-shadow: var(--shadow-segment);
+}
+
+.choice-pill input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.choice-pill:has(input:focus-visible) {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.severity-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--sp-1) var(--sp-2);
+  font-size: var(--fs-footnote);
+  line-height: 1.45;
+  color: var(--ink-2);
+  max-width: 68ch;
+}
+
+/* ICD-11 code picker: tokens for the chosen codes, a search well, and a
+   popover list of matches (Control Blue Soft marks the active one). */
+.code-tokens {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+.code-token {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  max-width: 100%;
+  padding: 4px 4px 4px 10px;
+  border-radius: var(--r-pill);
+  background: var(--card);
+  box-shadow: inset 0 0 0 1px var(--hairline-strong);
+  font-size: var(--fs-footnote);
+}
+
+.code-token-code {
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.code-token-name {
+  color: var(--ink-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.code-token-remove {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--fill);
+  color: var(--ink-2);
+}
+
+.code-token-remove:hover {
+  background: var(--fill-strong);
+  color: var(--ink);
+}
+
+.code-search {
+  position: relative;
+}
+
+.code-search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink-3);
+  pointer-events: none;
+}
+
+.code-search-input {
+  padding-left: 32px;
+}
+
+.code-results {
+  position: absolute;
+  z-index: 5;
+  left: 0;
+  right: 0;
+  top: calc(100% + 4px);
+  max-height: 320px;
+  overflow-y: auto;
+  padding: 4px;
+  border-radius: var(--r-control);
+  background: var(--card);
+  box-shadow: var(--shadow-pop);
+}
+
+.code-result {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+  padding: 7px 10px;
+  border-radius: var(--r-small);
+  font-size: var(--fs-footnote);
+  cursor: pointer;
+}
+
+.code-result.is-active {
+  background: var(--accent-soft);
+}
+
+.code-result-name {
+  flex: 1;
+  min-width: 0;
+  color: var(--ink);
+}
+
+.code-result-note {
+  flex: none;
+  font-size: var(--fs-caption);
+  color: var(--ink-3);
+}
+
+/* Add or change rows / Replace the whole data set. */
+.mode-choice {
+  display: grid;
+  gap: var(--sp-2);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.mode-choice legend {
+  margin: 0 0 var(--sp-2);
+  padding: 0;
+}
+
+.mode-option {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-control);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.mode-option:hover {
+  background: var(--row-hover);
+}
+
+.mode-option.is-chosen {
+  background: var(--accent-soft);
+  box-shadow: inset 0 0 0 1.5px var(--accent);
+}
+
+.mode-option input {
+  flex: none;
+  accent-color: var(--accent);
+  width: 16px;
+  height: 16px;
+  margin: 2px 0 0;
+}
+
+.mode-option-text {
+  display: grid;
+  gap: 2px;
+}
+
+.mode-option-title {
+  font-size: var(--fs-callout);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.mode-option-help {
+  font-size: var(--fs-footnote);
+  line-height: 1.45;
+  color: var(--ink-2);
+  max-width: 68ch;
+}
+
+/* Change notes: the field in the sheets, the note in History and results. */
+.note-field {
+  margin-top: var(--sp-1);
+}
+
+.version-note {
+  display: block;
+  font-size: var(--fs-footnote);
+  line-height: 1.45;
+  color: var(--ink-2);
+  max-width: 68ch;
+  overflow-wrap: anywhere;
+}
+
+.version-note-label {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.preview-card {
+  max-width: 560px;
+}
+
+@media (max-width: 899px) {
+  .form-row.is-two,
+  .form-row.is-three {
+    grid-template-columns: 1fr;
+  }
+
+  /* Five data sets in two columns: the last one spans the row. */
+  .sidebar-group.is-datasets li:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+  .sidebar-group.is-datasets {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .sidebar-group.is-datasets li:last-child:nth-child(odd) {
+    grid-column: auto;
+  }
+
+  .form-row.is-three {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Study helper (contract v1.9; brief §10): a sidebar row that opens its
+   settings sheet, the write-only key field, the propose form, and the
+   proposals with their sources. Uncertainty speaks in the amber caution
+   voice; nothing else on a proposal is coloured. */
+.sidebar-button {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.helper-settings {
+  display: grid;
+  gap: var(--sp-4);
+}
+
+.helper-settings .mode-choice {
+  margin: 0;
+}
+
+.key-set-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-1) var(--sp-2);
+  min-height: 38px;
+  padding: 4px 4px 4px 12px;
+  border-radius: var(--r-control);
+  background: var(--fill);
+}
+
+.key-set-icon {
+  flex: none;
+  color: var(--ink-2);
+}
+
+.key-set-text {
+  font-size: var(--fs-body);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.key-set-actions,
+.key-set-row .discard-confirm {
+  margin-left: auto;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-1);
+}
+
+.helper-privacy {
+  display: grid;
+  gap: var(--sp-1);
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--hairline);
+}
+
+.helper-off-row {
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--hairline);
+}
+
+.helper-off .button-row {
+  margin-top: var(--sp-2);
+}
+
+.study-helper,
+.proposals {
+  display: grid;
+  gap: var(--sp-4);
+}
+
+.study-helper > .segmented {
+  justify-self: start;
+}
+
+.study-text .text-area {
+  min-height: 11rem;
+}
+
+.study-file {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-control);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+}
+
+.study-file-icon {
+  flex: none;
+  color: var(--ink-2);
+}
+
+.study-file-text {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.study-file-name {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.study-file-size {
+  font-size: var(--fs-footnote);
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.helper-destination {
+  display: grid;
+  gap: var(--sp-1);
+  font-size: var(--fs-footnote);
+  line-height: 1.45;
+  color: var(--ink-2);
+  max-width: 68ch;
+}
+
+.helper-details summary {
+  width: fit-content;
+  color: var(--accent);
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: var(--r-small);
+}
+
+.helper-details summary:hover {
+  color: var(--accent-hover);
+}
+
+.helper-details p {
+  margin-top: var(--sp-1);
+}
+
+.proposal-list {
+  display: grid;
+  gap: var(--sp-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.proposal {
+  display: grid;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  border-radius: var(--r-control);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+}
+
+.proposal-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--sp-2) var(--sp-3);
+}
+
+.proposal-keep {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin: 1px 0 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.proposal-title-block {
+  flex: 1 1 16rem;
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+  cursor: pointer;
+}
+
+.proposal.is-left-out .proposal-title-block {
+  cursor: auto;
+}
+
+.proposal-title {
+  font-size: var(--fs-callout);
+  font-weight: 600;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.proposal-detail {
+  font-size: var(--fs-footnote);
+  color: var(--ink-3);
+}
+
+.proposal.is-unticked .proposal-title {
+  color: var(--ink-2);
+  font-weight: 500;
+}
+
+.check-pill {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px 3px 8px;
+  border-radius: var(--r-pill);
+  background: var(--tone-moderate-zone);
+  color: var(--tone-moderate-ink);
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.proposal-edit {
+  flex: none;
+  margin-left: auto;
+}
+
+.proposal-fields {
+  display: grid;
+  margin: 0;
+}
+
+.proposal-field {
+  display: grid;
+  grid-template-columns: minmax(8rem, 11rem) minmax(0, 1fr);
+  gap: var(--sp-1) var(--sp-4);
+  padding: var(--sp-2) var(--sp-2);
+  border-top: 1px solid var(--hairline);
+}
+
+.proposal-field:first-child {
+  border-top: 0;
+}
+
+.proposal-field.is-uncertain {
+  border-top-color: transparent;
+  border-radius: var(--r-small);
+  background: var(--tone-moderate-zone);
+}
+
+.proposal-field.is-uncertain + .proposal-field {
+  border-top-color: transparent;
+}
+
+.proposal-field dt {
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  color: var(--ink-2);
+  padding-top: 1px;
+}
+
+.proposal-field dd {
+  margin: 0;
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.proposal-value {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--sp-2);
+  font-size: var(--fs-body);
+  font-weight: 600;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.proposal-source {
+  font-size: var(--fs-footnote);
+  line-height: 1.45;
+  color: var(--ink-2);
+  overflow-wrap: anywhere;
+}
+
+.proposal-field.is-uncertain .proposal-source {
+  color: var(--ink);
+}
+
+.proposal-check {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 4px;
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--tone-moderate-ink);
+}
+
+.proposal-check-icon {
+  flex: none;
+  margin-top: 2px;
+}
+
+.edited-tag {
+  padding: 1px 8px;
+  border-radius: var(--r-pill);
+  background: var(--fill);
+  color: var(--ink-2);
+  font-size: var(--fs-caption);
+  font-weight: 600;
+}
+
+.proposal-folded {
+  font-size: var(--fs-footnote);
+  line-height: 1.45;
+  color: var(--ink-2);
+  overflow-wrap: anywhere;
+}
+
+.proposal-folded-label {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.proposal-editor {
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.helper-notes {
+  display: grid;
+  gap: var(--sp-1);
+  margin: 0;
+  padding-left: 1.2em;
+  font-size: var(--fs-footnote);
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+.stage-row {
+  display: grid;
+  gap: var(--sp-2);
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--hairline);
+}
+
+.stage-row .button-row {
+  flex-wrap: wrap;
+}
+
+@media (max-width: 599px) {
+  .proposal-field {
+    grid-template-columns: 1fr;
+  }
+
+  /* The title takes the row beside the checkbox; the pill and Edit wrap under it. */
+  .proposal-title-block {
+    flex-basis: calc(100% - 30px);
+  }
+
+  .check-pill {
+    margin-left: 30px;
+  }
+}
+
+/* On narrow screens History and the study helper share one row, so the
+   helper adds no height before the page. */
+@media (max-width: 899px) {
+  .admin-sidebar {
+    flex-flow: row wrap;
+  }
+
+  .admin-sidebar > * {
+    flex: 1 1 100%;
+  }
+
+  .admin-sidebar > .sidebar-group.is-pair {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}
+
+/* M1: discarding an update from the Check step, and the line that confirms it. */
+.check-discard {
+  display: grid;
+  gap: var(--sp-2);
+  margin-top: var(--sp-2);
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--hairline);
+}
+
+.button-plain[aria-disabled='true'] {
+  color: var(--ink-3);
+  cursor: progress;
+}
+
+.button-plain.is-destructive[aria-disabled='true']:hover {
+  background: none;
+}
+
+/* The status region stays in the page so a discard is announced; it shows above step 2. */
+.discard-status .admin-notice {
+  margin-bottom: var(--sp-3);
+}
+
+.discard-failed {
+  flex-basis: 100%;
+  color: var(--tone-weak-ink);
+}
+
+/* Phones: the entry switch ("Report one incident | From a study | Upload a
+   file") takes the step's width and lets its words wrap, instead of widening
+   the page past its right gutter (S8). */
+@media (max-width: 599px) {
+  .step-body > .entry-switch {
+    display: flex;
+    width: 100%;
+  }
+
+  .step-body > .entry-switch .segment {
+    flex: 1 1 auto;
+    min-width: 0;
+    white-space: normal;
+    line-height: 1.2;
+  }
+}
+
+/* L4: the stored incidents of the form's card, above the incident form. Each
+   row leads with its mark and status, then type and harm, where it applies,
+   a two-line summary, and its dates; Edit fills the form below. */
+.incident-list {
+  display: grid;
+  gap: var(--sp-2);
+  min-width: 0;
+}
+
+.incident-list-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+}
+
+.incident-list-count {
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--ink-2);
+  background: var(--fill);
+  border-radius: var(--r-pill);
+  padding: 1px 8px;
+}
+
+.incident-row {
+  align-items: flex-start;
+}
+
+.incident-row-mark {
+  flex: none;
+  width: 150px;
+  padding-top: 2px;
+}
+
+.incident-row-summary {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-size: var(--fs-footnote);
+  line-height: 1.45;
+  color: var(--ink);
+  max-width: 68ch;
+}
+
+.incident-row-meta {
+  font-size: var(--fs-caption);
+  color: var(--ink-2);
+}
+
+.incident-row.is-editing {
+  background: var(--accent-soft);
+}
+
+.incident-row-editing {
+  flex: none;
+  padding: 6px var(--sp-2);
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.incident-list-empty {
+  margin: 0;
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-control);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  font-size: var(--fs-footnote);
+  color: var(--ink-2);
+}
+
+.incident-list-more {
+  justify-self: start;
+}
+
+/* The form's "Editing incident …" line: its title takes the focus after Edit. */
+.editing-notice .admin-notice-title:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+@media (max-width: 599px) {
+  .incident-row {
+    flex-wrap: wrap;
+  }
+
+  .incident-row-mark {
+    width: auto;
+    flex-basis: 100%;
+  }
+
+  .editing-notice {
+    flex-wrap: wrap;
+  }
+
+  .editing-notice .admin-notice-actions {
+    flex-basis: 100%;
+  }
+}
+
+/* L3: the restore sheet's choices say which data sets have nothing to restore. */
+.radio-row-detail {
+  color: var(--ink-2);
+  font-size: var(--fs-footnote);
+}
+
+.radio-row:has(input:disabled) {
+  color: var(--ink-3);
+}
+
+.restored-list {
+  display: grid;
+  gap: 2px;
+}
+
+/* Phones: every control of the Data Library is at least a 44px target
+   (segments such as Excel / CSV, buttons, fields, checkboxes by their row). */
+@media (max-width: 767px) {
+  .workspace-row {
+    padding: var(--sp-3) var(--sp-4);
+  }
+
+  .release-table th,
+  .release-table td {
+    padding: var(--sp-2);
+  }
+
+  .admin-shell .segment,
+  .admin-shell .button-plain,
+  .admin-shell .button-tinted,
+  .admin-shell .button-filled,
+  .admin-shell select,
+  .admin-shell .text-input:not(.text-area),
+  .admin-shell .choice-pill,
+  .admin-shell .warning-option {
+    min-height: 44px;
+  }
+
+  .admin-shell .segment,
+  .admin-shell .choice-pill,
+  .admin-shell .button-plain {
+    min-width: 44px;
+  }
+
+  .admin-shell .warning-option {
+    align-items: center;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Role workspaces (contract v1.13, CONTRACT.md §26): the workspace
+   choice as one grouped list, the sidebar's workspace row, submission
+   parts, the custodian's queue, releases, and narrow model cards.
+   ------------------------------------------------------------------ */
+
+.workspace-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.workspace-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  width: 100%;
+  min-height: 64px;
+  padding: var(--sp-3) var(--sp-5);
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.workspace-list li + li .workspace-row {
+  border-top: 1px solid var(--hairline);
+}
+
+.workspace-row:hover {
+  background: var(--row-hover);
+}
+
+.workspace-row:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.workspace-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-control);
+  background: var(--row-hover);
+  color: var(--ink-2);
+}
+
+.workspace-row.is-current .workspace-icon {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.workspace-text {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.workspace-title {
+  font-size: var(--fs-callout);
+  font-weight: 600;
+}
+
+.workspace-detail {
+  font-size: var(--fs-footnote);
+  color: var(--ink-2);
+  line-height: 1.4;
+}
+
+.workspace-chevron {
+  flex: none;
+  color: var(--ink-3);
+}
+
+.sidebar-workspace {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin: var(--sp-2) 0 var(--sp-1);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-control);
+  background: var(--card);
+}
+
+.sidebar-workspace-text {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 1px;
+}
+
+.sidebar-workspace-title {
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.sidebar-workspace-change {
+  flex: none;
+  font-size: var(--fs-footnote);
+}
+
+.submission-parts,
+.queue-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.part-state {
+  font-size: var(--fs-footnote);
+  color: var(--ink-2);
+}
+
+.part-state.is-fix,
+.part-problem {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.part-state.is-ready,
+.part-state.is-done {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.submission-part-target {
+  font-weight: 400;
+  color: var(--ink-2);
+}
+
+.part-actions,
+.submission-part-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.part-changes {
+  font-size: var(--fs-footnote);
+  color: var(--ink-2);
+}
+
+/* A part's change summary inline in Custodian review: the data set page's own Changes step, under the part. */
+.submission-part {
+  flex-wrap: wrap;
+}
+
+.submission-part-below {
+  flex-basis: 100%;
+  min-width: 0;
+}
+
+.part-changes-body {
+  display: grid;
+  gap: var(--sp-3);
+  padding: var(--sp-2) 0 var(--sp-1);
+  border-top: 1px solid var(--hairline);
+  min-width: 0;
+}
+
+.card-proposals {
+  display: grid;
+  gap: var(--sp-2);
+  justify-items: start;
+  width: 100%;
+}
+
+.queue-row {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.queue-list li + li .queue-row {
+  border-top: 1px solid var(--hairline);
+}
+
+.queue-row:hover {
+  background: var(--row-hover);
+}
+
+.queue-row.is-current {
+  background: var(--accent-soft);
+}
+
+.queue-status {
+  flex: none;
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.queue-status.is-submitted {
+  color: var(--accent);
+}
+
+.queue-decided summary {
+  cursor: pointer;
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  color: var(--ink-2);
+  padding: var(--sp-2) 0;
+}
+
+.review-decision {
+  display: grid;
+  gap: var(--sp-2);
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--hairline);
+}
+
+.file-field-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.file-button {
+  cursor: pointer;
+}
+
+.file-field-name {
+  font-size: var(--fs-footnote);
+  color: var(--ink-2);
+  overflow-wrap: anywhere;
+}
+
+.model-card-input {
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.model-card-input-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.model-card-text textarea {
+  font-family: ui-monospace, monospace;
+  font-size: var(--fs-footnote);
+}
+
+.release-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-footnote);
+}
+
+.release-table th,
+.release-table td {
+  padding: var(--sp-2) var(--sp-3);
+  text-align: left;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.release-table thead th {
+  color: var(--ink-2);
+  font-weight: 600;
+}
+
+.release-table .tabular {
+  text-align: right;
+}
+
+.instance-preview {
+  margin: 0;
+  font-size: var(--fs-footnote);
+  color: var(--ink-2);
+}
+
+/* Evaluation results imports (contract v1.14, §32.2): a quiet card that opens on request. */
+.evaluation-import-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--sp-3);
+}
+
+.evaluation-import-titles {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.evaluation-import-body:not([hidden]),
+.evaluation-proposals {
+  display: grid;
+  gap: var(--sp-3);
+  min-width: 0;
+}
+
+.evaluation-import-body:not([hidden]) {
+  margin-top: var(--sp-3);
+}
+
+.evaluation-study {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+}
+
+.evaluation-results-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-2);
+}
+
+.evaluation-table-wrap {
+  max-height: 22rem;
+  overflow: auto;
+  border-top: 1px solid var(--hairline);
+}
+
+.evaluation-table td:first-child,
+.evaluation-table th:first-child {
+  width: 28px;
+}
+
+.evaluation-table tr.is-unticked td:not(:first-child) {
+  color: var(--ink-3);
+}

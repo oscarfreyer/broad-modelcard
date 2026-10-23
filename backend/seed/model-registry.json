@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-05T10:46:46.694Z",
+  "default_model_version": "SynGPT-2.0",
+  "models": [
+    {
+      "model_version": "SynGPT-1.0",
+      "model_name": "SynGPT",
+      "model_release": "1.0",
+      "display_name": "SynGPT-1.0",
+      "default_use_case": "Clinician Facing CDSS",
+      "status": "ACTIVE",
+      "effects": {
+        "perf": -0.083,
+        "evidence": 0.74,
+        "ci": 0.018
+      },
+      "capabilities": null,
+      "use_case_variants": [
+        {
+          "use_case": "Clinician Facing CDSS",
+          "metrics_file": "data/tables/models/syngpt-1.0.clinician-facing-cdss.metrics.json"
+        },
+        {
+          "use_case": "Discharge letter generation",
+          "metrics_file": "data/tables/models/syngpt-1.0.discharge-letter-generation.metrics.json"
+        }
+      ]
+    },
+    {
+      "model_version": "SynGPT-2.0",
+      "model_name": "SynGPT",
+      "model_release": "2.0",
+      "display_name": "SynGPT-2.0",
+      "default_use_case": "Discharge letter generation",
+      "status": "ACTIVE",
+      "effects": {
+        "perf": 0.041,
+        "evidence": 0.83,
+        "ci": -0.006
+      },
+      "capabilities": null,
+      "use_case_variants": [
+        {
+          "use_case": "Clinician Facing CDSS",
+          "metrics_file": "data/tables/models/syngpt-2.0.clinician-facing-cdss.metrics.json",
+          "multimorbidity_metrics_file": "data/tables/models/syngpt-2.0.clinician-facing-cdss.multimorbidity.metrics.json"
+        },
+        {
+          "use_case": "Discharge letter generation",
+          "metrics_file": "data/tables/models/syngpt-2.0.discharge-letter-generation.metrics.json",
+          "multimorbidity_metrics_file": "data/tables/models/syngpt-2.0.discharge-letter-generation.multimorbidity.metrics.json"
+        }
+      ]
+    },
+    {
+      "model_version": "MediCore-2.5",
+      "model_name": "MediCore",
+      "model_release": "2.5",
+      "display_name": "MediCore-2.5",
+      "default_use_case": "Discharge letter generation",
+      "status": "ACTIVE",
+      "effects": {
+        "perf": 0.072,
+        "evidence": 1.16,
+        "ci": -0.011
+      },
+      "capabilities": {
+        "reasoning": 0.86,
+        "robustness": 0.84,
+        "calibration": 0.88,
+        "fairness": 0.81
+      },
+      "use_case_variants": [
+        {
+          "use_case": "Discharge letter generation",
+          "metrics_file": "data/tables/models/medicore-2.5.discharge-letter-generation.metrics.json",
+          "multimorbidity_metrics_file": "data/tables/models/medicore-2.5.discharge-letter-generation.multimorbidity.metrics.json"
+        },
+        {
+          "use_case": "Clinician Facing CDSS",
+          "metrics_file": "data/tables/models/medicore-2.5.clinician-facing-cdss.metrics.json",
+          "multimorbidity_metrics_file": "data/tables/models/medicore-2.5.clinician-facing-cdss.multimorbidity.metrics.json"
+        }
+      ]
+    },
+    {
+      "model_version": "ICU_GPT-1.0",
+      "model_name": "ICU_GPT",
+      "model_release": "1.0",
+      "display_name": "ICU_GPT-1.0",
+      "default_use_case": "CDSS",
+      "status": "EXPERIMENTAL",
+      "effects": {
+        "perf": 0.046,
+        "evidence": 0.92,
+        "ci": -0.004
+      },
+      "capabilities": {
+        "reasoning": 0.86,
+        "robustness": 0.82,
+        "calibration": 0.79,
+        "fairness": 0.44
+      },
+      "use_case_variants": [
+        {
+          "use_case": "CDSS",
+          "metrics_file": "data/tables/models/icu_gpt-1.0.cdss.metrics.json"
+        }
+      ]
+    },
+    {
+      "model_version": "radAIology-1",
+      "model_name": "radAIology",
+      "model_release": "1",
+      "display_name": "radAIology-1",
+      "default_use_case": "Radiology image analysis",
+      "status": "ACTIVE",
+      "effects": {
+        "perf": 0.082,
+        "evidence": 1.18,
+        "ci": -0.009
+      },
+      "capabilities": {
+        "reasoning": 0.87,
+        "robustness": 0.89,
+        "calibration": 0.86,
+        "fairness": 0.76
+      },
+      "use_case_variants": [
+        {
+          "use_case": "Radiology image analysis",
+          "metrics_file": "data/tables/models/radaiology-1.radiology-image-analysis.metrics.json"
+        }
+      ]
+    },
+    {
+      "model_version": "SkinAI-1.0",
+      "model_name": "SkinAI",
+      "model_release": "1.0",
+      "display_name": "SkinAI-1.0",
+      "default_use_case": "Skin lesion CDSS",
+      "status": "ACTIVE",
+      "effects": {
+        "perf": 0.079,
+        "evidence": 1.19,
+        "ci": -0.011
+      },
+      "capabilities": {
+        "reasoning": 0.88,
+        "robustness": 0.86,
+        "calibration": 0.9,
+        "fairness": 0.83
+      },
+      "use_case_variants": [
+        {
+          "use_case": "Skin lesion CDSS",
+          "metrics_file": "data/tables/models/skinai-1.0.skin-lesion-cdss.metrics.json"
+        }
+      ]
+    },
+    {
+      "model_version": "DoAIHaveCancer-1.0",
+      "model_name": "DoAIHaveCancer",
+      "model_release": "1.0",
+      "display_name": "DoAIHaveCancer-1.0",
+      "default_use_case": "Skin lesion CDSS",
+      "status": "EXPERIMENTAL",
+      "effects": {
+        "perf": 0.043,
+        "evidence": 0.9,
+        "ci": 0.007
+      },
+      "capabilities": {
+        "reasoning": 0.78,
+        "robustness": 0.72,
+        "calibration": 0.74,
+        "fairness": 0.41
+      },
+      "use_case_variants": [
+        {
+          "use_case": "Skin lesion CDSS",
+          "metrics_file": "data/tables/models/doaihavecancer-1.0.skin-lesion-cdss.metrics.json"
+        }
+      ]
+    }
+  ]
+}

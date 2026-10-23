@@ -1,0 +1,435 @@
+/* The card snapshot, the model card and its dialog, the Track toggle,
+   and the atlas toolbar's way back to the catalogue. Shared by the catalogue
+   (catalogue-index.css) and the atlas (imported by the components). Marks
+   inside the snapshot and the model card are drawn by StatusMark.js (marks.css). */
+
+/* The snapshot: the atlas ring in miniature, one bubble per subchapter.
+   Its bubbles are a few pixels across, so their edges are drawn finer than
+   on the atlas (the same marks, scaled): a full 1.5px outline would fill a
+   No data bubble with grey. */
+.card-snapshot {
+  display: block;
+  flex: none;
+  overflow: visible;
+}
+
+.card-snapshot .mark {
+  stroke-width: 0.8px;
+}
+
+/* While the atlas structure loads: the ring's band, pale, at its final size. */
+.snapshot-placeholder {
+  fill: none;
+  stroke: var(--fill);
+}
+
+/* The model card (one SVG; labelExport.js inlines these on download). */
+.developer-label {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  font-family: var(--font-sans);
+}
+
+.label-frame {
+  fill: var(--card);
+  stroke: var(--hairline-strong);
+  stroke-width: 1;
+}
+
+.label-brand {
+  font-size: 13px;
+  font-weight: 700;
+  fill: var(--ink);
+}
+
+.label-caption {
+  font-size: 13px;
+  font-weight: 500;
+  fill: var(--ink-3);
+}
+
+/* "Synthetic data" at the top of the sheet: the app's synthetic badge. */
+.label-badge-box { fill: var(--tone-moderate-zone); }
+
+.label-badge-text {
+  font-size: 13px;
+  font-weight: 600;
+  fill: var(--tone-moderate-ink);
+}
+
+.label-rule {
+  stroke: var(--sector-line-strong);
+  stroke-width: 1;
+}
+
+.label-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  fill: var(--ink);
+}
+
+.label-function {
+  font-size: 16px;
+  font-weight: 500;
+  fill: var(--ink-2);
+}
+
+.label-fact,
+.label-note,
+.label-share {
+  font-size: 13px;
+  fill: var(--ink-3);
+}
+
+.label-heading {
+  font-size: 14px;
+  font-weight: 700;
+  fill: var(--ink);
+}
+
+.label-row-word,
+.label-figure {
+  font-size: 13px;
+  font-weight: 600;
+  fill: var(--ink);
+}
+
+.label-figure,
+.label-share {
+  font-variant-numeric: tabular-nums;
+}
+
+.label-fact-label,
+.label-declared-label {
+  font-size: 13px;
+  font-weight: 600;
+  fill: var(--ink-2);
+}
+
+.label-fact-value,
+.label-declared-value {
+  font-size: 13px;
+  fill: var(--ink);
+}
+
+.label-fact-value.label-link { fill: var(--accent); }
+
+.label-card-link:hover .label-link,
+.label-card-link:focus-visible .label-link {
+  text-decoration: underline;
+}
+
+/* Declared by the developer: its own grouped block, never mixed with results. */
+.label-declared-box { fill: var(--bg); }
+
+.label-declared-heading {
+  font-size: 15px;
+  font-weight: 700;
+  fill: var(--ink);
+}
+
+.label-notice-box { fill: var(--tone-moderate-zone); }
+
+.label-notice {
+  font-size: 13px;
+  font-weight: 600;
+  fill: var(--tone-moderate-ink);
+}
+
+/* The label dialog. */
+.label-dialog {
+  width: min(560px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  max-height: calc(100dvh - 32px);
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-pane);
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: var(--shadow-pop);
+  overflow: auto;
+  /* Scrolling the model card never scrolls the page behind it. */
+  overscroll-behavior: contain;
+}
+
+.label-dialog[open] {
+  animation: label-rise var(--dur) var(--ease-out);
+}
+
+.label-dialog::backdrop {
+  background: var(--scrim);
+}
+
+.label-dialog-body {
+  display: grid;
+  gap: var(--sp-4);
+  padding: var(--sp-6);
+}
+
+.label-dialog-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--sp-4);
+}
+
+.label-dialog-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-title3);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.label-dialog-intro {
+  margin-top: var(--sp-1);
+  font-size: var(--fs-footnote);
+  line-height: 1.45;
+  color: var(--ink-2);
+  max-width: 60ch;
+}
+
+.label-dialog-preview {
+  display: grid;
+  place-items: center;
+  padding: var(--sp-5);
+  border-radius: var(--r-card);
+  background: var(--bg);
+  min-height: 240px;
+}
+
+.label-dialog-status {
+  font-size: var(--fs-body);
+  color: var(--ink-2);
+}
+
+.label-dialog-note {
+  font-size: var(--fs-footnote);
+  line-height: 1.45;
+  color: var(--ink-2);
+  background: var(--fill);
+  border-radius: var(--r-control);
+  padding: var(--sp-2) var(--sp-3);
+}
+
+/* Only a real caution (an unpublished preview) takes the amber voice. */
+.label-dialog-note.is-caution {
+  color: var(--tone-moderate-ink);
+  background: var(--tone-moderate-zone);
+}
+
+.label-dialog-note.is-error {
+  color: var(--tone-weak-ink);
+  background: var(--tone-weak-zone);
+}
+
+.label-dialog-actions {
+  /* The downloads stay in view while the label scrolls under them. */
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--sp-2);
+  margin: 0 calc(-1 * var(--sp-6)) calc(-1 * var(--sp-6));
+  padding: var(--sp-3) var(--sp-6) var(--sp-5);
+  background: var(--card);
+  box-shadow: inset 0 1px 0 var(--hairline);
+}
+
+.label-dialog-actions .button-filled:disabled,
+.label-dialog-actions .button-tinted:disabled {
+  background: var(--fill);
+  color: var(--ink-3);
+}
+
+/* Desktop: the label on the left in its own scroll area, the title, notes,
+   and downloads on the right, so the downloads and the explanation stay in
+   view while the whole sheet is read. */
+@media (min-width: 1100px) {
+  .label-dialog {
+    width: min(840px, calc(100vw - 32px));
+    height: min(calc(100dvh - 32px), 1080px);
+    overflow: hidden;
+  }
+
+  .label-dialog-body {
+    height: 100%;
+    grid-template-columns: 424px minmax(0, 1fr);
+    /* The last row is flexible, so the tall label (which spans every row)
+       never stretches the rows of the right-hand column. */
+    grid-template-rows: auto auto auto auto 1fr;
+    align-items: start;
+    column-gap: var(--sp-6);
+  }
+
+  .label-dialog-body > :not(.label-dialog-preview) {
+    grid-column: 2;
+  }
+
+  .label-dialog-preview {
+    grid-column: 1;
+    grid-row: 1 / -1;
+    align-self: stretch;
+    min-height: 0;
+    overflow-y: auto;
+    place-items: start center;
+    overscroll-behavior: contain;
+  }
+
+  /* Stacked, the primary first: Download PDF, Download SVG, Close. */
+  .label-dialog-actions {
+    position: static;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: var(--sp-2) 0 0;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+  }
+}
+
+@keyframes label-rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+}
+
+/* Track: tinted until tracked, then the toggle's "on" form with a check. */
+.track-toggle.is-tile {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 0;
+  border-radius: var(--r-control);
+  padding: 6px 12px 6px 9px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+
+.track-toggle.is-tile:hover {
+  background: var(--accent-soft-hover);
+}
+
+.track-toggle.is-tile.is-on {
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--hairline-strong);
+}
+
+.track-toggle.is-tile.is-on:hover {
+  background: var(--row-hover);
+}
+
+.track-toggle.is-toolbar.is-on {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.track-toggle.is-toolbar.is-on .icon {
+  color: var(--accent);
+}
+
+/* Track and Label end the function's line, at the title's right edge, so
+   they take no width from the AI system's name, and the function runs under
+   the name instead of giving way (S8). Icon-only below 1600px. */
+.toolbar .toolbar-title {
+  grid-template-areas: 'system .' 'function function';
+}
+
+.toolbar-card-actions {
+  grid-area: function;
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  font-family: var(--font-sans);
+}
+
+.toolbar-card-actions .toolbar-button {
+  min-height: 26px;
+  padding: 2px 7px;
+  gap: 4px;
+  font-size: var(--fs-caption);
+  font-weight: 600;
+}
+
+/* Track and Model card keep their words from 1280px (audit A11); below,
+   they are icon buttons with the same accessible names (the words stay for
+   assistive tech, with the tooltip), so the toolbar keeps one row from
+   1100px (audit batch 3); on a phone they are at least 44px square (audit
+   B11). */
+@media (max-width: 1279px) {
+  .toolbar .toolbar-title {
+    --card-actions-width: 70px;
+  }
+
+  .toolbar-card-actions .track-toggle-text,
+  .toolbar-card-actions .toolbar-button-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 767px) {
+  .toolbar .toolbar-title {
+    --card-actions-width: 96px;
+  }
+
+  .toolbar-card-actions .toolbar-button {
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+  }
+
+  .toolbar-title .title-picker.is-system select,
+  .toolbar-title .title-picker.is-function select {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 767px) {
+  .label-dialog-body {
+    padding: var(--sp-4);
+  }
+
+  /* The sheet scales down to the dialog's width, so the whole card,
+     synthetic notice included, is visible without scrolling sideways. The
+     SVG's viewBox keeps the layout box and the drawing in step. */
+  .label-dialog-preview {
+    padding: var(--sp-3);
+  }
+
+  .label-dialog-preview .developer-label {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .label-dialog-actions {
+    bottom: 0;
+    margin: 0 calc(-1 * var(--sp-4)) calc(-1 * var(--sp-4));
+    padding: var(--sp-3) var(--sp-4) var(--sp-4);
+  }
+
+  .label-dialog-actions button {
+    min-height: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .label-dialog[open] {
+    animation: none;
+  }
+}

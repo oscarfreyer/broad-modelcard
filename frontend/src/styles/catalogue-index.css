@@ -1,0 +1,11 @@
+/* Catalogue page styles in cascade order: the shared tokens, base, the
+   AI system tags, the preview band, the marks, then the catalogue (the label and Track styles,
+   label.css, come with their components). */
+@import './tokens.css';
+@import './base.css';
+@import './system.css';
+@import './preview.css';
+@import './marks.css';
+@import './interpret.css';
+@import './catalogue.css';
+@import './static.css';

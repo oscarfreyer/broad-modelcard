@@ -1,0 +1,11 @@
+# Test dependencies, pinned. Install with: pip install -r requirements-dev.txt
+-r requirements.txt
+pytest==9.1.1
+iniconfig==2.3.0
+packaging==26.3
+pluggy==1.6.0
+pygments==2.21.0
+# HTTP client for FastAPI's TestClient.
+httpx==0.28.1
+httpcore==1.0.9
+certifi==2026.7.22

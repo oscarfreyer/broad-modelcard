@@ -1,0 +1,161 @@
+/* "Your defaults" (DefaultsSheet.jsx): a sheet of grouped settings, iOS
+   Settings style, in one column at every width. Shared by the catalogue and
+   the atlas, imported by the component.
+
+   It has its own classes: it used to borrow the model card dialog's
+   (label.css), whose desktop rules (from 1100px) lay that dialog out as a
+   424px label column beside a text column, which squeezed every setting into
+   the narrow right-hand column of a wide, mostly empty box. */
+
+.defaults-sheet {
+  width: min(600px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  max-height: calc(100dvh - 32px);
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-pane);
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: var(--shadow-pop);
+  overflow: auto;
+}
+
+.defaults-sheet[open] {
+  animation: defaults-rise var(--dur) var(--ease-out);
+}
+
+.defaults-sheet::backdrop {
+  background: var(--scrim);
+}
+
+@keyframes defaults-rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+}
+
+.defaults-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sp-4);
+  padding: var(--sp-6);
+}
+
+.defaults-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--sp-4);
+}
+
+.defaults-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-title3);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* Done stays in view while the settings scroll under it. */
+.defaults-actions {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--sp-2);
+  margin: 0 calc(-1 * var(--sp-6)) calc(-1 * var(--sp-6));
+  padding: var(--sp-3) var(--sp-6) var(--sp-5);
+  background: var(--card);
+  box-shadow: inset 0 1px 0 var(--hairline);
+}
+
+.defaults-actions .button-plain:disabled {
+  color: var(--ink-3);
+}
+
+.defaults-group {
+  display: grid;
+  gap: var(--sp-2);
+  padding: var(--sp-4);
+  border-radius: var(--r-card);
+  background: var(--bg);
+}
+
+.defaults-heading {
+  font-size: var(--fs-headline);
+  font-weight: 700;
+}
+
+/* Who runs this copy (contract v1.13, §26), under About this copy. */
+.defaults-about-line {
+  font-size: var(--fs-footnote);
+  color: var(--ink-2);
+}
+
+.defaults-guide {
+  justify-self: start;
+}
+
+.defaults-fields {
+  display: grid;
+  gap: var(--sp-3);
+  margin-top: var(--sp-1);
+}
+
+.defaults-fields.is-two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.defaults-fields.is-three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.defaults-group .select-wrap select {
+  background: var(--card);
+}
+
+.defaults-group .select-wrap select:disabled {
+  color: var(--ink-3);
+}
+
+.defaults-group .segmented {
+  justify-self: start;
+  background: var(--fill-strong);
+}
+
+.defaults-status {
+  font-size: var(--fs-footnote);
+  color: var(--ink-2);
+}
+
+.defaults-from-view {
+  margin-right: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .defaults-sheet[open] {
+    animation: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .defaults-body {
+    padding: var(--sp-5) var(--sp-4);
+  }
+
+  .defaults-actions {
+    margin: 0 calc(-1 * var(--sp-4)) calc(-1 * var(--sp-5));
+    padding: var(--sp-3) var(--sp-4) var(--sp-4);
+  }
+
+  .defaults-fields.is-two,
+  .defaults-fields.is-three {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .defaults-from-view {
+    margin-right: 0;
+  }
+}
+

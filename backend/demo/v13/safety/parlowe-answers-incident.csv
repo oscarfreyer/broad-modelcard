@@ -1,0 +1,4 @@
+# Broad Modelcard demo pack v13: one safety incident of Parlowe-Answers-1.0 / Patient question answering. Aggregate synthetic data only. Never upload patient-level or real patient data.
+"# Every incident, report, and notice below is fictional and synthetic. Nothing here describes a real event, product, or patient."
+Incident ID,Model version,Function,ICD-11 codes,Age,Sex,Ethnicity,Incident type,Harm,Status,Source type,Source reference,Study ID,Reported date,Updated date,Summary,Scope,Action
+SI-2026-021,Parlowe-Answers-1.0,Patient question answering,CA23,,,,Harmful or incorrect recommendation,None,Mitigated,Incident report,Fictional practice report PR-0042 (synthetic),,2026-07-14,2026-08-03,Synthetic example: an answer about a reliever inhaler did not say when to seek urgent help; the developer added a warning-signs line to every asthma answer.,Public,

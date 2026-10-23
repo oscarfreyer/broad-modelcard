@@ -1,0 +1,146 @@
+/* Design tokens: Apple Health–style clarity, light appearance only. */
+
+:root {
+  color-scheme: light;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+
+  /* Grounds and surfaces */
+  --bg: #f2f2f7;
+  --card: #ffffff;
+  --fill: #eeeef0;            /* segmented tracks, inset fills */
+  --fill-strong: #e3e3e8;     /* pressed and hovered fills */
+  --row-hover: #fafafc;
+  --scrollbar: rgba(60, 60, 67, 0.28);
+  /* Sector Mist: once the alternating sector bands, which the atlas, the chapter
+     view, the catalogue snapshot, and the model card no longer draw. Its one use is the simulated host's title bar on plugin.html (plugin.css). */
+  --sector-b: #f7f7fa;
+  --hairline: rgba(60, 60, 67, 0.16);
+  --hairline-strong: rgba(60, 60, 67, 0.26);
+  --sector-line: #e5e5ea;
+  --sector-line-strong: #d8d8de;
+  --rim-hover: #c7c7cc;
+  --scrim: rgba(28, 28, 30, 0.12);
+  --toolbar: rgba(249, 249, 251, 0.82);
+
+  /* Text */
+  --ink: #1c1c1e;
+  --ink-2: #48484f;
+  --ink-3: #6c6c73;
+
+  /* Interaction */
+  --accent: #0a66d6;
+  --accent-hover: #0858bb;
+  --on-accent: #ffffff;
+  --accent-soft: #e5f0fc;
+  --accent-soft-hover: #d6e7fa;
+  --selection: rgba(10, 102, 214, 0.18);
+  --focus: #0a66d6;
+
+  /* Status: three performance fills, darker outlines and text tones, shared
+     by Overview, Performance, and Evidence: a muted teal green, warm yellow,
+     and soft coral, so the results stay calm and only warnings pop. Edges reach 3:1 on white and on the grouped ground
+     (tests/paletteContrast.test.js). */
+  --tone-strong: #48a08c;
+  --tone-strong-edge: #2f7466;
+  --tone-strong-ink: #146b3f;
+  --tone-strong-zone: #dcf1e4;
+  --tone-moderate: #e9c46a;
+  --tone-moderate-edge: #9c7a1f;
+  --tone-moderate-ink: #8a5a00;
+  --tone-moderate-zone: #fcefd2;
+  --tone-weak: #e18489;
+  --tone-weak-edge: #b4505a;
+  --tone-weak-ink: #b03246;
+  --tone-weak-zone: #fbe1e3;
+
+  /* Safety incidents (Caution, Serious): the bright members of the warm
+     families, a glowing orange-amber and a neon coral, so a warning pops out
+     of the muted results yet belongs to the same palette. Text about an
+     incident keeps the inks above. */
+  --alert-caution: #ffa000;
+  --alert-caution-edge: #c27400;
+  --alert-serious: #ff5a52;
+  --alert-serious-edge: #d6362f;
+
+  /* Scope (Intended use view): the Strong teal (reversing audit A22's pink). In scope is a filled disc; Partly in scope
+     a pale teal disc half filled, so the two never read alike. Out of scope
+     keeps the barred grey mark. */
+  --scope-in: #48a08c;
+  --scope-in-edge: #2f7466;
+  --scope-in-ink: #1f6b5c;
+  --scope-in-zone: #dcf0eb;
+  --scope-partly: #cde8e1;
+  --scope-partly-edge: #3f8a7a;
+
+  /* Marks (StatusMark.js, marks.css): one mark per state, everywhere, and
+     one grey family for every missing state. Outline marks
+     stroke 1px, as thin as a filled mark's edge (2026-10-15). Every
+     grey that draws an edge, a bar, or a dot reaches 3:1 on white and on the
+     grouped ground (audit 2026-10-14); the fills stay light, so a narrow
+     card stays quiet. */
+  --mark-stroke-width: 1px;
+  --mark-edge-width: 1px;
+  --mark-outline: #86868b;       /* No data: a solid grey 1px outline (3.6:1 on white, 3.3:1 on the ground) ... */
+  --mark-outline-fill: #ededf1;  /* ... on an opaque light grey disc */
+  --mark-barred: #dcdce1;        /* Out of scope: a light grey disc ... */
+  --mark-barred-edge: #86868b;   /* ... with a 1px edge (3.6:1 on white, 3.3:1 on the ground) ... */
+  --mark-bar: #6c6c73;           /* ... crossed by a dark bar (3.8:1 on the disc) */
+  --mark-dot: #86868b;           /* No stored combination: a small dot, no disc */
+  --mark-pale: #e4e4e9;          /* Loading: pale disc, no edge */
+  --mark-quiet: #d1d1d6;         /* Safety: no reported incidents (neutral, never green) ... */
+  --mark-quiet-edge: #86868b;    /* ... with a 1px settled edge, so it never reads as the edgeless, paler Loading disc */
+  --absent-ink: #6c6c73;         /* absence words */
+  --absent-faint: #d1d1d6;       /* waiting step glyph in the Data Library (not a data mark) */
+
+  /* One category tint per metric view, for icons and section labels */
+  --tint-overall: #5856d6;
+  --tint-performance: #0a7699;
+  --tint-evidence: #8e44c9;
+  --tint-intended_use: #c2337a;
+
+  /* Type scale (fixed rem, ratio ~1.07–1.2) */
+  --fs-caption: 0.8125rem;   /* 13 */
+  --fs-footnote: 0.875rem;   /* 14 */
+  --fs-body: 0.9375rem;      /* 15 */
+  --fs-callout: 1rem;        /* 16 */
+  --fs-headline: 1.0625rem;  /* 17 */
+  --fs-title3: 1.25rem;      /* 20 */
+  --fs-title2: 1.5rem;       /* 24 */
+  --fs-title1: 1.75rem;      /* 28 */
+  --fs-figure: 2.25rem;      /* 36 */
+
+  /* Spacing (4px base) */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+
+  /* Shape */
+  --r-card: 16px;
+  --r-pane: 20px;
+  --r-control: 9px;
+  --r-segment: 7px;
+  --r-small: 6px;
+  --r-pill: 999px;
+
+  /* Elevation: overlays only */
+  --shadow-pop: 0 12px 32px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.06);
+  --shadow-segment: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.04);
+  --shadow-sheet: 0 -8px 28px rgba(0, 0, 0, 0.12);
+  --shadow-dot: 0 1px 3px rgba(0, 0, 0, 0.18);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 150ms;
+  --dur: 220ms;
+
+  --toolbar-height: 64px;
+  /* The shared page header (header.css), the same on every page. */
+  --header-height: 52px;
+  --side-width: 420px;
+}

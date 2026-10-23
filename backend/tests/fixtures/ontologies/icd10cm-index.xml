@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A tiny hand-written test fixture in the shape of the ICD-10-CM index to diseases and injuries (tests/test_synonyms.py); not an excerpt of the release. -->
+<ICD10CM.index>
+  <version>2027</version>
+  <title>ICD-10-CM INDEX TO DISEASES and INJURIES</title>
+  <letter>
+    <title>A</title>
+    <mainTerm>
+      <title>Abandonment</title>
+      <see>Maltreatment</see>
+    </mainTerm>
+  </letter>
+  <letter>
+    <title>D</title>
+    <mainTerm>
+      <title>Diabetes, diabetic<nemod>(mellitus) (sugar)</nemod></title>
+      <code>E11.9</code>
+      <term level="1">
+        <title>due to genetic defect</title>
+        <code>E13</code>
+      </term>
+    </mainTerm>
+  </letter>
+  <letter>
+    <title>G</title>
+    <mainTerm>
+      <title>Glucose problem</title>
+      <code>E16</code>
+    </mainTerm>
+  </letter>
+  <letter>
+    <title>H</title>
+    <mainTerm>
+      <title>High blood pressure</title>
+      <code>I10</code>
+    </mainTerm>
+    <mainTerm>
+      <title>Hypertension, hypertensive<nemod>(benign) (essential)</nemod></title>
+      <code>I10</code>
+    </mainTerm>
+  </letter>
+  <letter>
+    <title>P</title>
+    <mainTerm>
+      <title>Pressure, high, chronic</title>
+      <code>I10-</code>
+    </mainTerm>
+  </letter>
+  <letter>
+    <title>S</title>
+    <mainTerm>
+      <title>Sweet blood disease</title>
+      <code>E11</code>
+    </mainTerm>
+    <mainTerm>
+      <title>Something with a block code</title>
+      <code>E14</code>
+    </mainTerm>
+  </letter>
+</ICD10CM.index>

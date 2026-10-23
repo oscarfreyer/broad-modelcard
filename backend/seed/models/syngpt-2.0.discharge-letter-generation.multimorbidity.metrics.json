@@ -1,0 +1,1120 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-06-14T19:03:39.756Z",
+  "model_version": "SynGPT-2.0",
+  "display_name": "SynGPT-2.0",
+  "use_case": "Discharge letter generation",
+  "metric_axes": {
+    "task_mode": [
+      "Discharge letter generation"
+    ],
+    "context": [
+      "Clinical"
+    ],
+    "age_lens": [
+      "All ages",
+      "Age 0-17",
+      "Age 18-39",
+      "Age 40-64",
+      "Age 65+"
+    ],
+    "sex_lens": [
+      "All sexes",
+      "Sex Female",
+      "Sex Male"
+    ],
+    "ethnicity_lens": [
+      "All ethnicities",
+      "Ethnicity White",
+      "Ethnicity Black",
+      "Ethnicity Hispanic",
+      "Ethnicity Asian",
+      "Ethnicity Other"
+    ]
+  },
+  "combo_count": 1,
+  "combo_definitions": [
+    {
+      "task_mode": "Discharge letter generation",
+      "context": "Clinical",
+      "age_lens": "All ages",
+      "sex_lens": "All sexes",
+      "ethnicity_lens": "All ethnicities"
+    }
+  ],
+  "row_format": [
+    "perf",
+    "ci_low",
+    "ci_high",
+    "evidence_grade",
+    "n_samples",
+    "n_sites",
+    "n_studies",
+    "peer_reviewed_studies",
+    "validation_type",
+    "in_intended_use",
+    "intended_use_coverage",
+    "intended_use_level",
+    "warnings"
+  ],
+  "combinations": [
+    {
+      "condition_ids": [
+        "5A11",
+        "5B81"
+      ],
+      "label": "Type 2 diabetes mellitus + - Obesity",
+      "rows": [
+        [
+          0.751,
+          0.692,
+          0.81,
+          "C",
+          1074,
+          4,
+          2,
+          1,
+          "benchmark",
+          1,
+          1,
+          "in_scope",
+          [
+            "multimorbidity_synthetic_demo"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "5A11",
+        "5C80"
+      ],
+      "label": "Type 2 diabetes mellitus + Hyperlipoproteinaemia",
+      "rows": [
+        [
+          0.781,
+          0.722,
+          0.839,
+          "C",
+          1074,
+          4,
+          2,
+          1,
+          "benchmark",
+          1,
+          1,
+          "in_scope",
+          [
+            "multimorbidity_synthetic_demo"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "5A11",
+        "6A71"
+      ],
+      "label": "Type 2 diabetes mellitus + Recurrent depressive disorder",
+      "rows": [
+        [
+          0.758,
+          0.698,
+          0.819,
+          "C",
+          1074,
+          4,
+          2,
+          1,
+          "benchmark",
+          1,
+          1,
+          "in_scope",
+          [
+            "multimorbidity_synthetic_demo"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "5A11",
+        "BA00"
+      ],
+      "label": "Type 2 diabetes mellitus + Essential hypertension",
+      "rows": [
+        [
+          0.753,
+          0.692,
+          0.813,
+          "C",
+          1074,
+          4,
+          2,
+          1,
+          "benchmark",
+          1,
+          1,
+          "in_scope",
+          [
+            "multimorbidity_synthetic_demo"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "5A11",
+        "BD10"
+      ],
+      "label": "Type 2 diabetes mellitus + Congestive heart failure",
+      "rows": [
+        [
+          0.733,
+          0.676,
+          0.791,
+          "C",
+          1074,
+          4,
+          2,
+          1,
+          "benchmark",
+          1,
+          1,
+          "in_scope",
+          [
+            "multimorbidity_synthetic_demo"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "5A11",
+        "GB61"
+      ],
+      "label": "Type 2 diabetes mellitus + Chronic kidney disease",
+      "rows": [
+        [
+          0.753,
+          0.698,
+          0.807,
+          "C",
+          1074,
+          4,
+          2,
+          1,
+          "benchmark",
+          1,
+          1,
+          "in_scope",
+          [
+            "multimorbidity_synthetic_demo"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "5B81",
+        "5C80"
+      ],
+      "label": "- Obesity + Hyperlipoproteinaemia",
+      "rows": [
+        [
+          0.762,
+          0.706,
+          0.817,
+          "C",
+          1074,
+          4,
+          2,
+          1,
+          "benchmark",
+          1,
+          1,
+          "in_scope",
+          [
+            "multimorbidity_synthetic_demo"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "5B81",
+        "6A71"
+      ],
+      "label": "- Obesity + Recurrent depressive disorder",
+      "rows": [
+        [
+          0.76,
+          0.705,
+          0.815,
+          "C",
+          1074,
+          4,
+          2,
+          1,
+          "benchmark",
+          1,
+          1,
+          "in_scope",
+          [
+            "multimorbidity_synthetic_demo"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "5B81",
+        "BA00"
+      ],
+      "label": "- Obesity + Essential hypertension",
+      "rows": [
+        [
+          0.764,
+          0.706,
+          0.823,
+          "C",
+          1074,
+          4,
+          2,
+          1,
+          "benchmark",
+          1,
+          1,
+          "in_scope",
+          [
+            "multimorbidity_synthetic_demo"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "5C80",
+        "BA00"
+      ],
+      "label": "Hyperlipoproteinaemia + Essential hypertension",
+      "rows": [
+        [
+          0.786,
+          0.734,
+          0.838,
+          "C",
+          1074,
+          4,
+          2,
+          1,
+          "benchmark",
+          1,
+          1,
+          "in_scope",
+          [
+            "multimorbidity_synthetic_demo"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "BA00",
+        "BA51"
+      ],
+      "label": "Essential hypertension + Ischaemic cardiomyopathy",
+      "rows": [
+        [
+          0.766,
+          0.713,
+          0.818,
+          "C",
+          1074,
+          4,
+          2,
+          1,
+          "benchmark",
+          1,
+          1,
+          "in_scope",
+          [
+            "multimorbidity_synthetic_demo"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "BA00",
+        "BA52"
+      ],
+      "label": "Essential hypertension + Coronary atherosclerosis",
+      "rows": [
+        [
+          0.763,
+          0.709,
+          0.816,
+          "C",
+          1074,
+          4,
+          2,
+          1,
+          "benchmark",
+          1,
+          1,
+          "in_scope",
+          [
+            "multimorbidity_synthetic_demo"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "BA00",
+        "BD10"
+      ],
+      "label": "Essential hypertension + Congestive heart failure",
+      "rows": [
+        [
+          0.758,
+          0.706,
+          0.81,
+          "C",
+          1074,
+          4,
+          2,
+          1,
+          "benchmark",
+          1,
+          1,
+          "in_scope",
+          [
+            "multimorbidity_synthetic_demo"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "BA00",
+        "GB61"
+      ],
+      "label": "Essential hypertension + Chronic kidney disease",
+      "rows": [
+        [
+          0.756,
+          0.697,
+          0.814,
+          "C",
+          1074,
+          4,
+          2,
+          1,
+          "benchmark",
+          1,
+          1,
+          "in_scope",
+          [
+            "multimorbidity_synthetic_demo"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "BA51",
+        "BA52"
+      ],
+      "label": "Ischaemic cardiomyopathy + Coronary atherosclerosis",
+      "rows": [
+        [
+          0.752,
+          0.691,
+          0.812,
+          "C",
+          1074,
+          4,
+          2,
+          1,
+          "benchmark",
+          1,
+          1,
+          "in_scope",
+          [
+            "multimorbidity_synthetic_demo"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "BA51",
+        "BD10"
+      ],
+      "label": "Ischaemic cardiomyopathy + Congestive heart failure",
+      "rows": [
+        [
+          0.74,
+          0.678,
+          0.803,
+          "C",
+          1074,
+          4,
+          2,
+          1,
+          "benchmark",
+          1,
+          1,
+          "in_scope",
+          [
+            "multimorbidity_synthetic_demo"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "BA52",
+        "BD10"
+      ],
+      "label": "Coronary atherosclerosis + Congestive heart failure",
+      "rows": [
+        [
+          0.724,
+          0.67,
+          0.778,
+          "C",
+          1074,
+          4,
+          2,
+          1,
+          "benchmark",
+          1,
+          1,
+          "in_scope",
+          [
+            "multimorbidity_synthetic_demo"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "BB01",
+        "BD10"
+      ],
+      "label": "Pulmonary hypertension + Congestive heart failure",
+      "rows": [
+        [
+          0.733,
+          0.676,
+          0.79,
+          "C",
+          1074,
+          4,
+          2,
+          1,
+          "benchmark",
+          1,
+          1,
+          "in_scope",
+          [
+            "multimorbidity_synthetic_demo"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "BB01",
+        "CA22"
+      ],
+      "label": "Pulmonary hypertension + Chronic obstructive pulmonary disease",
+      "rows": [
+        [
+          0.748,
+          0.693,
+          0.802,
+          "C",
+          1074,
+          4,
+          2,
+          1,
+          "benchmark",
+          1,
+          1,
+          "in_scope",
+          [
+            "multimorbidity_synthetic_demo"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "BD10",
+        "CA22"
+      ],
+      "label": "Congestive heart failure + Chronic obstructive pulmonary disease",
+      "rows": [
+        [
+          0.739,
+          0.678,
+          0.799,
+          "C",
+          1074,
+          4,
+          2,
+          1,
+          "benchmark",
+          1,
+          1,
+          "in_scope",
+          [
+            "multimorbidity_synthetic_demo"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "BD10",
+        "GB61"
+      ],
+      "label": "Congestive heart failure + Chronic kidney disease",
+      "rows": [
+        [
+          0.724,
+          0.666,
+          0.783,
+          "C",
+          1074,
+          4,
+          2,
+          1,
+          "benchmark",
+          1,
+          1,
+          "in_scope",
+          [
+            "multimorbidity_synthetic_demo"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "5A11",
+        "5B81",
+        "5C80"
+      ],
+      "label": "Type 2 diabetes mellitus + - Obesity + Hyperlipoproteinaemia",
+      "rows": [
+        [
+          0.723,
+          0.653,
+          0.793,
+          "C",
+          647,
+          4,
+          1,
+          1,
+          "benchmark",
+          1,
+          0.86,
+          "partially_in_scope",
+          [
+            "multimorbidity_synthetic_demo",
+            "multimorbidity_validation_gap",
+            "wide_confidence_interval"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "5A11",
+        "5B81",
+        "6A71"
+      ],
+      "label": "Type 2 diabetes mellitus + - Obesity + Recurrent depressive disorder",
+      "rows": [
+        [
+          0.712,
+          0.644,
+          0.781,
+          "C",
+          647,
+          4,
+          1,
+          1,
+          "benchmark",
+          1,
+          0.86,
+          "partially_in_scope",
+          [
+            "multimorbidity_synthetic_demo",
+            "multimorbidity_validation_gap"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "5A11",
+        "5B81",
+        "BA00"
+      ],
+      "label": "Type 2 diabetes mellitus + - Obesity + Essential hypertension",
+      "rows": [
+        [
+          0.745,
+          0.677,
+          0.813,
+          "C",
+          647,
+          4,
+          1,
+          1,
+          "benchmark",
+          1,
+          0.86,
+          "partially_in_scope",
+          [
+            "multimorbidity_synthetic_demo",
+            "multimorbidity_validation_gap"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "5A11",
+        "5C80",
+        "BA00"
+      ],
+      "label": "Type 2 diabetes mellitus + Hyperlipoproteinaemia + Essential hypertension",
+      "rows": [
+        [
+          0.724,
+          0.656,
+          0.792,
+          "C",
+          647,
+          4,
+          1,
+          1,
+          "benchmark",
+          1,
+          0.86,
+          "partially_in_scope",
+          [
+            "multimorbidity_synthetic_demo",
+            "multimorbidity_validation_gap"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "5A11",
+        "BA00",
+        "BD10"
+      ],
+      "label": "Type 2 diabetes mellitus + Essential hypertension + Congestive heart failure",
+      "rows": [
+        [
+          0.714,
+          0.639,
+          0.788,
+          "C",
+          647,
+          4,
+          1,
+          1,
+          "benchmark",
+          1,
+          0.86,
+          "partially_in_scope",
+          [
+            "multimorbidity_synthetic_demo",
+            "multimorbidity_validation_gap",
+            "wide_confidence_interval"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "5A11",
+        "BA00",
+        "GB61"
+      ],
+      "label": "Type 2 diabetes mellitus + Essential hypertension + Chronic kidney disease",
+      "rows": [
+        [
+          0.719,
+          0.645,
+          0.793,
+          "C",
+          647,
+          4,
+          1,
+          1,
+          "benchmark",
+          1,
+          0.86,
+          "partially_in_scope",
+          [
+            "multimorbidity_synthetic_demo",
+            "multimorbidity_validation_gap",
+            "wide_confidence_interval"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "5A11",
+        "BD10",
+        "GB61"
+      ],
+      "label": "Type 2 diabetes mellitus + Congestive heart failure + Chronic kidney disease",
+      "rows": [
+        [
+          0.708,
+          0.643,
+          0.773,
+          "C",
+          647,
+          4,
+          1,
+          1,
+          "benchmark",
+          1,
+          0.86,
+          "partially_in_scope",
+          [
+            "multimorbidity_synthetic_demo",
+            "multimorbidity_validation_gap"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "5B81",
+        "5C80",
+        "BA00"
+      ],
+      "label": "- Obesity + Hyperlipoproteinaemia + Essential hypertension",
+      "rows": [
+        [
+          0.734,
+          0.661,
+          0.807,
+          "C",
+          647,
+          4,
+          1,
+          1,
+          "benchmark",
+          1,
+          0.86,
+          "partially_in_scope",
+          [
+            "multimorbidity_synthetic_demo",
+            "multimorbidity_validation_gap",
+            "wide_confidence_interval"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "BA00",
+        "BA51",
+        "BA52"
+      ],
+      "label": "Essential hypertension + Ischaemic cardiomyopathy + Coronary atherosclerosis",
+      "rows": [
+        [
+          0.7,
+          0.627,
+          0.773,
+          "C",
+          647,
+          4,
+          1,
+          1,
+          "benchmark",
+          1,
+          0.86,
+          "partially_in_scope",
+          [
+            "multimorbidity_synthetic_demo",
+            "multimorbidity_validation_gap",
+            "performance_below_target",
+            "wide_confidence_interval"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "BA00",
+        "BA51",
+        "BD10"
+      ],
+      "label": "Essential hypertension + Ischaemic cardiomyopathy + Congestive heart failure",
+      "rows": [
+        [
+          0.719,
+          0.646,
+          0.793,
+          "D",
+          647,
+          4,
+          1,
+          1,
+          "vignette_study",
+          1,
+          0.86,
+          "partially_in_scope",
+          [
+            "limited_multimorbidity_evidence",
+            "multimorbidity_synthetic_demo",
+            "multimorbidity_validation_gap",
+            "wide_confidence_interval"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "BA00",
+        "BA52",
+        "BD10"
+      ],
+      "label": "Essential hypertension + Coronary atherosclerosis + Congestive heart failure",
+      "rows": [
+        [
+          0.721,
+          0.648,
+          0.793,
+          "C",
+          647,
+          4,
+          1,
+          1,
+          "benchmark",
+          1,
+          0.86,
+          "partially_in_scope",
+          [
+            "multimorbidity_synthetic_demo",
+            "multimorbidity_validation_gap",
+            "wide_confidence_interval"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "BA00",
+        "BD10",
+        "GB61"
+      ],
+      "label": "Essential hypertension + Congestive heart failure + Chronic kidney disease",
+      "rows": [
+        [
+          0.71,
+          0.64,
+          0.781,
+          "C",
+          647,
+          4,
+          1,
+          1,
+          "benchmark",
+          1,
+          0.86,
+          "partially_in_scope",
+          [
+            "multimorbidity_synthetic_demo",
+            "multimorbidity_validation_gap",
+            "wide_confidence_interval"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "BA51",
+        "BA52",
+        "BD10"
+      ],
+      "label": "Ischaemic cardiomyopathy + Coronary atherosclerosis + Congestive heart failure",
+      "rows": [
+        [
+          0.694,
+          0.622,
+          0.767,
+          "D",
+          647,
+          4,
+          1,
+          1,
+          "vignette_study",
+          1,
+          0.86,
+          "partially_in_scope",
+          [
+            "limited_multimorbidity_evidence",
+            "multimorbidity_synthetic_demo",
+            "multimorbidity_validation_gap",
+            "performance_below_target",
+            "wide_confidence_interval"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "BB01",
+        "BD10",
+        "CA22"
+      ],
+      "label": "Pulmonary hypertension + Congestive heart failure + Chronic obstructive pulmonary disease",
+      "rows": [
+        [
+          0.717,
+          0.643,
+          0.791,
+          "C",
+          647,
+          4,
+          1,
+          1,
+          "benchmark",
+          1,
+          0.86,
+          "partially_in_scope",
+          [
+            "multimorbidity_synthetic_demo",
+            "multimorbidity_validation_gap",
+            "wide_confidence_interval"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "5A11",
+        "5B81",
+        "5C80",
+        "BA00"
+      ],
+      "label": "Type 2 diabetes mellitus + - Obesity + Hyperlipoproteinaemia + Essential hypertension",
+      "rows": [
+        [
+          0.701,
+          0.62,
+          0.782,
+          "D",
+          452,
+          4,
+          1,
+          1,
+          "vignette_study",
+          1,
+          0.72,
+          "partially_in_scope",
+          [
+            "limited_multimorbidity_evidence",
+            "multimorbidity_synthetic_demo",
+            "multimorbidity_validation_gap",
+            "wide_confidence_interval"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "5A11",
+        "BA00",
+        "BD10",
+        "GB61"
+      ],
+      "label": "Type 2 diabetes mellitus + Essential hypertension + Congestive heart failure + Chronic kidney disease",
+      "rows": [
+        [
+          0.688,
+          0.612,
+          0.763,
+          "D",
+          452,
+          4,
+          1,
+          1,
+          "vignette_study",
+          1,
+          0.72,
+          "partially_in_scope",
+          [
+            "limited_multimorbidity_evidence",
+            "multimorbidity_synthetic_demo",
+            "multimorbidity_validation_gap",
+            "performance_below_target",
+            "wide_confidence_interval"
+          ]
+        ]
+      ]
+    },
+    {
+      "condition_ids": [
+        "BA00",
+        "BA51",
+        "BA52",
+        "BD10"
+      ],
+      "label": "Essential hypertension + Ischaemic cardiomyopathy + Coronary atherosclerosis + Congestive heart failure",
+      "rows": [
+        [
+          0.688,
+          0.605,
+          0.771,
+          "D",
+          452,
+          4,
+          1,
+          1,
+          "vignette_study",
+          1,
+          0.72,
+          "partially_in_scope",
+          [
+            "limited_multimorbidity_evidence",
+            "multimorbidity_synthetic_demo",
+            "multimorbidity_validation_gap",
+            "performance_below_target",
+            "wide_confidence_interval"
+          ]
+        ]
+      ]
+    }
+  ],
+  "meta": {
+    "source": "synthetic multimorbidity demo data",
+    "seed_clusters": [
+      "metabolic-syndrome",
+      "diabetes-renal-cardiac",
+      "hypertension-cardiac",
+      "respiratory-cardiac",
+      "mental-metabolic"
+    ],
+    "limitation": "Synthetic prototype data only; not clinical evidence."
+  }
+}

@@ -1,0 +1,89 @@
+# The static, read-only demo on GitHub Pages (release 0.4).
+# It downloads the pinned ontology releases (checksums verified), builds the
+# demo store from the committed seed and demo pack, records the snapshot from
+# the local backend, builds frontend/dist-static/, and deploys it. Nothing is
+# committed: every run records afresh. The data is synthetic demonstration
+# data only.
+#
+# Setup once: Settings → Pages → Build and deployment → Source: GitHub Actions.
+# Runs on every push to main and on demand (Actions → Static demo → Run workflow).
+#
+# Classifications: ICD-11, MONDO, and ICD-10-CM. MONDO and ICD-10-CM are projected onto ICD-11 through WHO's
+# ICD-10 → ICD-11 mapping tables (CC BY-ND 3.0 IGO, used unmodified, attributed
+# in THIRD_PARTY_NOTICES.md). To record fewer, set the repository variable
+# BMC_STATIC_ONTOLOGIES (Settings → Secrets and variables → Actions → Variables).
+name: Static demo
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      BMC_STATIC_ONTOLOGIES: ${{ vars.BMC_STATIC_ONTOLOGIES || 'icd11,mondo,icd10cm' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+
+      - name: Install the frontend
+        run: npm ci
+
+      - name: Install the backend
+        run: |
+          python -m venv backend/.venv
+          backend/.venv/bin/pip install -r backend/requirements.txt
+
+      # The pinned releases (scripts/ontologies/sources.json), kept between runs;
+      # the fetch checks every file's size and SHA-256 and downloads only what is missing.
+      - uses: actions/cache@v4
+        with:
+          path: backend/data/ontology-sources
+          key: ontology-sources-${{ hashFiles('scripts/ontologies/sources.json') }}
+
+      - name: Download the pinned ontology releases
+        run: npm run ontologies:fetch
+
+      - name: Build the demo store (with ICD-10-CM and MONDO)
+        run: npm run demo:build
+
+      - name: Record the snapshot and build the static site (${{ env.BMC_STATIC_ONTOLOGIES }})
+        run: npm run build:static
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: frontend/dist-static
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

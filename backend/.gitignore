@@ -1,0 +1,7 @@
+# Reference implementation extracted from the v0.2.0-alpha.1 tag and the
+# parity fixtures generated from it (see tests/reference/).
+.reference/
+# Partially built store during an import.
+data/*.importing*
+# Staged uploads (files and check results), next to the store.
+data/uploads/

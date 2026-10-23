@@ -1,0 +1,4 @@
+SYNTHETIC STUDY EXCERPT FOR THE BROAD MODELCARD HELPER EVALUATION. Fictional study; the wording is deliberately vague.
+
+Kestrel ICU retrospective review of ICU_GPT-1.0 (fictional), study KIR-2026-11, dated 2026-09-05, three intensive care units.
+ICU_GPT-1.0 (function: CDSS) flagged pneumonia with a sensitivity of around 0.7 in a mostly female cohort of roughly 850 admissions. No confidence interval is reported.

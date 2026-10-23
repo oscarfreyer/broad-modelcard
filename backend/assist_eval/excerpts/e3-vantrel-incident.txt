@@ -1,0 +1,6 @@
+SYNTHETIC INCIDENT REPORT FOR THE BROAD MODELCARD HELPER EVALUATION. Fictional event, no patient details; not a real report.
+
+Fictional incident report IR-7731 (synthetic), reported 2026-09-20.
+System: Vantrel Triage 2.1 (Vantrel-Triage-2.1), function: emergency department triage.
+What happened: for adults aged 40 to 64 presenting with chest pain, the system assigned a low urgency category in several cases later diagnosed as acute myocardial infarction. Staff re-triaged the patients before harm occurred, but harm was possible.
+Status: open; the developer is investigating.

@@ -1,0 +1,117 @@
+{
+  "notes": "Shared cases of the comparison rule (CONTRACT.md §25, contract v1.14 phase Q4): backend/tests/test_comparison_q4.py runs them through app/services/comparison.py and tests/compareDepth.test.js through the static port (frontend/src/api/staticComparison.js), so both answer every case alike. Card ids and measures are synthetic.",
+  "card_reasons": [
+    {
+      "name": "no card states a measure: nothing new is flagged",
+      "lens": "all",
+      "cards": [
+        { "card_id": "A|f", "function_category": "decision_support", "performance_measure": null },
+        { "card_id": "B|f", "function_category": "decision_support", "performance_measure": null }
+      ],
+      "expected": []
+    },
+    {
+      "name": "the same measure, ignoring case and spacing",
+      "lens": "all",
+      "cards": [
+        { "card_id": "A|f", "function_category": "decision_support", "performance_measure": "Top-3 diagnostic accuracy" },
+        { "card_id": "B|f", "function_category": "decision_support", "performance_measure": "  top-3   DIAGNOSTIC accuracy" }
+      ],
+      "expected": []
+    },
+    {
+      "name": "different measures: a tie goes to the first card's",
+      "lens": "all",
+      "cards": [
+        { "card_id": "A|f", "function_category": "decision_support", "performance_measure": "Top-3 diagnostic accuracy" },
+        { "card_id": "B|f", "function_category": "decision_support", "performance_measure": "Sensitivity" }
+      ],
+      "expected": [{ "code": "measure_differs", "cards": ["B|f"] }]
+    },
+    {
+      "name": "different measures: the cards outside the most common one",
+      "lens": "all",
+      "cards": [
+        { "card_id": "A|f", "function_category": "decision_support", "performance_measure": "Sensitivity" },
+        { "card_id": "B|f", "function_category": "decision_support", "performance_measure": "Top-3 diagnostic accuracy" },
+        { "card_id": "C|f", "function_category": "decision_support", "performance_measure": "Top-3 diagnostic accuracy" }
+      ],
+      "expected": [{ "code": "measure_differs", "cards": ["A|f"] }]
+    },
+    {
+      "name": "a card without a measure beside cards with different ones",
+      "lens": "all",
+      "cards": [
+        { "card_id": "A|f", "function_category": "decision_support", "performance_measure": null },
+        { "card_id": "B|f", "function_category": "decision_support", "performance_measure": "Top-3 diagnostic accuracy" },
+        { "card_id": "C|f", "function_category": "decision_support", "performance_measure": "Sensitivity" }
+      ],
+      "expected": [
+        { "code": "measure_differs", "cards": ["C|f"] },
+        { "code": "measure_unknown", "cards": ["A|f"] }
+      ]
+    },
+    {
+      "name": "measure reasons follow the v1.13 card-level reasons",
+      "lens": "age",
+      "cards": [
+        { "card_id": "A|f", "function_category": "decision_support", "performance_measure": "Sensitivity" },
+        { "card_id": "T|t", "function_category": "triage", "performance_measure": null },
+        { "card_id": "P|p", "function_category": null, "performance_measure": "Top-3 diagnostic accuracy", "lens_state": "none" }
+      ],
+      "expected": [
+        { "code": "function_category_differs", "cards": ["T|t"] },
+        { "code": "function_category_unknown", "cards": ["P|p"] },
+        { "code": "population_differs", "cards": ["P|p"] },
+        { "code": "measure_differs", "cards": ["P|p"] },
+        { "code": "measure_unknown", "cards": ["T|t"] }
+      ]
+    }
+  ],
+  "row_reasons": [
+    {
+      "name": "mixed and unstated settings never count",
+      "cells": [
+        { "status": "strong", "setting_category": "intensive_care" },
+        { "status": "strong", "setting_category": "mixed" },
+        { "status": "moderate" }
+      ],
+      "expected": []
+    },
+    {
+      "name": "settings differ: the cards outside the most common setting",
+      "cells": [
+        { "status": "strong", "setting_category": "intensive_care" },
+        { "status": "weak", "setting_category": "intensive_care" },
+        { "status": "strong", "setting_category": "primary_care" }
+      ],
+      "expected": [{ "code": "setting_differs", "cards": ["C|f"] }]
+    },
+    {
+      "name": "settings differ: a tie goes to the first card's",
+      "cells": [
+        { "status": "strong", "setting_category": "primary_care" },
+        { "status": "strong", "setting_category": "emergency_department" }
+      ],
+      "expected": [{ "code": "setting_differs", "cards": ["B|f"] }]
+    },
+    {
+      "name": "only cards with a result take part",
+      "cells": [
+        { "status": "strong", "setting_category": "primary_care" },
+        { "status": "out_of_scope", "setting_category": "emergency_department" },
+        { "status": "no_data" }
+      ],
+      "expected": [{ "code": "no_result", "cards": ["C|f"] }, { "code": "out_of_scope", "cards": ["B|f"] }]
+    },
+    {
+      "name": "setting_differs comes last, after design_differs",
+      "cells": [
+        { "status": "strong", "setting_category": "primary_care", "design_group": "clinical_study" },
+        { "status": "strong", "setting_category": "emergency_department" },
+        { "status": "strong", "setting_category": "emergency_department" }
+      ],
+      "expected": [{ "code": "design_differs", "cards": ["A|f"] }, { "code": "setting_differs", "cards": ["A|f"] }]
+    }
+  ]
+}

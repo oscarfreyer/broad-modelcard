@@ -1,0 +1,731 @@
+{
+  "notes": "The plain-language search quality set (CONTRACT.md §31): 30 synthetic queries with the chips each should give, as [kind, value], and the words left unrecognized. backend/tests/test_interpret.py runs them on the demo store with the pinned ontology files imported (synonyms included) and needs at least 27 exactly right; tests/plainSearch.test.js runs the static port on those marked \"synonyms\": false, with the ICD-11 concepts of backend/seed/atlas-base.json and this vocabulary (the demo registry, which the backend test checks against the demo store). Queries and expectations are synthetic.",
+  "vocabulary": {
+    "default_model_version": "SynGPT-2.0",
+    "models": [
+      {
+        "model_version": "SynGPT-1.0",
+        "display_name": "SynGPT-1.0",
+        "replaced_by": [
+          "SynGPT-2.0"
+        ],
+        "use_cases": [
+          {
+            "use_case": "Clinician Facing CDSS",
+            "function_category": "decision_support"
+          },
+          {
+            "use_case": "Discharge letter generation",
+            "function_category": "documentation"
+          }
+        ]
+      },
+      {
+        "model_version": "SynGPT-2.0",
+        "display_name": "SynGPT-2.0",
+        "use_cases": [
+          {
+            "use_case": "Clinician Facing CDSS",
+            "function_category": "decision_support"
+          },
+          {
+            "use_case": "Discharge letter generation",
+            "function_category": "documentation"
+          }
+        ]
+      },
+      {
+        "model_version": "MediCore-2.5",
+        "display_name": "MediCore-2.5",
+        "use_cases": [
+          {
+            "use_case": "Discharge letter generation",
+            "function_category": "documentation"
+          },
+          {
+            "use_case": "Clinician Facing CDSS",
+            "function_category": "decision_support"
+          }
+        ]
+      },
+      {
+        "model_version": "ICU_GPT-1.0",
+        "display_name": "ICU_GPT-1.0",
+        "use_cases": [
+          {
+            "use_case": "CDSS",
+            "function_category": "decision_support"
+          }
+        ]
+      },
+      {
+        "model_version": "radAIology-1",
+        "display_name": "radAIology-1",
+        "use_cases": [
+          {
+            "use_case": "Radiology image analysis",
+            "function_category": "image_analysis"
+          }
+        ]
+      },
+      {
+        "model_version": "SkinAI-1.0",
+        "display_name": "SkinAI-1.0",
+        "use_cases": [
+          {
+            "use_case": "Skin lesion CDSS",
+            "function_category": "image_analysis"
+          }
+        ]
+      },
+      {
+        "model_version": "DoAIHaveCancer-1.0",
+        "display_name": "DoAIHaveCancer-1.0",
+        "use_cases": [
+          {
+            "use_case": "Skin lesion CDSS",
+            "function_category": "image_analysis"
+          }
+        ]
+      },
+      {
+        "model_version": "Quillary-Scribe-1.0",
+        "display_name": "Quillary Scribe 1.0",
+        "use_cases": [
+          {
+            "use_case": "Discharge letter generation",
+            "function_category": "documentation"
+          }
+        ]
+      },
+      {
+        "model_version": "Vantrel-Triage-2.0",
+        "display_name": "Vantrel Triage 2.0",
+        "replaced_by": [
+          "Vantrel-Triage-2.1"
+        ],
+        "use_cases": [
+          {
+            "use_case": "Emergency department triage",
+            "function_category": "triage"
+          }
+        ]
+      },
+      {
+        "model_version": "Vantrel-Triage-2.1",
+        "display_name": "Vantrel Triage 2.1",
+        "use_cases": [
+          {
+            "use_case": "Emergency department triage",
+            "function_category": "triage"
+          }
+        ]
+      },
+      {
+        "model_version": "Corvessa-Skin-Review-1.2",
+        "display_name": "Corvessa Skin Review 1.2",
+        "use_cases": [
+          {
+            "use_case": "Skin lesion CDSS",
+            "function_category": "image_analysis"
+          }
+        ]
+      },
+      {
+        "model_version": "Parlowe-Answers-1.0",
+        "display_name": "Parlowe Answers 1.0",
+        "use_cases": [
+          {
+            "use_case": "Patient question answering",
+            "function_category": "patient_communication"
+          }
+        ]
+      },
+      {
+        "model_version": "Tallyfern-Coding-1.4",
+        "display_name": "Tallyfern Coding 1.4",
+        "use_cases": [
+          {
+            "use_case": "Clinical coding support",
+            "function_category": "administrative"
+          }
+        ]
+      }
+    ],
+    "axes": {
+      "context": [
+        "Clinical",
+        "Emergency department",
+        "Intensive care",
+        "Inpatient ward",
+        "Outpatient clinic",
+        "Primary care"
+      ],
+      "age": [
+        "All ages",
+        "Age 0-17",
+        "Age 18-39",
+        "Age 40-64",
+        "Age 65+"
+      ],
+      "sex": [
+        "All sexes",
+        "Sex Female",
+        "Sex Male"
+      ],
+      "ethnicity": [
+        "All ethnicities",
+        "Ethnicity White",
+        "Ethnicity Black",
+        "Ethnicity Hispanic",
+        "Ethnicity Asian",
+        "Ethnicity Other"
+      ]
+    }
+  },
+  "queries": [
+    {
+      "query": "heart failure in older women in the emergency department",
+      "synonyms": false,
+      "chips": [
+        [
+          "condition",
+          "BLK-11-BlockL1-BD1"
+        ],
+        [
+          "sex",
+          "Sex Female"
+        ],
+        [
+          "age",
+          "Age 65+"
+        ],
+        [
+          "setting",
+          "Emergency department"
+        ]
+      ],
+      "unrecognized": []
+    },
+    {
+      "query": "SynGPT-2.0 decision support for heart failure in women over 65",
+      "synonyms": false,
+      "chips": [
+        [
+          "system",
+          "SynGPT-2.0"
+        ],
+        [
+          "function",
+          "Clinician Facing CDSS"
+        ],
+        [
+          "condition",
+          "BLK-11-BlockL1-BD1"
+        ],
+        [
+          "sex",
+          "Sex Female"
+        ],
+        [
+          "age",
+          "Age 65+"
+        ]
+      ],
+      "unrecognized": []
+    },
+    {
+      "query": "heart attack in men",
+      "synonyms": true,
+      "chips": [
+        [
+          "condition",
+          "BA41"
+        ],
+        [
+          "sex",
+          "Sex Male"
+        ]
+      ],
+      "unrecognized": []
+    },
+    {
+      "query": "high blood pressure in black women",
+      "synonyms": true,
+      "chips": [
+        [
+          "condition",
+          "BA00"
+        ],
+        [
+          "sex",
+          "Sex Female"
+        ],
+        [
+          "ethnicity",
+          "Ethnicity Black"
+        ]
+      ],
+      "unrecognized": []
+    },
+    {
+      "query": "stroke in a 70-year-old man",
+      "synonyms": true,
+      "chips": [
+        [
+          "condition",
+          "8B11"
+        ],
+        [
+          "sex",
+          "Sex Male"
+        ],
+        [
+          "age",
+          "Age 65+"
+        ]
+      ],
+      "unrecognized": []
+    },
+    {
+      "query": "children with asthma in primary care",
+      "synonyms": false,
+      "chips": [
+        [
+          "condition",
+          "CA23"
+        ],
+        [
+          "age",
+          "Age 0-17"
+        ],
+        [
+          "setting",
+          "Primary care"
+        ]
+      ],
+      "unrecognized": []
+    },
+    {
+      "query": "pneumonia and sepsis in the elderly",
+      "synonyms": false,
+      "chips": [
+        [
+          "condition",
+          "CA40"
+        ],
+        [
+          "condition",
+          "BLK-01-BlockL1-1G4"
+        ],
+        [
+          "age",
+          "Age 65+"
+        ]
+      ],
+      "unrecognized": []
+    },
+    {
+      "query": "Vantrel Triage 2.1 in the emergency department",
+      "synonyms": false,
+      "chips": [
+        [
+          "system",
+          "Vantrel-Triage-2.1"
+        ],
+        [
+          "setting",
+          "Emergency department"
+        ]
+      ],
+      "unrecognized": []
+    },
+    {
+      "query": "triage of chest pain",
+      "synonyms": false,
+      "chips": [
+        [
+          "function",
+          "Emergency department triage"
+        ]
+      ],
+      "unrecognized": [
+        "chest pain"
+      ]
+    },
+    {
+      "query": "discharge letters for diabetes",
+      "synonyms": true,
+      "chips": [
+        [
+          "function",
+          "Discharge letter generation"
+        ],
+        [
+          "condition",
+          "5A14"
+        ]
+      ],
+      "unrecognized": []
+    },
+    {
+      "query": "radiology for pneumonia in hispanic adults",
+      "synonyms": false,
+      "chips": [
+        [
+          "function",
+          "Radiology image analysis"
+        ],
+        [
+          "condition",
+          "CA40"
+        ],
+        [
+          "ethnicity",
+          "Ethnicity Hispanic"
+        ]
+      ],
+      "unrecognized": [
+        "adults"
+      ]
+    },
+    {
+      "query": "SkinAI melanoma in white men",
+      "synonyms": true,
+      "chips": [
+        [
+          "system",
+          "SkinAI-1.0"
+        ],
+        [
+          "condition",
+          "2C30"
+        ],
+        [
+          "sex",
+          "Sex Male"
+        ],
+        [
+          "ethnicity",
+          "Ethnicity White"
+        ]
+      ],
+      "unrecognized": []
+    },
+    {
+      "query": "ICU_GPT sepsis in intensive care",
+      "synonyms": false,
+      "chips": [
+        [
+          "system",
+          "ICU_GPT-1.0"
+        ],
+        [
+          "condition",
+          "BLK-01-BlockL1-1G4"
+        ],
+        [
+          "setting",
+          "Intensive care"
+        ]
+      ],
+      "unrecognized": []
+    },
+    {
+      "query": "type 2 diabetes in south asian women",
+      "synonyms": true,
+      "chips": [
+        [
+          "condition",
+          "5A11"
+        ],
+        [
+          "sex",
+          "Sex Female"
+        ],
+        [
+          "ethnicity",
+          "Ethnicity Asian"
+        ]
+      ],
+      "unrecognized": []
+    },
+    {
+      "query": "Type 2 diabetes mellitus in women aged 40 to 64",
+      "synonyms": false,
+      "chips": [
+        [
+          "condition",
+          "5A11"
+        ],
+        [
+          "sex",
+          "Sex Female"
+        ],
+        [
+          "age",
+          "Age 40-64"
+        ]
+      ],
+      "unrecognized": []
+    },
+    {
+      "query": "5A11 and BA00.0 in men",
+      "synonyms": false,
+      "chips": [
+        [
+          "condition",
+          "5A11"
+        ],
+        [
+          "condition",
+          "BA00.0"
+        ],
+        [
+          "sex",
+          "Sex Male"
+        ]
+      ],
+      "unrecognized": []
+    },
+    {
+      "query": "epilepsy in children under 12",
+      "synonyms": false,
+      "chips": [
+        [
+          "condition",
+          "BLK-08-BlockL1-8A6"
+        ],
+        [
+          "age",
+          "Age 0-17"
+        ]
+      ],
+      "unrecognized": []
+    },
+    {
+      "query": "depression in hispanic teenagers",
+      "synonyms": true,
+      "chips": [
+        [
+          "condition",
+          "6A70"
+        ],
+        [
+          "age",
+          "Age 0-17"
+        ],
+        [
+          "ethnicity",
+          "Ethnicity Hispanic"
+        ]
+      ],
+      "unrecognized": []
+    },
+    {
+      "query": "male infertility",
+      "synonyms": false,
+      "chips": [
+        [
+          "condition",
+          "GB04"
+        ]
+      ],
+      "unrecognized": []
+    },
+    {
+      "query": "men and women with migraine",
+      "synonyms": false,
+      "chips": [
+        [
+          "condition",
+          "8A80"
+        ]
+      ],
+      "unrecognized": [
+        "men",
+        "women"
+      ]
+    },
+    {
+      "query": "MediCore discharge letter for kidney failure",
+      "synonyms": false,
+      "chips": [
+        [
+          "system",
+          "MediCore-2.5"
+        ],
+        [
+          "function",
+          "Discharge letter generation"
+        ],
+        [
+          "condition",
+          "GB60"
+        ]
+      ],
+      "unrecognized": []
+    },
+    {
+      "query": "Alzheimer's disease in elderly patients",
+      "synonyms": true,
+      "chips": [
+        [
+          "condition",
+          "8A20"
+        ],
+        [
+          "age",
+          "Age 65+"
+        ]
+      ],
+      "unrecognized": []
+    },
+    {
+      "query": "pink eye in kids at the GP",
+      "synonyms": true,
+      "chips": [
+        [
+          "condition",
+          "9A60"
+        ],
+        [
+          "age",
+          "Age 0-17"
+        ],
+        [
+          "setting",
+          "Primary care"
+        ]
+      ],
+      "unrecognized": []
+    },
+    {
+      "query": "strep throat in an outpatient clinic",
+      "synonyms": true,
+      "chips": [
+        [
+          "condition",
+          "1B51"
+        ],
+        [
+          "setting",
+          "Outpatient clinic"
+        ]
+      ],
+      "unrecognized": []
+    },
+    {
+      "query": "Quillary Scribe for atrial fibrillation on the ward",
+      "synonyms": false,
+      "chips": [
+        [
+          "system",
+          "Quillary-Scribe-1.0"
+        ],
+        [
+          "condition",
+          "BC81.3"
+        ],
+        [
+          "setting",
+          "Inpatient ward"
+        ]
+      ],
+      "unrecognized": []
+    },
+    {
+      "query": "chickenpox in babies",
+      "synonyms": true,
+      "chips": [
+        [
+          "condition",
+          "1E90"
+        ],
+        [
+          "age",
+          "Age 0-17"
+        ]
+      ],
+      "unrecognized": []
+    },
+    {
+      "query": "Corvessa Skin Review in A&E",
+      "synonyms": false,
+      "chips": [
+        [
+          "system",
+          "Corvessa-Skin-Review-1.2"
+        ],
+        [
+          "setting",
+          "Emergency department"
+        ]
+      ],
+      "unrecognized": []
+    },
+    {
+      "query": "flu in young adults",
+      "synonyms": false,
+      "chips": [
+        [
+          "age",
+          "Age 18-39"
+        ]
+      ],
+      "unrecognized": [
+        "flu"
+      ]
+    },
+    {
+      "query": "middle-aged men with gout",
+      "synonyms": false,
+      "chips": [
+        [
+          "condition",
+          "FA25"
+        ],
+        [
+          "sex",
+          "Sex Male"
+        ],
+        [
+          "age",
+          "Age 40-64"
+        ]
+      ],
+      "unrecognized": []
+    },
+    {
+      "query": "SynGPT 1.0 for asthma, COPD and pneumonia in Asian women",
+      "synonyms": true,
+      "chips": [
+        [
+          "system",
+          "SynGPT-1.0"
+        ],
+        [
+          "condition",
+          "CA23"
+        ],
+        [
+          "condition",
+          "CA22"
+        ],
+        [
+          "condition",
+          "CA40"
+        ],
+        [
+          "sex",
+          "Sex Female"
+        ],
+        [
+          "ethnicity",
+          "Ethnicity Asian"
+        ]
+      ],
+      "unrecognized": []
+    }
+  ]
+}

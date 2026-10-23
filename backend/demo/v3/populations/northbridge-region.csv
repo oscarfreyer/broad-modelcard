@@ -1,0 +1,311 @@
+ICD-11 code,Condition,Commonness,Action,Source,Study,Source date
+1A01,Intestinal infection due to other Vibrio,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1A05,Intestinal infections due to Yersinia enterocolitica,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1A10,Foodborne staphylococcal intoxication,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1A13,Foodborne Bacillus cereus intoxication,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1A20,Enteritis due to Adenovirus,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1A23,Enteritis due to Norovirus,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1A31,Giardiasis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1A32,Cryptosporidiosis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1A35,Blastocystosis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1A71,Gonococcal pelviperitonitis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1A72,Gonococcal infection of other sites,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1A81,Non-ulcerative sexually transmitted chlamydial infection,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1A91,Granuloma inguinale,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1A93,Sexually transmissible infestations,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1A94,Anogenital herpes simplex infection,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1B10,Tuberculosis of the respiratory system,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1B12,Tuberculosis of other systems or organs,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1B21,Infections due to non-tuberculous mycobacteria,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1B40,Acute rheumatic fever without mention of heart involvement,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1B41,Acute rheumatic fever with heart involvement,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1B50,Scarlet fever,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1B51,Streptococcal pharyngitis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1B70,"Bacterial cellulitis, erysipelas or lymphangitis",Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1B72,Impetigo,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1B73,Ecthyma,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1B74,Superficial bacterial folliculitis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1B93,Plague,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1B97,Anthrax,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1C11,Bartonellosis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1C14,Obstetrical tetanus,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1C17,Diphtheria,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1C18,Brazilian purpuric fever,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1C19,Legionellosis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1C1A,Listeriosis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1C1F,Endemic non-venereal syphilis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1C20,Chlamydial conjunctivitis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1C31,Spotted fever,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1C32,Rickettsialpox,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1C33,Q fever,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1C43,Actinomycetoma,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1C60,Human immunodeficiency virus disease associated with tuberculosis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1C61,Human immunodeficiency virus disease associated with malaria,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1C83,Western equine encephalitis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1C84,Eastern equine encephalitis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1C86,St Louis encephalitis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1D02,"Infectious myelitis, not elsewhere classified",Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1D03,Infectious abscess of the central nervous system,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1D05,Infectious cysts of the central nervous system,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1D43,Oropouche virus disease,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1D44,Rift Valley fever,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1D45,Sandfly fever,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1D46,West Nile virus infection,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1D4E,Severe fever with thrombocytopenia syndrome,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1D60,Filovirus disease,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1D61,Arenavirus disease,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1D62,Hantavirus disease,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1D80,Mumps,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1D81,Infectious mononucleosis,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1D90,Adenovirus infection of unspecified site,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1D91,Enterovirus infection of unspecified site,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1D93,Parvovirus infection of unspecified site,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1E30,Influenza due to identified seasonal influenza virus,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1E31,Influenza due to identified zoonotic or pandemic influenza virus,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1E32,"Influenza, virus not identified",Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1E73,Vaccinia,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1E75,Orf,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1E80,Common warts,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1E83,Wart virus proliferation in immune-deficient states,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1F00,Herpes simplex infections,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1F01,Roseola infantum,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1F04,Erythema infectiosum,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1F05,Picornavirus infections presenting in the skin or mucous membranes,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1F22,Blastomycosis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1F23,Candidosis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1F25,Coccidioidomycosis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1F26,Conidiobolomycosis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1F27,Cryptococcosis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1F28,Dermatophytosis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1F2B,Lobomycosis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1F2C,Mucormycosis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1F2E,Paracoccidioidomycosis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1F2G,Pneumocystosis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1F2J,Sporotrichosis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1F40,Malaria due to Plasmodium falciparum,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1F42,Malaria due to Plasmodium malariae,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1F44,Other parasitologically confirmed malaria,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1F54,Leishmaniasis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1F58,Microsporidiosis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1F65,- Enterobiasis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1F6G,- Trichuriasis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1F82,- Fascioliasis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1F83,- Fasciolopsiasis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1F84,- Opisthorchiasis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1F86,- Schistosomiasis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1G03,Pthiriasis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1G06,Cimicosis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1G40,Sepsis without septic shock,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1G60,Certain other disorders of infectious origin,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+1G83,Sequelae of poliomyelitis,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2A00,Primary neoplasms of brain,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2A20,Non mast cell myeloproliferative neoplasms,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2A21,Mastocytosis,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2A35,Refractory anaemia with excess of blasts,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2A40,Chronic myelomonocytic leukaemia,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2A43,Refractory anaemia with ring sideroblasts associated with marked thrombocytosis,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2A44,"Myeloproliferative and myelodysplastic disease, unclassifiable",Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2A61,Acute leukaemias of ambiguous lineage,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2A70,Precursor B-lymphoblastic neoplasms,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2A83,Plasma cell neoplasms,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2B02,- Sézary syndrome,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2B30,Hodgkin lymphoma,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2B31,Histiocytic or dendritic cell neoplasms,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2B33,Malignant haematopoietic neoplasms without further specification,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2B50,"- Chondrosarcoma, primary site",Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2B52,"- Ewing sarcoma, primary site",Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2B58,"- Leiomyosarcoma, primary site",Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2B5F,"- Sarcoma, not elsewhere classified, primary site",Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2B5G,"- Myosarcoma of uterus, part not specified",Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2B5H,"- Well differentiated lipomatous tumour, primary site",Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2B60,- Malignant neoplasms of lip,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2B68,- Malignant neoplasms of submandibular or sublingual glands,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2B69,- Malignant neoplasms of tonsil,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2B6B,- Malignant neoplasms of nasopharynx,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2B6C,- Malignant neoplasms of piriform sinus,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2B6E,"- Malignant neoplasms of other or ill-defined sites in the lip, oral cavity or pharynx",Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2B70,- Malignant neoplasms of oesophagus,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2B71,- Malignant neoplasms of oesophagogastric junction,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2B72,- Malignant neoplasms of stomach,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2B91,- - - Malignant neoplasms of rectosigmoid junction,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2C14,"- Malignant neoplasms of proximal biliary tract, cystic duct",Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2C15,"- Malignant neoplasms of biliary tract, distal bile duct",Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2C20,- Malignant neoplasms of nasal cavity,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2C28,- Malignant neoplasms of heart or mediastinum,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2C31,- Squamous cell carcinoma of skin,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2C34,- Cutaneous neuroendocrine carcinoma,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2C35,- Cutaneous sarcoma,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2C40,- Malignant neuroepitheliomatous neoplasms of peripheral nerves or autonomic nervous system,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2C51,- Malignant neoplasms of peritoneum,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2C53,"- Malignant neoplasm involving overlapping sites of retroperitoneum, peritoneum or omentum",Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2C60,"- Carcinoma of breast, specialised type",Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2C65,- Hereditary breast and ovarian cancer syndrome,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2C72,"- Malignant neoplasms of uterine ligament, parametrium, or uterine adnexa",Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2C76,- Malignant neoplasms of corpus uteri,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2C79,- Malignant neoplasm involving overlapping sites of female genital organs,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2C94,- Malignant neoplasms of bladder,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2D00,- Malignant neoplasm of conjunctiva,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2D01,- Malignant neoplasm of cornea,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2D10,- Malignant neoplasms of thyroid gland,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2D11,- Malignant neoplasms of adrenal gland,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2D41,Unspecified carcinoma of unspecified site,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2D42,Malignant neoplasms of ill-defined sites,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2D50,Malignant neoplasm metastasis in brain,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2D70,- Malignant neoplasm metastasis in lung,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2D71,- Malignant neoplasm metastasis in mediastinum,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2D72,- Malignant neoplasm metastasis in pleura,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2D81,- Malignant neoplasm metastasis in pancreas,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2D83,- Malignant neoplasm metastasis in ampulla of Vater,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2D85,- Malignant neoplasm metastasis in large intestine,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2D91,- Malignant neoplasm metastasis in peritoneum,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2E01,- Malignant neoplasm metastasis in bladder,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2E03,- Malignant neoplasm metastasis in bone or bone marrow,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2E08,- Malignant neoplasm metastasis in skin,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2E60,"Carcinoma in situ of oral cavity, oesophagus or stomach",Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2E64,Carcinoma in situ of skin,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2E66,Carcinoma in situ of cervix uteri,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2E67,Carcinoma in situ of other or unspecified genital organs,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2E6B,Carcinoma in situ of thyroid or other endocrine glands,Very rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2E88,Benign endometrial stromal nodule,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2F01,- Benign neoplasm of other intrathoracic organs,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2F10,Benign neoplasm of mesothelial tissue,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2F24,- Benign cutaneous neoplasms of neural or nerve sheath origin,Uncommon,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2F36,Benign neoplasm of eye or ocular adnexa,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2F70,Neoplasms of uncertain behaviour of oral cavity or digestive organs,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2F73,Neoplasms of uncertain behaviour of retroperitoneum,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2F74,Neoplasms of uncertain behaviour of peritoneum,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2F77,Neoplasms of uncertain behaviour of male genital organs,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2F78,Neoplasms of uncertain behaviour of urinary organs,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2F79,Neoplasms of uncertain behaviour of eye or ocular adnexa,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2F7B,Neoplasms of uncertain behaviour of bone or articular cartilage,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2F7C,Neoplasms of uncertain behaviour of connective or other soft tissue,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2F90,Neoplasms of unknown behaviour of oral cavity or digestive organs,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2F91,"Neoplasms of unknown behaviour of middle ear, respiratory or intrathoracic organs",Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2F92,Neoplasms of unknown behaviour of skin,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2F95,Neoplasms of unknown behaviour of breast,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2F97,Neoplasms of unknown behaviour of male genital organs,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2F99,Neoplasms of unknown behaviour of eye or ocular adnexa,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+2F9B,Neoplasms of unknown behaviour of bone or articular cartilage,Rare,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5A00,Hypothyroidism,Very common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5A02,Thyrotoxicosis,Very common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5A04,Hypersecretion of calcitonin,Very common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5A10,Type 1 diabetes mellitus,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5A12,Malnutrition-related diabetes mellitus,Very common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5A20,- Diabetic hyperosmolar hyperglycaemic state,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5A23,- Diabetic coma,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5A40,Intermediate hyperglycaemia,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5A45,Persistent hyperinsulinaemic hypoglycaemia of infancy,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5A51,Hyperparathyroidism,Uncommon,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5A60,Hyperfunction of pituitary gland,Uncommon,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5A61,Hypofunction or certain other specified disorders of pituitary gland,Uncommon,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5A70,Cushing syndrome,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5A71,Adrenogenital disorders,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5A80,Ovarian dysfunction,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5B50,"Underweight in infants, children or adolescents",Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5B51,"Wasting in infants, children or adolescents",Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5B54,Underweight in adults,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5B56,Vitamin C deficiency,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5B59,Vitamin K deficiency,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5B5B,Vitamin B2 deficiency,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5B5E,Folate deficiency,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5B5G,Biotin deficiency,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5B5J,Choline deficiency,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5B60,- Sequelae of protein-energy malnutrition,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5B61,- Sequelae of vitamin A deficiency,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5B63,- Sequelae of rickets,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5B91,- Mineral excesses,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5C51,Inborn errors of carbohydrate metabolism,Uncommon,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5C55,"Inborn errors of purine, pyrimidine or nucleotide metabolism",Uncommon,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5C58,Inborn errors of porphyrin or heme metabolism,Uncommon,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5C61,Disorders of carbohydrate absorption or transport,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5C62,Disorders of lipid absorption or transport,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5C64,Disorders of mineral absorption or transport,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5C70,Volume depletion,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5C71,Hyperosmolality or hypernatraemia,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5C72,Hypo-osmolality or hyponatraemia,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5C73,Acidosis,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5C75,Mixed disorder of acid-base balance,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5C80,Hyperlipoproteinaemia,Very common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5C81,Hypolipoproteinaemia,Very common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5C90,Metabolic or transporter liver disease,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5D41,Postprocedural hypoinsulinaemia,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+5D43,Postprocedural hypopituitarism,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BA21,Orthostatic hypotension,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BA40,Angina pectoris,Very common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BA41,Acute myocardial infarction,Very common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BA43,Coronary thrombosis not resulting in myocardial infarction,Very common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BA50,Old myocardial infarction,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BA51,Ischaemic cardiomyopathy,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BA84,Chronic total occlusion of coronary artery,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BA86,Coronary microvascular disease,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BB00,Pulmonary thromboembolism,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BB01,Pulmonary hypertension,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BB21,Chronic rheumatic pericarditis,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BB22,Constrictive pericarditis,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BB23,Cardiac tamponade,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BB40,Acute or subacute infectious endocarditis,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BB42,Periendocarditis,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BB63,Mitral valve stenosis with insufficiency,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BB64,Mitral valvar abscess,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BB70,Aortic valve stenosis,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BB72,Aortic valve stenosis with insufficiency,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BB73,Aortic valvar abscess,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BB84,Tricuspid valve rupture,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BB90,Pulmonary valve stenosis,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BB91,Pulmonary valve insufficiency,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BB92,Pulmonary valve stenosis with insufficiency,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BC01,Prosthetic valve disease,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BC20,"Chronic rheumatic heart diseases, not elsewhere classified",Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BC41,Acquired ventricular abnormality,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BC46,Intracardiac thrombosis,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BC60,Atrial premature depolarization,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BC62,Accessory pathway,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BC63,Conduction disorders,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BC70,Ventricular premature depolarization,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BC71,Ventricular tachyarrhythmia,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BC90,Rhythm disturbance at level of atrioventricular junction,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BC91,Pacemaker or implantable cardioverter defibrillator battery at end of battery life,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BD11,Left ventricular failure,Very common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BD41,Non-atherosclerotic chronic arterial occlusive disease,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BD42,Raynaud phenomenon,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BD52,Certain specified disorders of arteries or arterioles,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BD54,Diabetic foot ulcer,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BD72,Venous thromboembolism,Very common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BD74,Chronic peripheral venous insufficiency of lower extremities,Very common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BD75,Venous varicosities of sites other than lower extremity,Very common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BD90,Lymphadenitis,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BD92,Lymphangiectasia,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BD93,Lymphoedema,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BE13,Postprocedural true or false aortic aneurysm,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BE14,Postprocedural disorder of circulatory system following repair of congenital heart or great vessel anomaly,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BE15,Postprocedural pulmonary arterial tree disorder,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BE19,Postprocedural ventricular abnormality,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BE1A,Cardiac transplant associated coronary allograft vasculopathy,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BE1B,Lymphoedema due to surgery or radiotherapy,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BE1D,Superior caval vein obstruction due to foreign body,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BE1E,Postprocedural right atrial complication,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BE1F,Postprocedural left atrial complication,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+BE21,"Thromboembolism, so stated",Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+CA20,Bronchitis,Very common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+CA25,Cystic fibrosis,Very common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+CA26,Chronic bronchiolitis,Very common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+CA40,Pneumonia,Very common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+CA42,Acute bronchitis,Very common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+CA43,Abscess of lung or mediastinum,Very common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+CA44,Pyothorax,Very common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+CA45,"Respiratory infections, not elsewhere classified",Very common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+CA71,Pneumonitis due to solids or liquids,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+CA81,"Respiratory conditions due to inhalation of chemicals, gases, fumes or vapours",Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+CA82,Respiratory conditions due to other external agents,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+CB01,Pulmonary oedema,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+CB02,Pulmonary eosinophilia,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+CB03,Idiopathic interstitial pneumonitis,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+CB05,Interstitial lung diseases associated with systemic diseases,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+CB06,Pulmonary alveolar microlithiasis,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+CB20,Pleural plaque,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+CB21,Pneumothorax,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+CB23,Disorders of diaphragm,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+CB26,Haemothorax,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+CB41,Respiratory failure,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+CB62,Postprocedural subglottic stenosis,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30
+CB64,Transfusion related acute lung injury,Common,,Synthetic regional prevalence estimate (fictional),NBR-POP-2026,2026-09-30

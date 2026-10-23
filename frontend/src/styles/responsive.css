@@ -1,0 +1,496 @@
+/* Desktop-first, 1280–1920. Tighter spacing on small desktops; below 1100px
+   the toolbar wraps and the results column narrows to 320px; below 960px
+   (tablets in portrait) the results become a bottom sheet docked under the
+   ring; below 768px (phones) the page scrolls and the sheet floats over its
+   foot. The legend keeps one placement throughout: beside the ring from
+   768px, under it on a phone. */
+
+@media (max-width: 1599px) {
+  .toolbar {
+    gap: var(--sp-3);
+  }
+
+  /* The card's names come first (S8): the Model or Product tag leaves the
+     toolbar (the AI system select still groups Models and Products, and
+     Summary names the kind), so product names fit whole at 1440. */
+  .toolbar-subtitle .kind-tag {
+    display: none;
+  }
+
+  .toolbar-subtitle .kind-tag + .title-picker {
+    left: -6px;
+  }
+
+  .toolbar-search .toolbar-button-text {
+    display: none;
+  }
+
+  /* Five views (with Safety) and three modes: tighter segments keep the title whole. */
+  .toolbar .segment {
+    padding: 5px 10px;
+  }
+}
+
+@media (max-width: 1365px) {
+  :root {
+    --side-width: 380px;
+  }
+
+  .toolbar {
+    gap: var(--sp-2);
+    padding: 0 var(--sp-4);
+  }
+
+  .segment {
+    padding: 5px 10px;
+  }
+
+  /* Room for the AI system and function title next to five views and three modes. */
+  .toolbar .segment {
+    padding: 5px 6px;
+  }
+
+  .toolbar-search .shortcut {
+    display: none;
+  }
+}
+
+/* Below 1280px the chips (Preview, the local population) take a line of
+   their own under the way back and the title, at every level, so a
+   chapter's title and the local population read in full (audit batch 3: at
+   1024×768 they ellipsized side by side) and the header's height never
+   changes with the level. The status ("Updating") stays beside the title,
+   which gives way first, so it never adds a line. From 1280px everything
+   stays on one row. */
+@media (max-width: 1279px) {
+  .ring-pane-path {
+    display: grid;
+    /* The status takes what the heading leaves (at least its own width, so
+       the title gives way first), which also gives the chips the full row. */
+    grid-template-columns: minmax(0, max-content) 1fr;
+    grid-template-areas: 'heading status';
+    align-items: center;
+    gap: var(--sp-1) var(--sp-2);
+  }
+
+  .ring-pane-path:has(.ring-pane-chips) {
+    grid-template-areas:
+      'heading status'
+      'chips chips';
+  }
+
+  .ring-pane-heading {
+    grid-area: heading;
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    min-width: 0;
+  }
+
+  /* The chips never size the path's columns (contain: their width is the
+     row's), so they cannot squeeze the title above them. */
+  .ring-pane-chips {
+    grid-area: chips;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--sp-1) var(--sp-2);
+    min-width: 0;
+    contain: inline-size;
+  }
+
+  .ring-pane-path .ring-updating {
+    grid-area: status;
+    justify-self: start;
+  }
+
+  .ring-pane-chips .population-chip {
+    max-width: 100%;
+  }
+}
+
+/* 1100–1279px: the toolbar keeps one row (audit batch 3). Track and Model
+   card are icons here (label.css), and the Population button drops the local
+   prevalence's name: its accent, tooltip, and accessible name still say it,
+   and the ring tile's header chip names it on every view. */
+@media (min-width: 1100px) and (max-width: 1279px) {
+  .toolbar-popover-anchor .toolbar-button {
+    min-width: 0;
+  }
+
+  /* The ring tile's header as below 1100px: the way back, the title, and
+     the chips first, the mode on a row of its own at every level, so the
+     header's height never changes with the level (the ring here is as wide
+     as its tile at 720px of height and more). In one row a chapter's title
+     and the local population chip were cut to a few letters ("All ch…",
+     "Lo…" at 1100px). */
+  .ring-pane-header {
+    flex-wrap: wrap;
+    row-gap: var(--sp-2);
+  }
+
+  .ring-pane-path {
+    flex-basis: 100%;
+  }
+
+  .toolbar-popover-anchor .toolbar-button .toolbar-button-local {
+    display: none;
+  }
+}
+
+@media (max-width: 1099px) {
+  /* The app fills the viewport and the toolbar wraps. The ring, the legend
+     beside it, and a narrower results column stay side by side: a bottom
+     sheet here would take the ring's height (314 px at 1024×768, against
+     400 px side by side). */
+  :root {
+    --side-width: 320px;
+  }
+
+  .app-shell {
+    height: 100vh;
+    height: 100dvh;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+
+  .app-shell.is-preview {
+    grid-template-rows: auto auto minmax(0, 1fr);
+  }
+
+  .toolbar {
+    flex-wrap: wrap;
+    row-gap: var(--sp-2);
+    padding: var(--sp-2) var(--sp-4);
+  }
+
+  /* The title takes the first row; the view switcher follows it directly
+     on the next, then Population and search (audit A10). */
+  .toolbar-title {
+    flex-basis: 100%;
+  }
+
+  /* The popovers open from controls on the left edge. */
+  .popover {
+    left: 0;
+    right: auto;
+    width: min(300px, calc(100vw - 2 * var(--sp-3)));
+  }
+
+  .workspace {
+    gap: var(--sp-3);
+    padding: var(--sp-3);
+  }
+
+  /* A narrow ring tile: the way back, the title, and the chips keep the first
+     row, and the mode takes a second one, at every level and view alike, so
+     the header's height (and the ring, which is as wide as the tile here)
+     never changes. */
+  .ring-pane-header {
+    flex-wrap: wrap;
+    row-gap: var(--sp-2);
+  }
+
+  .ring-pane-path {
+    flex-basis: 100%;
+  }
+
+}
+
+/* Tablets in portrait: the results are a bottom sheet docked under the ring
+   and its legend, so the sheet never covers them. */
+@media (max-width: 959px) {
+  .workspace {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: 0;
+    padding: var(--sp-3) var(--sp-3) 0;
+  }
+
+  /* A fixed height, so the ring above never grows or shrinks with what the
+     sheet holds (a short Summary on one view, a long card on another). */
+  .side-column {
+    position: relative;
+    z-index: 15;
+    height: 34vh;
+    height: 34dvh;
+    margin: var(--sp-3) calc(-1 * var(--sp-3)) 0;
+    padding: 0 var(--sp-4) var(--sp-5);
+    background: var(--bg);
+    border-radius: var(--r-pane) var(--r-pane) 0 0;
+    box-shadow: var(--shadow-sheet);
+  }
+
+  .side-column.is-expanded {
+    height: 82vh;
+    height: 82dvh;
+  }
+
+  /* The sheet's one control stays at its top while it scrolls: a button
+     with its words ("Show more", "Show less") and a chevron, 44px tall. It
+     toggles; nothing about it suggests dragging (audit B12). */
+  .sheet-grabber {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% + 2 * var(--sp-4));
+    min-height: 44px;
+    margin: 0 calc(-1 * var(--sp-4)) calc(-1 * var(--sp-2));
+    border: 0;
+    border-radius: var(--r-pane) var(--r-pane) 0 0;
+    background: var(--bg);
+    color: var(--accent);
+    font-size: var(--fs-footnote);
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .sheet-grabber-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 12px;
+    border-radius: var(--r-pill);
+    transition: background-color var(--dur-fast) var(--ease-out);
+  }
+
+  .sheet-grabber:hover .sheet-grabber-label {
+    background: var(--accent-soft);
+  }
+
+  .sheet-grabber:focus-visible {
+    outline-offset: -4px;
+  }
+}
+
+/* Phones: the page scrolls. The ring is a full-width square, the toolbar
+   stacks its controls in full-width rows, the legend follows the ring, and
+   the results sheet floats over the bottom of the page (resting at 19vh,
+   below the ring at 375×812) with room reserved under the legend. */
+@media (max-width: 767px) {
+  /* The care setting (v1.14) on a phone: the ring tile's chip names it, so the
+     Population button keeps the group legible instead of "A., Intensive care". */
+  .toolbar-popover-anchor .toolbar-button .toolbar-button-setting {
+    display: none;
+  }
+
+  .app-shell,
+  .app-shell.is-preview {
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    grid-template-rows: none;
+  }
+
+  /* One grid (audit batch 3): the AI system's name and search on the first
+     row, so the name reads in full ("Corvessa Skin Review 1.2" at 375px);
+     the function and Track and Model card on the second; then the views and
+     Population. The page links and Settings are in the shared header above
+     (AppHeader.jsx). The last column is search's, so search never widens a
+     column the name needs. */
+  .toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    grid-template-areas:
+      'system system search'
+      'function actions actions'
+      'metric metric metric'
+      'population population population';
+    align-items: center;
+    column-gap: var(--sp-2);
+    row-gap: 0;
+    padding: var(--sp-2) var(--sp-3) var(--sp-3);
+  }
+
+  /* The title's parts and the actions take their places on the toolbar's grid. */
+  .toolbar .toolbar-title,
+  .toolbar-actions {
+    display: contents;
+  }
+
+  .toolbar-search {
+    grid-area: search;
+    justify-self: end;
+    min-height: 40px;
+    padding: 6px 11px;
+  }
+
+  .toolbar-search .shortcut {
+    display: none;
+  }
+
+  .toolbar-metric {
+    grid-area: metric;
+    display: flex;
+    margin-top: var(--sp-2);
+  }
+
+  /* Population, and the Classification beside it when the data holds more
+     than ICD-11 (contract v1.13): one row, Population taking the room. */
+  .toolbar-choices {
+    grid-area: population;
+    margin-top: var(--sp-2);
+  }
+
+  .toolbar-choices .toolbar-popover-anchor {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .toolbar-choices .toolbar-popover-anchor.is-classification {
+    flex: 0 0 auto;
+  }
+
+  /* Compare with… keeps its icon beside them, a 44px target (R4). */
+  .toolbar-choices .toolbar-compare {
+    flex: 0 0 auto;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* The ring's header wraps on a phone (its ring is a full-width square, so
+     the header's height never changes it): the mode takes its own row. */
+  .ring-pane-header {
+    flex-wrap: wrap;
+    row-gap: var(--sp-2);
+  }
+
+  .ring-mode {
+    flex: 1 1 100%;
+    display: flex;
+  }
+
+  .ring-mode .segment {
+    flex: 1 1 0;
+    min-height: 36px;
+  }
+
+  .toolbar-popover-anchor .toolbar-button {
+    width: 100%;
+    min-height: 36px;
+  }
+
+  .toolbar-popover-anchor .popover {
+    width: 100%;
+  }
+
+  /* The Classification button is narrow; its popover opens to the right at the phone's width. */
+  .toolbar-popover-anchor.is-classification .popover {
+    left: 0;
+    right: auto;
+    width: min(300px, calc(100vw - 2 * var(--sp-3)));
+  }
+
+  /* Segments share the row by their words' width, so "Performance" and
+     "Intended use" fit whole at 375px instead of equal, clipped thirds. */
+  .toolbar .segmented .segment {
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 36px;
+    padding: 5px 2px;
+    font-size: var(--fs-caption);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .workspace {
+    display: block;
+    padding: var(--sp-3) var(--sp-3) calc(19vh + var(--sp-4));
+    padding-bottom: calc(max(19dvh, 132px) + var(--sp-4));
+  }
+
+  .ring-pane-layout {
+    grid-template-rows: auto auto;
+  }
+
+  /* The page scrolls: the column's rows take their content's height, and
+     the legend sits under the ring at its content's height, so it never
+     scrolls inside the scrolling page. The ring is a full-width square, so
+     the legend's height never changes it. */
+  .ring-column {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto;
+  }
+
+  .legend-tile {
+    height: auto;
+    max-height: none;
+  }
+
+  /* Under the ring on a phone. */
+  .ring-column > .ring-pane,
+  .ring-column > .legend-tile {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .legend-body {
+    overflow: visible;
+  }
+
+  .ring-stage {
+    aspect-ratio: 1;
+  }
+
+  .ring-pane-header {
+    padding: var(--sp-3) var(--sp-3) 0 var(--sp-4);
+  }
+
+  .side-column {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* A peek (the control and the heading): at 375×812 it starts below the
+       ring, so the first screen shows the whole ring (audit B12). */
+    height: 19vh;
+    height: max(19dvh, 132px);
+    margin: 0;
+  }
+
+  .side-column.is-expanded {
+    height: 85vh;
+    height: 85dvh;
+  }
+}
+
+/* Reduced motion, intentionally (audit B10): what moves holds still, and
+   every state still shows. Colour and opacity changes stay (they recolour in
+   place, they do not move). The search jump keeps its cue: instead of two
+   rings pinging outward, one ring is held around the bubble for about a
+   second, then goes. */
+@media (prefers-reduced-motion: reduce) {
+  .ring-updating-dot,
+  .ring-host.is-entering .ring-canvas,
+  .popover,
+  .palette[open],
+  .palette::backdrop {
+    animation: none;
+  }
+
+  .bubble-core,
+  .disclosure {
+    transition: none;
+  }
+
+  .bubble-halo-ping {
+    animation: halo-hold 1200ms linear 1;
+  }
+}
+
+@keyframes halo-hold {
+  0%,
+  92% {
+    opacity: 0.7;
+    transform: scale(1.8);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.8);
+  }
+}

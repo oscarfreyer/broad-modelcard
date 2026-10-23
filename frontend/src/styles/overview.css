@@ -1,0 +1,190 @@
+/* The Overview rule: the steps of "What is behind this mark?"
+   on the condition card and the "How the Overview works" sheet (legend and
+   catalogue). Shared by the atlas and the catalogue, imported by the
+   components. */
+
+.overview-steps {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.overview-step {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: var(--sp-3);
+  padding: var(--sp-2) 0;
+}
+
+.overview-step + .overview-step {
+  border-top: 1px solid var(--hairline);
+}
+
+.overview-step-index {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--r-pill);
+  background: var(--fill);
+  color: var(--ink-2);
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.overview-step-main {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.overview-step-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px var(--sp-2);
+  font-size: var(--fs-callout);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.overview-step-state {
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--ink-3);
+}
+
+.overview-step-result {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: var(--fs-footnote);
+  color: var(--ink-2);
+  line-height: 1.4;
+}
+
+.overview-step-result .status-mark {
+  flex: none;
+  transform: translateY(1px);
+}
+
+/* The deciding step: the ink disc and the bold word, never a status colour. */
+.overview-step.is-decided .overview-step-index {
+  background: var(--ink);
+  color: var(--card);
+}
+
+.overview-step.is-decided .overview-step-state {
+  color: var(--ink);
+}
+
+.overview-step.is-not_reached .overview-step-title,
+.overview-step.is-not_reached .overview-step-result {
+  color: var(--ink-3);
+}
+
+.overview-step-marks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px var(--sp-3);
+  margin-top: 2px;
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.overview-step-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.overview-rule-link {
+  justify-self: start;
+  margin-left: calc(-1 * var(--sp-2));
+}
+
+/* The sheet. */
+.overview-sheet {
+  width: min(520px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-pane);
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: var(--shadow-pop);
+  overflow: auto;
+}
+
+.overview-sheet[open] {
+  animation: overview-rise var(--dur) var(--ease-out);
+}
+
+.overview-sheet::backdrop {
+  background: var(--scrim);
+}
+
+@keyframes overview-rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overview-sheet[open] {
+    animation: none;
+  }
+}
+
+.overview-sheet-body {
+  display: grid;
+  gap: var(--sp-4);
+  padding: var(--sp-6);
+}
+
+.overview-sheet-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--sp-4);
+}
+
+.overview-sheet-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-title3);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.overview-sheet-lead {
+  margin-top: var(--sp-1);
+  font-size: var(--fs-body);
+  color: var(--ink-2);
+  line-height: 1.4;
+}
+
+.overview-steps.is-rule .overview-step {
+  padding: var(--sp-3) 0;
+}
+
+.overview-sheet-note {
+  font-size: var(--fs-footnote);
+  color: var(--ink-3);
+  line-height: 1.4;
+}
+
+.overview-sheet-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 480px) {
+  .overview-sheet-body {
+    padding: var(--sp-4);
+  }
+}

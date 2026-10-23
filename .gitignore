@@ -1,0 +1,56 @@
+# Dependencies
+node_modules/
+
+# Build artifacts
+dist/
+coverage/
+
+# Local output
+output/
+progress.md
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Python backend
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local backend data store (dataset versions live in the DB, not in git)
+backend/data/*.sqlite
+backend/data/*.sqlite-*
+# Upload folders of other stores, e.g. the demo store's (npm run demo:build)
+backend/data/*-uploads/
+backend/data/snapshots/
+# Which backend `npm run dev` started in this checkout (scripts/dev.mjs)
+backend/data/dev-api-*.json
+# The LLM helper's provider configuration with the maintainer's API key (contract v1.9)
+backend/data/assist.json
+backend/data/*.assist.json
+backend/data/.assist-*.tmp
+
+# The static GitHub Pages build (npm run build:static) and its recorded snapshot
+frontend/dist-static/
+frontend/static-data/
+
+
+# Downloaded ontology releases (scripts/ontologies fetches them; never committed)
+backend/data/ontology-sources/
+

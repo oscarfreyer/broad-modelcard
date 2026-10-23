@@ -1,0 +1,182 @@
+/* Plain-language search (contract v1.14, §31): how the words were read, as
+   removable chips, above the results; also on the catalogue's Ask field. */
+.interpret {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-5) var(--sp-4);
+  border-bottom: 1px solid var(--hairline);
+  background: var(--sector-b);
+}
+
+.interpret-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-3);
+}
+
+.interpret-lead {
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--ink-3);
+}
+
+.interpret-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--tone-strong-ink);
+}
+
+.interpret-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.interpret-chip {
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 2px 6px;
+  max-width: 100%;
+  padding: 4px 4px 4px 10px;
+  border: 1px solid var(--hairline-strong);
+  border-radius: 999px;
+  background: var(--card);
+  font-size: var(--fs-footnote);
+  line-height: 1.3;
+}
+
+.interpret-chip-kind {
+  font-size: var(--fs-caption);
+  color: var(--ink-3);
+}
+
+.interpret-chip-label {
+  font-weight: 600;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.interpret-chip-note {
+  color: var(--ink-3);
+}
+
+.interpret-chip-remove {
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink-3);
+}
+
+.interpret-chip-remove:hover {
+  background: var(--fill);
+  color: var(--ink);
+}
+
+.interpret-note {
+  font-size: var(--fs-footnote);
+  color: var(--ink-2);
+}
+
+.interpret-note.is-error {
+  color: var(--tone-weak-ink);
+}
+
+.interpret-fine {
+  font-size: var(--fs-caption);
+  color: var(--ink-3);
+}
+
+.interpret-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.interpret-actions:empty {
+  display: none;
+}
+
+/* The catalogue's Ask field: a search box in the intro, its reading below. */
+.cat-ask {
+  display: flex;
+  flex-direction: column;
+  max-width: 68ch;
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-pane);
+  background: var(--card);
+  overflow: hidden;
+}
+
+.cat-ask-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: var(--sp-3) var(--sp-4);
+}
+
+.cat-ask-label {
+  font-size: var(--fs-footnote);
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.cat-ask-field {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 8px 12px;
+  border-radius: var(--r-control);
+  background: var(--fill);
+  color: var(--ink-3);
+}
+
+.cat-ask-field:focus-within {
+  outline: 2px solid var(--focus);
+  outline-offset: 1px;
+}
+
+.cat-ask-field input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: var(--fs-body);
+  color: var(--ink);
+}
+
+.cat-ask-field input::placeholder {
+  color: var(--ink-3);
+}
+
+.cat-ask .interpret {
+  border-top: 1px solid var(--hairline);
+  border-bottom: 0;
+  padding-inline: var(--sp-4);
+}
+
+.cat-ask-hint {
+  padding: 0 var(--sp-4) var(--sp-3);
+  font-size: var(--fs-footnote);
+  color: var(--ink-3);
+}
+
+.cat-ask-hint.is-error {
+  color: var(--tone-weak-ink);
+}

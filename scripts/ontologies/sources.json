@@ -1,0 +1,35 @@
+{
+  "note": "Pinned ontology releases for the ICD-10-CM and MONDO options. Downloaded into backend/data/ontology-sources/<id>/ (gitignored), never committed.",
+  "sources": [
+    {
+      "id": "mondo",
+      "file": "mondo.obo",
+      "url": "https://github.com/monarch-initiative/mondo/releases/download/v2026-10-06/mondo.obo",
+      "release": "v2026-10-06",
+      "bytes": 53320617,
+      "sha256": "2631e8e165d41def1a46749adb1ce0a336c8aba7f6bc0978729592cee8fed60b",
+      "licence": "CC BY 4.0",
+      "attribution": "Mondo Disease Ontology, Monarch Initiative (https://mondo.monarchinitiative.org)"
+    },
+    {
+      "id": "icd10cm",
+      "file": "icd10cm-table-and-index-2027.zip",
+      "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Publications/ICD10CM/2027/icd10cm-table-and-index-2027.zip",
+      "release": "FY2027",
+      "bytes": 20923571,
+      "sha256": "99b5c2be16ff53eab861cc0be4b1dacba27f687b8ff4bc700679944355037ee0",
+      "licence": "Public domain (US CDC, NCHS)",
+      "attribution": "ICD-10-CM, National Center for Health Statistics, CDC"
+    },
+    {
+      "id": "who-mapping",
+      "file": "mapping.zip",
+      "url": "https://icdcdn.who.int/static/releasefiles/2026-01/mapping.zip",
+      "release": "ICD-11 MMS 2026-01 (matches the seed's ICD-11 release of 2026 Jan 17)",
+      "bytes": 6809366,
+      "sha256": "2eb158cf2a0d53690d6e9baf0956f7617e1315e4f2a44dfc3db3be8f49193a1d",
+      "licence": "CC BY-ND 3.0 IGO (used unmodified at import)",
+      "attribution": "ICD-10 to ICD-11 mapping tables, World Health Organization"
+    }
+  ]
+}

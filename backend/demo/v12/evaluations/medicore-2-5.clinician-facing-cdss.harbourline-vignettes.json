@@ -1,0 +1,345 @@
+{
+  "format": "bmc-evaluation-results/1",
+  "model_version": "MediCore-2.5",
+  "use_case": "Clinician Facing CDSS",
+  "configuration_id": "cfg-medicore-cdss-2025-03",
+  "benchmark": {
+    "name": "Harbourline Clinical Vignette Benchmark (fictional)",
+    "version": "3.0",
+    "description": "Synthetic written case vignettes with a reference diagnosis set by a panel of three clinicians (fictional).",
+    "url": "https://studies.example/harbourline-vignette-benchmark-3"
+  },
+  "run_date": "2026-10-18",
+  "conducted_by": "independent",
+  "setting": "mixed",
+  "results": [
+    {
+      "icd11_code": "1A00",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.883,
+      "ci_low": 0.819,
+      "ci_high": 0.947,
+      "cases": 96,
+      "sites": 1
+    },
+    {
+      "icd11_code": "1B10",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.755,
+      "ci_low": 0.677,
+      "ci_high": 0.833,
+      "cases": 116,
+      "sites": 1
+    },
+    {
+      "icd11_code": "1C62",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.873,
+      "ci_low": 0.776,
+      "ci_high": 0.97,
+      "cases": 45,
+      "sites": 2
+    },
+    {
+      "icd11_code": "1G40",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.635,
+      "ci_low": 0.54,
+      "ci_high": 0.73,
+      "cases": 99,
+      "sites": 4
+    },
+    {
+      "icd11_code": "2C25",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.896,
+      "ci_low": 0.815,
+      "ci_high": 0.977,
+      "cases": 55,
+      "sites": 3
+    },
+    {
+      "icd11_code": "2C30",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.834,
+      "ci_low": 0.771,
+      "ci_high": 0.897,
+      "cases": 132,
+      "sites": 3
+    },
+    {
+      "icd11_code": "2C82",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.68,
+      "ci_low": 0.587,
+      "ci_high": 0.773,
+      "cases": 96,
+      "sites": 3
+    },
+    {
+      "icd11_code": "3A00",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.666,
+      "ci_low": 0.552,
+      "ci_high": 0.78,
+      "cases": 66,
+      "sites": 1
+    },
+    {
+      "icd11_code": "4A84",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.824,
+      "ci_low": 0.771,
+      "ci_high": 0.877,
+      "cases": 199,
+      "sites": 4
+    },
+    {
+      "icd11_code": "5A10",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.866,
+      "ci_low": 0.8,
+      "ci_high": 0.932,
+      "cases": 102,
+      "sites": 3
+    },
+    {
+      "icd11_code": "2C10",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.871,
+      "ci_low": 0.806,
+      "ci_high": 0.936,
+      "cases": 102,
+      "sites": 2
+    },
+    {
+      "icd11_code": "5B81",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.868,
+      "ci_low": 0.801,
+      "ci_high": 0.935,
+      "cases": 99,
+      "sites": 1
+    },
+    {
+      "icd11_code": "6A20",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.666,
+      "ci_low": 0.583,
+      "ci_high": 0.749,
+      "cases": 124,
+      "sites": 3
+    },
+    {
+      "icd11_code": "6A70",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.666,
+      "ci_low": 0.586,
+      "ci_high": 0.746,
+      "cases": 135,
+      "sites": 4
+    },
+    {
+      "icd11_code": "6B00",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.679,
+      "ci_low": 0.6,
+      "ci_high": 0.758,
+      "cases": 135,
+      "sites": 4
+    },
+    {
+      "icd11_code": "8B11",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.771,
+      "ci_low": 0.695,
+      "ci_high": 0.847,
+      "cases": 118,
+      "sites": 4
+    },
+    {
+      "icd11_code": "8B20",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.68,
+      "ci_low": 0.615,
+      "ci_high": 0.745,
+      "cases": 196,
+      "sites": 4
+    },
+    {
+      "icd11_code": "BA00",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.635,
+      "ci_low": 0.543,
+      "ci_high": 0.727,
+      "cases": 106,
+      "sites": 1
+    },
+    {
+      "icd11_code": "BA40",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.739,
+      "ci_low": 0.665,
+      "ci_high": 0.813,
+      "cases": 135,
+      "sites": 3
+    },
+    {
+      "icd11_code": "BA41",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.885,
+      "ci_low": 0.836,
+      "ci_high": 0.934,
+      "cases": 165,
+      "sites": 4
+    },
+    {
+      "icd11_code": "BB01",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.891,
+      "ci_low": 0.824,
+      "ci_high": 0.958,
+      "cases": 84,
+      "sites": 3
+    },
+    {
+      "icd11_code": "BD10",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.604,
+      "ci_low": 0.511,
+      "ci_high": 0.697,
+      "cases": 106,
+      "sites": 2
+    },
+    {
+      "icd11_code": "CA20",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.883,
+      "ci_low": 0.822,
+      "ci_high": 0.944,
+      "cases": 105,
+      "sites": 4
+    },
+    {
+      "icd11_code": "BD11",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.581,
+      "ci_low": 0.493,
+      "ci_high": 0.669,
+      "cases": 120,
+      "sites": 3
+    },
+    {
+      "icd11_code": "CA23",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.894,
+      "ci_low": 0.828,
+      "ci_high": 0.96,
+      "cases": 84,
+      "sites": 4
+    },
+    {
+      "icd11_code": "CA40",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.816,
+      "ci_low": 0.738,
+      "ci_high": 0.894,
+      "cases": 95,
+      "sites": 1
+    },
+    {
+      "icd11_code": "DC31",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.715,
+      "ci_low": 0.598,
+      "ci_high": 0.832,
+      "cases": 57,
+      "sites": 1
+    },
+    {
+      "icd11_code": "DD70",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.713,
+      "ci_low": 0.646,
+      "ci_high": 0.78,
+      "cases": 174,
+      "sites": 4
+    },
+    {
+      "icd11_code": "FA00",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.607,
+      "ci_low": 0.515,
+      "ci_high": 0.699,
+      "cases": 108,
+      "sites": 2
+    },
+    {
+      "icd11_code": "FA20",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.895,
+      "ci_low": 0.852,
+      "ci_high": 0.938,
+      "cases": 198,
+      "sites": 2
+    },
+    {
+      "icd11_code": "GB61",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.895,
+      "ci_low": 0.846,
+      "ci_high": 0.944,
+      "cases": 151,
+      "sites": 1
+    },
+    {
+      "icd11_code": "GC08",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.815,
+      "ci_low": 0.75,
+      "ci_high": 0.88,
+      "cases": 139,
+      "sites": 4
+    },
+    {
+      "icd11_code": "BA41",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.714,
+      "ci_low": 0.621,
+      "ci_high": 0.807,
+      "cases": 90,
+      "sites": 4,
+      "age": "Age 65+"
+    },
+    {
+      "icd11_code": "CA40",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.832,
+      "ci_low": 0.752,
+      "ci_high": 0.912,
+      "cases": 84,
+      "sites": 4,
+      "age": "Age 65+"
+    },
+    {
+      "icd11_code": "8B11",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.779,
+      "ci_low": 0.683,
+      "ci_high": 0.875,
+      "cases": 72,
+      "sites": 1,
+      "age": "Age 65+"
+    },
+    {
+      "icd11_code": "BD10",
+      "measure": "Top-3 diagnostic accuracy",
+      "value": 0.724,
+      "ci_low": 0.638,
+      "ci_high": 0.81,
+      "cases": 105,
+      "sites": 2,
+      "age": "Age 65+"
+    }
+  ]
+}

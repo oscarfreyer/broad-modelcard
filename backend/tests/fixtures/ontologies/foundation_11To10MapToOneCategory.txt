@@ -1,0 +1,4 @@
+Foundation URI	icd11Code	icd11Chapter	icd11Title	icd10Code	icd10Title	2026-Jan-17
+http://id.who.int/icd/entity/2001	5A11	05	Fixture	E11	Fixture
+http://id.who.int/icd/entity/2002	5A13.1	05	Fixture	E13	Fixture
+http://id.who.int/icd/entity/2003		05	Fixture without an MMS code	E16	Fixture
