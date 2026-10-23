@@ -6,6 +6,8 @@ the order.
 
 from __future__ import annotations
 
+from types import SimpleNamespace
+
 from app.main import API_PREFIX
 from app.services.search import (
     RANK_CODE,
@@ -14,6 +16,7 @@ from app.services.search import (
     RANK_TERM,
     RANK_WORD,
     RANK_WORD_PREFIX,
+    SearchIndex,
     match_rank,
 )
 
@@ -71,3 +74,25 @@ def test_ranking_keeps_the_matches_and_the_total(client):
     first = search(client, "diabetes", limit=5)
     assert first["total"] == whole["total"]
     assert [r["concept_id"] for r in first["results"]] == [r["concept_id"] for r in whole["results"][:5]]
+
+
+def _concept(concept_id: str, pt: str, level: int = 2) -> SimpleNamespace:
+    return SimpleNamespace(concept_id=concept_id, pt=pt, fsn=f"{pt} (ICD-11 category {concept_id})", icd11_code=concept_id, level=level)
+
+
+def test_a_hyphen_counts_as_a_space():
+    # Contract v1.14 review fix (§9): on both sides, in the query and in the searched text.
+    index = SearchIndex(
+        SimpleNamespace(concepts=[_concept("BD10", "Congestive heart failure"), _concept("RA01", "COVID-19"), _concept("CA40", "Pneumonia")]),
+        {"CA40": [("covid-19 pneumonia", "fixture")]},
+    )
+    assert index.search("heart-failure", 80) == index.search("heart failure", 80)
+    assert index.search("heart-failure", 80).concept_ids == ["BD10"]
+    for query in ("COVID-19", "covid 19", "covid-"):
+        hit = index.search(query, 80)
+        assert hit.concept_ids == ["RA01", "CA40"], query
+        assert hit.synonyms == {"CA40": "covid-19 pneumonia"}, query
+    # Ranked as before: the term is the query, either way it is written.
+    assert match_rank("covid 19", "ra01", "covid 19") == RANK_TERM
+    assert [match.concept_id for match in index.conditions("covid 19")] == ["RA01"]
+    assert [(match.concept_id, match.match) for match in index.conditions("heart-failure")] == [("BD10", "term")]

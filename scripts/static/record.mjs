@@ -79,12 +79,12 @@ const SUMMARY_VIEWS = ['overall', 'performance', 'evidence', 'intended_use', 'sa
 const ANY_SETTING = 'Clinical';
 const LENS_AXES = Object.keys(DEFAULT_LENS);
 // Queries the static search must answer exactly like the API (CONTRACT.md §9; synonyms since v1.14, §31).
-const SEARCH_QUERIES = ['diabetes', 'Diabetes mellitus', '5A11', '5a1', '1A0', 'BA00', 'CH-05', 'heart', 'heart failure', 'cancer', 'neoplasm', 'skin', 'melanoma', 'pneumonia', 'asthma', 'kidney', 'type 2', 'infect', 'fracture', 'pregnan', 'depress', 'schizo', 'covid', 'sepsis', 'stroke', 'hypothyroid', 'block', 'chapter', 'xyz-no-match', 'a', 'heart attack', 'high blood pressure', 'sugar', 'flu', 'kidney stone', 'hay fever', 'lupus', 'gout', 'infarct', 'shingles'];
+const SEARCH_QUERIES = ['diabetes', 'Diabetes mellitus', '5A11', '5a1', '1A0', 'BA00', 'CH-05', 'heart', 'heart failure', 'cancer', 'neoplasm', 'skin', 'melanoma', 'pneumonia', 'asthma', 'kidney', 'type 2', 'infect', 'fracture', 'pregnan', 'depress', 'schizo', 'covid', 'sepsis', 'stroke', 'hypothyroid', 'block', 'chapter', 'xyz-no-match', 'a', 'heart attack', 'high blood pressure', 'sugar', 'flu', 'kidney stone', 'hay fever', 'lupus', 'gout', 'infarct', 'shingles', 'heart-failure', 'covid 19', 'covid-19'];
 // The plain-language queries the static interpreter must read exactly like the API (§31), beside the quality set.
-const INTERPRET_QUERIES = ['heart attack', 'heart attack in older women in the emergency department', 'SynGPT-2.0 high blood pressure in the ICU', 'diabetes and heart failure in men', 'kidney stone in primary care', 'Parlowe asthma in children', 'Tallyfern coding on the ward', 'flu in teenagers', 'xyz'];
+const INTERPRET_QUERIES = ['heart attack', 'heart attack in older women in the emergency department', 'SynGPT-2.0 high blood pressure in the ICU', 'diabetes and heart failure in men', 'kidney stone in primary care', 'Parlowe asthma in children', 'Tallyfern coding on the ward', 'flu in teenagers', 'heart-failure in older women', 'covid 19 in children', 'xyz'];
 const INTERPRET_FIXTURE = path.join(REPO_ROOT, 'backend', 'tests', 'fixtures', 'interpret_queries.json');
 // The same in another classification, with its own codes (CONTRACT.md §23).
-const ONTOLOGY_SEARCH_QUERIES = ['diabetes', 'heart failure', 'cancer', 'infect', 'asthma', 'syndrome', 'E11', 'E11.9', 'I50', 'J45', 'C50', '01', '1', 'MONDO:0005', 'mondo:00050', '0005015', 'MONDO:0005148', 'disease', 'xyz-no-match', 'a'];
+const ONTOLOGY_SEARCH_QUERIES = ['diabetes', 'heart failure', 'cancer', 'infect', 'asthma', 'syndrome', 'E11', 'E11.9', 'I50', 'J45', 'C50', '01', '1', 'MONDO:0005', 'mondo:00050', '0005015', 'MONDO:0005148', 'disease', 'heart-failure', 'xyz-no-match', 'a'];
 // The extra comparisons checked against the API per classification: 3- and 4-card sets in shuffled orders.
 const COMPARISON_SAMPLE = 12;
 

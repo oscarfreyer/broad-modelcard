@@ -10,6 +10,11 @@
 // (api/staticInterpret.js). The static build records the ICD-11 synonyms
 // (synonyms.json, release 0.5 phase Q9), so its search marks them "also known
 // as" and its interpreter finds conditions by them, as the API does.
+//
+// Contract v1.14 review fix (§9, §31): a hyphen counts as a space in the query, the code,
+// the searched text, the preferred term, and the synonyms, and `conditions`
+// compares words, so "heart-failure" finds Heart failure and "covid 19" finds
+// COVID-19, as in search.py.
 
 export const DEFAULT_SEARCH_LIMIT = 80;
 export const MAX_SEARCH_LIMIT = 200;
@@ -51,6 +56,21 @@ export function wordsOf(text) {
 export function lowerText(text) {
   return String(text ?? '').split(/\s+/).filter(Boolean).join(' ').toLowerCase();
 }
+
+/** A lowercase text with its hyphens as spaces (contract v1.14 review fix, search.py `unhyphen`). */
+export function unhyphen(text) {
+  return text.replaceAll('-', ' ');
+}
+
+/** Whether `run` is a run of consecutive words of `words` (search.py `_holds_words`). */
+function holdsWords(words, run) {
+  for (let start = 0; start + run.length <= words.length; start += 1) {
+    if (run.every((word, offset) => words[start + offset] === word)) return true;
+  }
+  return false;
+}
+
+const sameWords = (a, b) => a.length === b.length && a.every((word, index) => word === b[index]);
 
 function compareTuples(a, b) {
   for (let index = 0; index < a.length; index += 1) {
@@ -97,16 +117,17 @@ export function createSearchIndex(concepts, { isOtherOntology = false, ontology 
     .sort((a, b) => a.level - b.level || collator.compare(a.pt, b.pt))
     .map((concept, position) => {
       // Some preferred terms carry a leading "- " (ICD-11 residual categories).
-      const term = concept.pt.replace(/^[- ]+/, '').trim().toLowerCase();
-      const code = searchCode(concept, isOtherOntology).toLowerCase();
+      // Hyphens count as spaces (contract v1.14 review fix); lengths and so the orders are unchanged.
+      const term = unhyphen(concept.pt.replace(/^[- ]+/, '').trim().toLowerCase());
+      const code = unhyphen(searchCode(concept, isOtherOntology).toLowerCase());
       const texts = (synonyms?.[concept.concept_id] ?? []).map((item) => (Array.isArray(item) ? item[0] : item));
       return {
         concept,
         code,
         term,
-        haystack: `${concept.pt} ${concept.fsn || ''} ${concept.concept_id}`.toLowerCase(),
+        haystack: unhyphen(`${concept.pt} ${concept.fsn || ''} ${concept.concept_id}`.toLowerCase()),
         position,
-        synonyms: texts.length ? { texts, lowered: texts.map(lowerText) } : null
+        synonyms: texts.length ? { texts, lowered: texts.map((text) => unhyphen(lowerText(text))) } : null
       };
     });
   const withSynonyms = entries.filter((entry) => entry.synonyms);
@@ -155,7 +176,7 @@ export function createSearchIndex(concepts, { isOtherOntology = false, ontology 
       if (!query) {
         return null;
       }
-      const needle = query.toLowerCase();
+      const needle = unhyphen(query.toLowerCase());
       const patterns = wordPatterns(needle);
       const matched = new Set();
       const matches = entries
@@ -202,7 +223,7 @@ export function createSearchIndex(concepts, { isOtherOntology = false, ontology 
 
     /** The concept whose code (ICD-11 code, else concept id) is `code`, ignoring case; null otherwise. */
     codeMatch(code) {
-      const position = byCode.get(String(code ?? '').trim().toLowerCase());
+      const position = byCode.get(unhyphen(String(code ?? '').trim().toLowerCase()));
       return position === undefined ? null : entries[position].concept;
     },
 
@@ -237,7 +258,12 @@ export function createSearchIndex(concepts, { isOtherOntology = false, ontology 
         if (!candidates.size) break;
         candidates = new Set([...candidates].filter((key) => other.has(key)));
       }
-      const pattern = new RegExp(`(?<![0-9a-z])${escapeRegExp(needle)}(?![0-9a-z])`);
+      // Words are compared, not the text (contract v1.14 review fix): "heart-failure" is Heart failure,
+      // and "covid 19" and "covid-19" are both COVID-19.
+      const codeNeedle = unhyphen(needle);
+      // As `matchRank` ranks a term that holds the phrase: by code first, then exact or whole words.
+      const termRank = (entry, rank) =>
+        entry.code === codeNeedle ? RANK_CODE : entry.code.startsWith(codeNeedle) ? RANK_CODE_PREFIX : rank;
       const terms = [];
       const synonymMatches = [];
       [...candidates]
@@ -246,26 +272,32 @@ export function createSearchIndex(concepts, { isOtherOntology = false, ontology 
         .forEach(([position, synonymIndex]) => {
           const entry = entries[position];
           if (synonymIndex < 0) {
-            if (pattern.test(entry.term)) terms.push(entry);
+            const termWords = wordsOf(entry.term);
+            if (holdsWords(termWords, phraseWords)) {
+              const exact = sameWords(termWords, phraseWords);
+              terms.push({ entry, exact, rank: termRank(entry, exact ? RANK_TERM : RANK_WORD) });
+            }
             return;
           }
           const lower = entry.synonyms.lowered[synonymIndex];
-          if (lower.replace(/^[- ]+/, '') === needle) synonymMatches.push({ entry, length: lower.length, text: entry.synonyms.texts[synonymIndex] });
+          if (sameWords(wordsOf(lower), phraseWords)) synonymMatches.push({ entry, length: lower.length, text: entry.synonyms.texts[synonymIndex] });
         });
-      const patterns = wordPatterns(needle);
       terms.sort((a, b) => {
-        const rankA = matchRank(needle, a.code, a.term, patterns);
-        const rankB = matchRank(needle, b.code, b.term, patterns);
-        if (rankA !== rankB) return rankA - rankB;
-        const order = rankA <= RANK_CODE_PREFIX ? compareTuples([a.code.length, a.code], [b.code.length, b.code]) : termOrder(a, b);
-        return order || a.position - b.position;
+        if (a.rank !== b.rank) return a.rank - b.rank;
+        const order =
+          a.rank <= RANK_CODE_PREFIX
+            ? compareTuples([a.entry.code.length, a.entry.code], [b.entry.code.length, b.entry.code])
+            : termOrder(a.entry, b.entry);
+        return order || a.entry.position - b.entry.position;
       });
-      terms.filter((entry) => entry.term === needle).forEach((entry) => add(entry, 'term', entry.concept.pt));
+      terms.filter(({ exact }) => exact).forEach(({ entry }) => add(entry, 'term', entry.concept.pt));
       synonymMatches
         .sort((a, b) => a.length - b.length || levelOrder(a.entry, b.entry) || a.entry.position - b.entry.position)
         .forEach(({ entry, text }) => add(entry, 'synonym', text));
-      terms.forEach((entry) => {
-        if (!exactOnly || (entry.concept.level <= 1 && entry.term.startsWith(`${needle} or `))) add(entry, 'term', entry.concept.pt);
+      terms.forEach(({ entry }) => {
+        if (!exactOnly || (entry.concept.level <= 1 && sameWords(wordsOf(entry.term).slice(0, phraseWords.length + 1), [...phraseWords, 'or']))) {
+          add(entry, 'term', entry.concept.pt);
+        }
       });
       return found.slice(0, limit);
     }

@@ -28,7 +28,8 @@ Rules, in order (each step only reads the words no earlier step took):
    commas, and semicolons, and at every word an earlier step took. In each
    part the longest run of words (not starting or ending with a stopword)
    that the search finds as a code or as whole words of a preferred term or
-   synonym (``SearchIndex.conditions``) becomes a condition, its best match
+   synonym (``SearchIndex.conditions``, which compares words, so
+   "heart-failure" is Heart failure) becomes a condition, its best match
    first; the rest of the part is searched again. At most three conditions.
    A single word must have three letters, not be a generic word ("disease",
    "syndrome"), and be a code, a whole preferred term or synonym, or the

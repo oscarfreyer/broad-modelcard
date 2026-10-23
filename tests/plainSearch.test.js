@@ -86,6 +86,17 @@ test('the static search lists synonym matches after every other match, as the AP
   assert.equal(ruleSetups.false.index.search('heart attack').total, 0);
 });
 
+test('the static search counts a hyphen as a space, on both sides, as the API does', () => {
+  const { index } = ruleSetups.true;
+  const ids = (q) => index.search(q).results.map((result) => result.concept_id);
+  assert.deepEqual(ids('heart-failure'), ids('heart failure'));
+  assert.ok(ids('heart-failure').includes('BLK-11-BlockL1-BD1'));
+  assert.deepEqual(ids('covid 19'), ['RA01']);
+  assert.deepEqual(ids('COVID-19'), ['RA01']);
+  const [found] = index.search('non insulin').results;
+  assert.deepEqual([found.concept_id, found.match, found.matched_term], ['5A11', 'synonym', 'non-insulin-dependent diabetes']);
+});
+
 test('the quality set: the port reads the queries that need no synonym exactly as expected', () => {
   const concepts = readJson('../backend/seed/atlas-base.json').concepts;
   const { index, vocabulary, byId } = setup(concepts, null, QUALITY.vocabulary);

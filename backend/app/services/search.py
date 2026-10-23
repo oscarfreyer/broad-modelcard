@@ -35,10 +35,17 @@ it; any other match), then shorter synonyms, the lower level, the preferred
 term, and concept order. ``SearchHit.synonyms`` names the synonym each such
 match was found by. Without synonyms the search is exactly what it was.
 
+**Hyphens (contract v1.14 review fix, CONTRACT.md §9, §31).** A hyphen
+counts as a space on both sides: in the query, the code, the searched text,
+the preferred term, and the synonyms, so "heart-failure" finds Heart failure
+and "covid 19" finds COVID-19. A query without a hyphen or a space is
+matched and ranked exactly as before.
+
 ``conditions`` serves the plain-language interpreter (§31): the concept
 whose code is a phrase, those whose preferred term or a synonym is the
 phrase, and those whose preferred term holds it as whole words, in that
-order (see the method).
+order (see the method). It compares words, so punctuation between words
+(a hyphen, a comma) never decides a match.
 """
 
 from __future__ import annotations
@@ -123,6 +130,17 @@ def _lower(text: str) -> str:
     return " ".join(text.split()).lower()
 
 
+def unhyphen(text: str) -> str:
+    """A lowercase text with its hyphens as spaces (v1.14 review fix): what the search matches and ranks."""
+    return text.replace("-", " ")
+
+
+def _holds_words(words: Sequence[str], run: Sequence[str]) -> bool:
+    """Whether ``run`` is a run of consecutive words of ``words``."""
+    size = len(run)
+    return any(words[start : start + size] == run for start in range(len(words) - size + 1))
+
+
 class SearchIndex:
     def __init__(self, atlas: Atlas, synonyms: Mapping[str, Sequence[tuple[str, str]]] | None = None):
         # Kept in the reference's order (level, then preferred term), so the
@@ -132,8 +150,9 @@ class SearchIndex:
         self._entries = []
         for concept in ordered:
             # Some preferred terms carry a leading "- " (ICD-11 residual categories).
-            term = concept.pt.lstrip("- ").strip().lower()
-            code = (concept.icd11_code or concept.concept_id).lower()
+            # Hyphens count as spaces (contract v1.14 review fix); lengths and so the orders are unchanged.
+            term = unhyphen(concept.pt.lstrip("- ").strip().lower())
+            code = unhyphen((concept.icd11_code or concept.concept_id).lower())
             self._entries.append(
                 _Entry(
                     concept_id=concept.concept_id,
@@ -142,18 +161,19 @@ class SearchIndex:
                     pt=concept.pt,
                     # A null fsn contributes an empty string. The reference would
                     # render it as the text "null"; no current concept lacks an fsn.
-                    haystack=f"{concept.pt} {concept.fsn or ''} {concept.concept_id}".lower(),
+                    haystack=unhyphen(f"{concept.pt} {concept.fsn or ''} {concept.concept_id}".lower()),
                     code_order=(len(code), code),
                     term_order=(len(term), concept.level, locale_sort_key(concept.pt)),
                 )
             )
-        # Contract v1.14 (§31): per entry position, its synonyms as stored and in lower case.
+        # Contract v1.14 (§31): per entry position, its synonyms as stored and in lower case
+        # (hyphens as spaces since the v1.14 review fix).
         self._synonyms: dict[int, tuple[tuple[str, ...], tuple[str, ...]]] = {}
         if synonyms:
             for position, entry in enumerate(self._entries):
                 texts = tuple(text for text, _ in synonyms.get(entry.concept_id, ()))
                 if texts:
-                    self._synonyms[position] = (texts, tuple(_lower(text) for text in texts))
+                    self._synonyms[position] = (texts, tuple(unhyphen(_lower(text)) for text in texts))
         self._by_code: dict[str, int] = {}
         for position, entry in enumerate(self._entries):
             self._by_code.setdefault(entry.code, position)
@@ -165,7 +185,7 @@ class SearchIndex:
 
     def search(self, query: str, limit: int) -> SearchHit:
         """Matches for an already trimmed, non-empty query, best match first."""
-        needle = query.lower()
+        needle = unhyphen(query.lower())
         matched: set[int] = set()
         matches = []
         for position, entry in enumerate(self._entries):
@@ -227,7 +247,7 @@ class SearchIndex:
 
     def code_match(self, code: str) -> str | None:
         """The concept whose code (ICD-11 code, else concept id) is ``code``, ignoring case."""
-        position = self._by_code.get(code.strip().lower())
+        position = self._by_code.get(unhyphen(code.strip().lower()))
         return self._entries[position].concept_id if position is not None else None
 
     def conditions(self, phrase: str, limit: int = 3, *, exact_only: bool = False) -> list[ConditionMatch]:
@@ -266,27 +286,38 @@ class SearchIndex:
             if not candidates:
                 break
             candidates &= other
-        pattern = re.compile(f"{_BEFORE}{re.escape(needle)}{_AFTER}")
-        terms: list[int] = []
+        # Words are compared, not the text (contract v1.14 review fix): "heart-failure" is Heart failure,
+        # and "covid 19" and "covid-19" are both COVID-19.
+        code_needle = unhyphen(needle)
+        terms: list[tuple[int, int]] = []
         synonyms: list[tuple[tuple, int, str]] = []
         for position, index in sorted(candidates):
             entry = self._entries[position]
             if index < 0:
-                if pattern.search(entry.term):
-                    terms.append(position)
+                term_words = words_of(entry.term)
+                if _holds_words(term_words, words):
+                    terms.append((position, RANK_TERM if term_words == words else RANK_WORD))
                 continue
             texts, lowered = self._synonyms[position]
-            if lowered[index].lstrip("- ") == needle:
+            if words_of(lowered[index]) == words:
                 synonyms.append(((len(lowered[index]), *entry.term_order[1:]), position, texts[index]))
-        terms.sort(key=lambda position: (self._entries[position].order(match_rank(needle, self._entries[position].code, self._entries[position].term)), position))
-        for position in terms:
-            if self._entries[position].term == needle:
+
+        def term_rank(position: int, rank: int) -> int:
+            # As ``match_rank`` ranks a term that holds the phrase: by code first, then exact or whole words.
+            code = self._entries[position].code
+            if code == code_needle:
+                return RANK_CODE
+            return RANK_CODE_PREFIX if code.startswith(code_needle) else rank
+
+        terms.sort(key=lambda item: (self._entries[item[0]].order(term_rank(*item)), item[0]))
+        for position, rank in terms:
+            if rank == RANK_TERM:
                 add(position, "term", self._entries[position].pt)
         for _, position, text in sorted(synonyms, key=lambda item: (item[0], item[1])):
             add(position, "synonym", text)
-        for position in terms:
+        for position, _ in terms:
             entry = self._entries[position]
             # Read strictly, only a chapter or block named "<phrase> or …" counts ("Epilepsy or seizures").
-            if not exact_only or (entry.term_order[1] <= 1 and entry.term.startswith(needle + " or ")):
+            if not exact_only or (entry.term_order[1] <= 1 and words_of(entry.term)[: len(words) + 1] == [*words, "or"]):
                 add(position, "term", entry.pt)
         return found[:limit]
