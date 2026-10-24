@@ -1,7 +1,7 @@
 // UI vocabulary (CONTRACT.md "Vocabulary"): the
 // interface says "Function", never "use case". This scans every user-facing
 // string in frontend/src (string literals, template text, and JSX text, after
-// esbuild strips the comments) and the page titles of frontend/*.html.
+// the Oxc transform and minifier drop the comments) and the page titles of frontend/*.html.
 // Identifiers (`useCase`) and contract keys (`use_case`) are not copy and are
 // left out; JSON export keys keep the contract's names.
 import test from 'node:test';
@@ -9,7 +9,7 @@ import assert from 'node:assert/strict';
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { transformWithEsbuild } from 'vite';
+import { minify, transformWithOxc } from 'vite';
 
 const FRONTEND = fileURLToPath(new URL('../frontend/', import.meta.url));
 const SRC = path.join(FRONTEND, 'src');
@@ -36,7 +36,7 @@ const REGEX_AFTER = /(?:^|[(,=:[!&|?{};+\-*%<>~^]|\breturn|\btypeof|\bcase|\bdo|
 
 /**
  * The text of every string literal and template in comment-free JavaScript
- * (esbuild output). A template's text is kept without its `${…}` parts, whose
+ * (`commentFree` output). A template's text is kept without its `${…}` parts, whose
  * code is scanned like any other. Regular expression literals are skipped.
  *
  * @param {string} code
@@ -118,9 +118,24 @@ export function stringLiterals(code) {
   return strings;
 }
 
+/**
+ * The code without comments, JSX turned into calls whose strings are its text
+ * (Vite's Oxc transform, then its minifier with compression and renaming off,
+ * so every literal stays as written, non-ASCII included).
+ *
+ * @param {string} source
+ * @param {string} file
+ * @returns {Promise<string>}
+ */
+async function commentFree(source, file) {
+  const { code } = await transformWithOxc(source, file, { jsx: { runtime: 'classic' } });
+  const result = await minify(file.replace(/\.[jt]sx?$/, '.js'), code, { compress: false, mangle: false, codegen: { removeWhitespace: false } });
+  if (result.errors?.length) throw new Error(`${file}: ${result.errors[0].message}`);
+  return result.code;
+}
+
 async function userFacingStrings(file) {
-  const source = readFileSync(file, 'utf8');
-  const { code } = await transformWithEsbuild(source, file, { jsx: 'transform', legalComments: 'none', charset: 'utf8' });
+  const code = await commentFree(readFileSync(file, 'utf8'), file);
   return stringLiterals(code).filter((text) => text.trim() && !IDENTIFIER.test(text.trim()) && !PANEL_ATTRIBUTE.test(text.trim()));
 }
 
@@ -133,7 +148,7 @@ test('the scanner finds string, template, and JSX text but not comments or ident
     'const label = `Pick a ${useCase} here`;',
     'const view = <p title="Hover text">JSX text</p>;'
   ].join('\n');
-  const { code } = await transformWithEsbuild(sample, 'sample.jsx', { jsx: 'transform', legalComments: 'none', charset: 'utf8' });
+  const code = await commentFree(sample, 'sample.jsx');
   const found = stringLiterals(code);
   assert.ok(found.includes('Function'));
   assert.ok(found.some((text) => text.startsWith('Pick a')));
@@ -231,7 +246,7 @@ test('the catalogue, the model card, and the live panel never say "Label", "Over
     }
     // A one-word string is skipped above as a likely identifier; a capitalised
     // retired word on its own is copy all the same ("Overall" as a row label).
-    const { code } = await transformWithEsbuild(readFileSync(file, 'utf8'), file, { jsx: 'transform', legalComments: 'none', charset: 'utf8' });
+    const code = await commentFree(readFileSync(file, 'utf8'), file);
     for (const text of stringLiterals(code)) {
       if (SINGLE_RETIRED.test(text.trim())) {
         offenders.push(`${path.relative(FRONTEND, file)}: ${text}`);

@@ -33,7 +33,7 @@ before(async () => {
     logLevel: 'error',
     appType: 'custom',
     server: { middlewareMode: true, hmr: false },
-    esbuild: { jsx: 'automatic' },
+    oxc: { jsx: { runtime: 'automatic' } },
     optimizeDeps: { noDiscovery: true, include: [] }
   });
 });

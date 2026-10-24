@@ -70,6 +70,12 @@ export default defineConfig(({ mode }) => {
       __BMC_STATIC__: JSON.stringify(isStatic),
       __BMC_STATIC_SNAPSHOT__: JSON.stringify(isStatic ? staticSnapshot() : null)
     },
+    // Pre-bundle the dependencies the pages import lazily or only from some
+    // entries, so the first `npm run dev` on a fresh clone does not find them
+    // mid-load, re-bundle, and reload the page with mismatched React copies.
+    optimizeDeps: {
+      include: ['react', 'react-dom', 'react-dom/client', 'react/jsx-dev-runtime', 'jspdf']
+    },
     server: {
       cors: false,
       proxy: apiProxy()
@@ -83,7 +89,7 @@ export default defineConfig(({ mode }) => {
       outDir: isStatic ? STATIC_OUT : fileURLToPath(new URL('./dist', import.meta.url)),
       emptyOutDir: true,
       cssCodeSplit: true,
-      rollupOptions: {
+      rolldownOptions: {
         // Vite drops entry exports in app builds; keep them, so a host can
         // import { BmcLivePanel, PANEL_TAG } from embed/bmc-live-panel.js as
         // embed/index.js promises. The HTML entries export nothing either way.
@@ -103,8 +109,9 @@ export default defineConfig(({ mode }) => {
             },
         output: {
           entryFileNames: (chunk) => (chunk.name === 'bmc-live-panel' ? 'embed/bmc-live-panel.js' : 'assets/[name]-[hash].js'),
-          manualChunks: {
-            react: ['react', 'react-dom']
+          // React and React DOM in one shared chunk, as every page uses them.
+          codeSplitting: {
+            groups: [{ name: 'react', test: /[\\/]node_modules[\\/](react|react-dom|scheduler)[\\/]/ }]
           }
         }
       }

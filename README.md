@@ -17,13 +17,13 @@ The app has two parts: a React frontend that only renders and interacts, and a l
 
 ## Tech Stack
 
-- Frontend: React 18, Vite 5, plain JavaScript, jsPDF for PDFs (`frontend/`)
+- Frontend: React 18, Vite 8, plain JavaScript, jsPDF for PDFs (`frontend/`)
 - Backend: Python 3.14 (3.12+ expected to work), FastAPI, uvicorn, pydantic, python-multipart, openpyxl, and the standard library (`sqlite3`; `urllib` for the optional helper) (`backend/`)
 - API contract: [`backend/openapi.json`](backend/openapi.json) (shapes) and [`backend/CONTRACT.md`](backend/CONTRACT.md) (semantics), v1.14
 
 ## Getting Started (from a clean clone)
 
-Prerequisites: Node.js 20+ with npm, and Python 3.12+ (3.14 is used in development). Run every command from the repository root.
+Prerequisites: Node.js 20.19+ or 22.12+ with npm (Vite 8 needs one of these), and Python 3.12+ (3.14 is used in development). Run every command from the repository root.
 
 ```bash
 # 1. JavaScript dependencies (exact versions from package-lock.json)
