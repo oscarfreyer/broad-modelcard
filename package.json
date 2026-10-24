@@ -1,7 +1,7 @@
 {
   "name": "atlas-mvp-js",
   "private": true,
-  "version": "0.5.3",
+  "version": "0.5.4",
   "type": "module",
   "scripts": {
     "dev": "node scripts/dev.mjs dev",
@@ -27,5 +27,6 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^6.1.2",
     "vite": "^8.3.5"
-  }
+  },
+  "license": "Apache-2.0"
 }

@@ -236,6 +236,14 @@ npm run build && npm run validate-seed     # build and seed validation
 - The parity tests compare the backend with the pre-refactor reference client (tag `v0.2.0-alpha.1`), which is not part of the public repository; without it they skip.
 - Set `BMC_DB` to a scratch store (for example one built with `npm run demo:build -- --db <file>`) to keep test runs away from your own data.
 
+## Licence
+
+- **Software** (code, tests, scripts, configuration, and the API description): [Apache License 2.0](LICENSE).
+- **Documentation** (the Markdown files and `docs/`) and the **synthetic demonstration data** (`backend/demo/` and the synthetic parts of `backend/seed/`): [Creative Commons Attribution 4.0 International](LICENSE-docs) (CC BY 4.0). To credit it, name "Broad Modelcard" with a link to this repository and the licence.
+- **Third-party material keeps its own licence** ([`NOTICE`](NOTICE), [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)): the ICD-11 codes and titles in the seed are © World Health Organization under CC BY-ND 3.0 IGO, and the chapter icons are Healthicons under the MIT License. The ontology files that `npm run ontologies:fetch` downloads are not part of the repository and carry their own licences (listed in the same file).
+
+The data is synthetic and for demonstration only. It is not clinical evidence.
+
 ## Project Structure
 
 ```text
@@ -282,4 +290,7 @@ docs/               intervention-effects.md (the concept behind effect records),
 tests/              frontend tests: API adapter, end-to-end against the backend, boundary,
                     contract, catalogue, label, profile, safety, panel, helper, populations,
                     layout, wording, presentation
+LICENSE, LICENSE-docs, NOTICE, THIRD_PARTY_NOTICES.md
+                    Apache 2.0 for the software, CC BY 4.0 for docs and synthetic data,
+                    what each covers, and the third-party material
 ```

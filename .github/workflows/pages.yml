@@ -28,21 +28,23 @@ concurrency:
   group: pages
   cancel-in-progress: true
 
+# The actions are the Node.js 24 majors (2026-10-24). The runner image is pinned,
+# so a move of ubuntu-latest (to Ubuntu 26) cannot change a build unannounced.
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 60
     env:
       BMC_STATIC_ONTOLOGIES: ${{ vars.BMC_STATIC_ONTOLOGIES || 'icd11,mondo,icd10cm' }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: npm
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.14'
           cache: pip
@@ -58,7 +60,7 @@ jobs:
 
       # The pinned releases (scripts/ontologies/sources.json), kept between runs;
       # the fetch checks every file's size and SHA-256 and downloads only what is missing.
-      - uses: actions/cache@v4
+      - uses: actions/cache@v6
         with:
           path: backend/data/ontology-sources
           key: ontology-sources-${{ hashFiles('scripts/ontologies/sources.json') }}
@@ -72,18 +74,18 @@ jobs:
       - name: Record the snapshot and build the static site (${{ env.BMC_STATIC_ONTOLOGIES }})
         run: npm run build:static
 
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v6
 
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: frontend/dist-static
 
   deploy:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

@@ -1,0 +1,21 @@
+Broad Modelcard
+Copyright 2026 the Broad Modelcard authors
+
+The software (code, tests, scripts, configuration, and the API description)
+is licensed under the Apache License, Version 2.0: see LICENSE.
+
+The documentation (the Markdown files and docs/) and the synthetic
+demonstration data (backend/demo/ and the synthetic parts of backend/seed/)
+are licensed under the Creative Commons Attribution 4.0 International
+licence (CC BY 4.0): see LICENSE-docs.
+
+The data is synthetic and for demonstration only. It is not clinical
+evidence and must not be used for clinical decisions.
+
+Third-party material keeps its own licence and is not covered by the two
+licences above (details in THIRD_PARTY_NOTICES.md):
+
+- ICD-11 for Mortality and Morbidity Statistics (codes and titles in
+  backend/seed/atlas-base.json), World Health Organization,
+  CC BY-ND 3.0 IGO.
+- Healthicons (the chapter icons), Resolve to Save Lives, MIT License.

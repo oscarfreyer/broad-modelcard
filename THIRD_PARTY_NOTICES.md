@@ -1,6 +1,12 @@
 # Third-party notices
 
-Broad Modelcard includes the following third-party material in its source.
+Broad Modelcard includes the following third-party material in its source. Each keeps its own licence: the project's Apache License 2.0 (`LICENSE`) and CC BY 4.0 (`LICENSE-docs`) do not apply to it (see `NOTICE`).
+
+## ICD-11 for Mortality and Morbidity Statistics
+
+- What: the ICD-11 MMS chapters, blocks, and categories (13,688 concepts: codes and titles) in `backend/seed/atlas-base.json`, read from WHO's simple tabulation `SimpleTabulation-ICD-11-MMS-en.txt`, release 2026-01 ("Version:2026 Jan 17"). They are shown on the atlas, in search, in exports, and in the static demo.
+- Source: International Classification of Diseases, 11th Revision (ICD-11), Mortality and Morbidity Statistics, World Health Organization, https://icd.who.int/browse/latest-release/mms/en.
+- Licence: Creative Commons Attribution-NoDerivatives 3.0 IGO (CC BY-ND 3.0 IGO), https://creativecommons.org/licenses/by-nd/3.0/igo/. © World Health Organization. The codes and titles are used as published. The seed arranges them into the atlas hierarchy (chapters, blocks, conditions, and deeper categories) and also stores each title with "(ICD-11 category <code>)" appended as its fully specified name. The synthetic metrics, prevalence tiers, and everything else in the seed are not WHO material.
 
 ## Healthicons
 
